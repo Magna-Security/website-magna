@@ -1,7 +1,7 @@
 function validarLogin () {
     let email = inputEmail.value;
     let senha = inputSenha.value;
-    let cadastravel = 0;
+    let cadastravel = senha.length >= 5;
 
     if (email.indexOf('@') <= -1 || email.indexOf(".com") <= -1) {
         spanEmail.innerHTML = "E-mail inválido.";
@@ -11,18 +11,17 @@ function validarLogin () {
 
     if (senha.length == 0) {
         spanSenha.innerHTML = "";
-        cadastravel = senha.length;
     } else if (senha.length > 0 && senha.length <= 4) {
         spanSenha.innerHTML = "Senha fraca.";
-        cadastravel = senha.length;
     } else if (senha.length > 4 && senha.length <= 8) {
         spanSenha.innerHTML = "Senha média.";
     } else {
-        for (let i = 0; i <= 9; i++) {
-            if (senha.indexOf(i) <= -1) {
-                let caracEspecial = ["(", ")", "*", "&", "%", "$", "#", "@", "!", ";", "-", "_"];
 
-                let contemSpecial = false;
+        let caracEspecial = ["(", ")", "*", "&", "%", "$", "#", "@", "!", ";", "-", "_"];
+        let contemSpecial = false;
+
+        for (let i = 0; i <= 9; i++) {
+            if (senha.indexOf(i) > -1) {
 
                 caracEspecial.forEach(special => {
                     if (senha.indexOf(special) != -1) {
@@ -35,6 +34,8 @@ function validarLogin () {
                     spanSenha.innerHTML = "Senha forte."
                 }
             } 
-        }   
+        }  
     }  
+
+    return cadastravel;
 }
