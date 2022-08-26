@@ -1,0 +1,9 @@
+.containerBeneficios {
+  background-color: #3c68b5;
+  color: #fff;
+  border-radius: 10px;
+}
+
+.feature {
+  display: flex;
+}
