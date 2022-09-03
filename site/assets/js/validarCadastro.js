@@ -2,7 +2,6 @@ function validarSenha() {
 
     let senha = inputSenha.value;
     let caracEspecial = ["(", ")", "*", "&", "%", "$", "#", "@", "!", ";", "-", "_"];
-    spanSenha.innerHTML = "";
 
 
     if (senha.length == 0) {
