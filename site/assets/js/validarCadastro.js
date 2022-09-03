@@ -36,30 +36,56 @@ function validarSenha() {
 
 function validarUsuario() {
     let nomeUsuario = inputUsuario.value;
+    let contemNum;
+    let contemSpec;
     
-    if (nomeUsuario.length < 1) {
-        spanUsuario.indexHTML = "Nome de usuário inválido";
-    } else {
-
+    if (nomeUsuario.length > 1) {
+        
         for (let i = 0; i <= 9; i++) {
+            // console.log("Entrei no for numero");
             if (nomeUsuario.indexOf(i) != -1) {
-                spanUsuario.indexHTML = "Não são permitidos números.";
+                spanUsuario.innerHTML = "Não são permitidos números.";
+                contemNum = true;
+                break;
+            } else {
+                console.log("Posicao do numero: " + nomeUsuario.indexOf(i));
+                console.log("Numero: " + i);
+                contemNum = false;
             }
-
-            caracEspecial.forEach(special => {
-                if (nomeUsuario.indexOf(special) != -1) {
-                    spanUsuario.indexHTML = "Não são permitidos caracteres especiais."
-                }
-            });
         }
 
-        
+        console.log("Contem Numero: " + contemNum);
+
+        for (let i = 0; i <= caracEspecial.length; i++) {
+            if (nomeUsuario.indexOf(caracEspecial[i]) != -1) {
+                spanUsuario.innerHTML = "Não são permitidos caracteres especiais."
+                contemSpec = true;
+                break;
+            } else {
+                contemSpec = false;
+            }
+        }
+
+        console.log("Contem Special: " + contemSpec);
+
+        if (contemNum == false && contemSpec == false) {
+            spanUsuario.innerHTML = "";
+        }
+
+    } else {
+        spanUsuario.innerHTML = "Nome de usuário inválido";
     }
+
+
 }
 
 function validarEmail() {
     let email = inputEmail.value;
-    spanEmail.indexHTML = "";
+
+    if (email == "123") {
+        alert('batata')
+    }
+
 
     
 }
