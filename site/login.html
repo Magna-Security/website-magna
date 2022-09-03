@@ -1,3 +1,5 @@
+<!-- @format -->
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -6,6 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Magna Security</title>
 
+    <link rel="stylesheet" href="assets/css/fonts.css" />
+    <link rel="stylesheet" href="assets/css/index.css" />
     <link rel="stylesheet" href="assets/css/login.css" />
 
     <link
@@ -18,35 +22,60 @@
     <script src="assets/js/login.js"></script>
   </head>
   <body>
-    <main style="height: 100vh" class="position-relative">
-      <div class="position-absolute top-50 start-50 translate-middle w-75">
-        <div class="container-fluid border">
-          <div class="row">
-            <div class="col-6 divLogin">
-              <form class="w-75">
-                <h3 class="mb-4">Login</h3>
-                <div class="mb-3">
-                  <label for="inputEmail">E-mail: </label>
-                  <input type="email" id="inputEmail" class="form-control" onkeyup="validarLogin()" />
-                  <span id="spanEmail"></span>
-                </div>
+    <div
+      class="container d-flex align-items-center justify-content-center h-100"
+    >
+      <div class="row w-100 h-75">
+        <div
+          class="col-12 col-md-6 divLogin d-flex justify-content-center align-items-center"
+        >
+          <div class="col-12 col-md-6">
+            <form>
+              <div class="d-flex justify-content-center">
+                <img
+                  src="assets/img/logo.svg"
+                  class="img-fluid w-75 mb-3"
+                  alt=""
+                />
+              </div>
+              <div class="mb-1">
+                <label for="inputEmail" class="form-label">E-mail: </label>
+                <input
+                  type="email"
+                  id="inputEmail"
+                  class="form-control"
+                  onkeyup="validarLogin()"
+                />
+                <span id="spanEmail"></span>
+              </div>
 
-                <div class="mb-3">
-                  <label for="inputSenha">Senha: </label>
-                  <input type="password" id="inputSenha" class="form-control" onkeyup="validarLogin()" />
-                  <span id="spanSenha"></span>
-                </div>
+              <div class="mb-1">
+                <label for="inputSenha" class="form-label">Senha: </label>
+                <input
+                  type="password"
+                  id="inputSenha"
+                  class="form-control"
+                  onkeyup="validarLogin()"
+                />
+                <span id="spanSenha"></span>
+              </div>
+              <span class="mb-3 d-block opcao-cadastrar">
+                <a href="cadastro.html">
+                  Ainda não possui uma conta? Cadastre-se
+                </a>
+              </span>
 
-                <button type="submit" class="btn btn-primary w-100">
-                  Login
-                </button>
-              </form>
-            </div>
-            <div class="col-6 imgLogin">a</div>
+              <button type="submit" class="btn btn-primary w-100">Login</button>
+            </form>
           </div>
         </div>
+        <div
+          class="col-12 col-md-6 imgLogin d-flex align-items-center justify-content-center"
+        >
+          <img src="assets/img/img-login.svg" class="img-fluid" alt="" />
+        </div>
       </div>
-    </main>
+    </div>
 
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"

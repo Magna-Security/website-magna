@@ -27,6 +27,29 @@ body {
 .container-sobre {
   background-image: linear-gradient(to right, #93d9e2, #2f8b98);
   padding: 60px 0;
+  position: relative;
+}
+
+.container-sobre::before {
+  content: "";
+  width: 50%;
+  height: 5px;
+  display: block;
+  background-color: #576e97;
+  position: absolute;
+  top: 10px;
+  right: 0;
+}
+
+.container-sobre::after {
+  content: "";
+  width: 50%;
+  height: 5px;
+  display: block;
+  background-color: #576e97;
+  position: absolute;
+  bottom: 10px;
+  left: 0;
 }
 
 .container-footer {
