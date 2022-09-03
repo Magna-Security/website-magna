@@ -16,6 +16,10 @@ body {
   height: 100vh;
 }
 
+body {
+  background-image: linear-gradient(to right, #e7eaf0, #d4d9e3) !important;
+}
+
 .row {
   border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 5px;
@@ -38,6 +42,8 @@ body {
 
 .formulario {
   position: relative;
+  background-color: #fff;
+  border-radius: 5px 0 0 5px;
 }
 
 .fechar {
