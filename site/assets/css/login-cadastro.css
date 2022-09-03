@@ -35,3 +35,19 @@ body {
   color: inherit;
   text-decoration: none;
 }
+
+.formulario {
+  position: relative;
+}
+
+.fechar {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+}
+
+.voltar {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+}
