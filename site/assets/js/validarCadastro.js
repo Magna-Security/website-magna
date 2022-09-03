@@ -1,7 +1,9 @@
+let caracEspecial = ["(", ")", "*", "&", "%", "$", "#", "@", "!", ";", "-", "_"];
+
+
 function validarSenha() {
 
     let senha = inputSenha.value;
-    let caracEspecial = ["(", ")", "*", "&", "%", "$", "#", "@", "!", ";", "-", "_"];
 
 
     if (senha.length == 0) {
@@ -34,9 +36,8 @@ function validarSenha() {
 
 function validarUsuario() {
     let nomeUsuario = inputUsuario.value;
-    spanUsuario.indexHTML = "";
     
-    if (nomeUsuario.length <= 1) {
+    if (nomeUsuario.length < 1) {
         spanUsuario.indexHTML = "Nome de usuário inválido";
     } else {
 
