@@ -1,9 +1,79 @@
-.containerBeneficios {
-  background-color: #3c68b5;
-  color: #fff;
-  border-radius: 10px;
+/** @format */
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital@0;1&display=swap");
+
+body {
+  font-family: "Roboto", sans-serif;
 }
 
-.feature {
-  display: flex;
+.container-header {
+  background-color: #e7eaf0;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.btn {
+  border: none !important;
+  text-transform: uppercase;
+}
+
+.btn:hover {
+  border: none !important;
+}
+
+.btn-primary {
+  background-image: linear-gradient(to right, #75c9d5, #49abb9);
+  border: none;
+}
+
+.container-sobre {
+  background-image: linear-gradient(to right, #93d9e2, #2f8b98);
+  padding: 60px 0;
+}
+
+.container-footer {
+  background-color: #132b55;
+  color: #fff;
+  height: 80px;
+}
+
+.container-faq {
+  padding: 60px 0;
+}
+
+.container-footer p {
+  margin: 0;
+}
+
+.accordion-item {
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.accordion-button:not(.collapsed) {
+  outline: #132b55 !important;
+  border: none !important;
+  background-color: #576e97 !important;
+  color: #fff !important;
+}
+
+.accordion-button::after {
+  background-image: #fff !important;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #576e97;
+  border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #132b55;
 }
