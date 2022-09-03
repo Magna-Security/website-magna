@@ -82,9 +82,6 @@ function validarUsuario() {
 function validarEmail() {
     let email = inputEmail.value;
 
-    if (email == "123") {
-        alert('batata')
-    }
 
 
     
