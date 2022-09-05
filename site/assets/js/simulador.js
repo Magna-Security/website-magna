@@ -14,10 +14,11 @@ function bt1() {
     simular();
 
     document.querySelector('.resultado').style.display = 'block';
-    
+
     var ax_alunos = Number(document.getElementById('alunos').value);
     var ax_so = (document.getElementById('so').value);
     var ax_func = Number(document.getElementById('func').value);
+    ax_so = ax_so.toLowerCase();
 
     if (ax_so == "linux") {
         
