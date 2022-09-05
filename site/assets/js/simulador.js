@@ -38,6 +38,10 @@ adquirindo nosso sistema você poderia gastar ${(2801.2331 * 0.80).toFixed(2)} <
 em meses normais é ${(2801.2331 * 1.05).toFixed(2)} em meses de prova <br>
 você economezaria R$:${(2801.2331 - (2801.2331 * 0.80)).toFixed(2)} em meses normais`
         } else if (ax_alunos < 2000 && ax_alunos >= 1000){
+            document.getElementById('spanText').innerHTML = `Você normalmente gastaria R$: ${(2900.2331).toFixed(2)} mensalmente <br>
+adquirindo nosso sistema você poderia gastar ${(2900.2331 * 0.80).toFixed(2)} <br> em meses normais 
+é ${(2900.2331 * 1.05).toFixed(2)} em meses de prova <br>
+você economezaria R$:${(2900.2331 - (2900.2331 * 0.80)).toFixed(2)} em meses normais `
 
         } else if (ax_alunos < 3000 && ax_alunos >= 2000){
 document.getElementById('spanText').innerHTML = `Você normalmente gastaria R$: ${(3200.2331).toFixed(2)} mensalmente <br>
