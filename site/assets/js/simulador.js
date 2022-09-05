@@ -19,6 +19,13 @@ function bt1() {
     ax_so = ax_so.toLowerCase();
 if(ax_alunos == "" || ax_so == "" || ax_func == "" || ax_alunos == null || ax_so == null || ax_func == null){
  alert("Insira numeros validos")
+ spanText.innerHTML = ""
+ var formulario = document.querySelector('.formulario');
+ formulario.classList.add('col-md-12');
+ formulario.classList.remove('col-md-6');
+
+
+    document.querySelector('.resultado').style.display = 'none';
 } else{
     simular();
 
