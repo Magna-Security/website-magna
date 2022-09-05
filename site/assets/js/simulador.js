@@ -11,15 +11,18 @@ function simular(e) {
 }
 
 function bt1() {
-    simular();
-
-    document.querySelector('.resultado').style.display = 'block';
+    
 
     var ax_alunos = Number(document.getElementById('alunos').value);
     var ax_so = (document.getElementById('so').value);
     var ax_func = Number(document.getElementById('func').value);
     ax_so = ax_so.toLowerCase();
+if(ax_alunos == "" || ax_so == "" || ax_func == "" || ax_alunos == null || ax_so == null || ax_func == null){
+ alert("Insira numeros validos")
+} else{
+    simular();
 
+    document.querySelector('.resultado').style.display = 'block';
     if (ax_so == "linux") {
         
         if (ax_alunos < 1000) {
@@ -167,9 +170,8 @@ document.getElementById('spanText').innerHTML = `Você normalmente gastaria R$: 
 adquirindo nosso sistema você poderia gastar ${(5100.2331 * 0.91).toFixed(2)} <br> em meses normais 
 é ${(5100.2331 * 1.08).toFixed(2)} em meses de prova <br>
 você economezaria R$:${(5100.2331 - (5100.2331 * 0.91)).toFixed(2)} em meses normais`
+ }
+}  
 
-        }
-    }
-
-
+}
 }
