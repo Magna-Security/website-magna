@@ -48,24 +48,50 @@ adquirindo nosso sistema você poderia gastar ${(5100.2331 * 0.83).toFixed(2)} <
 você economezaria R$:${(5100.2331 - (5100.2331 * 0.83)).toFixed(2)} em meses normais`
 
         } else if (ax_alunos < 10000 && ax_alunos >= 7000){
+document.getElementById('spanText').innerHTML = `Você normalmente gastaria R$: ${(5100.2331).toFixed(2)}  mensalmente <br>
+adquirindo nosso sistema você poderia gastar ${(5100.2331 * 0.83).toFixed(2)} <br> em meses normais 
+é ${(5100.2331 * 1.05).toFixed(2)} em meses de prova <br>
+você economezaria R$:${(5100.2331 - (5100.2331 * 0.83)).toFixed(2)} em meses normais`
 
 
         } else if (ax_alunos < 15000 && ax_alunos >= 10000){
-         
+document.getElementById('spanText').innerHTML = `Você normalmente gastaria R$: ${(5100.2331).toFixed(2)}  mensalmente <br>
+adquirindo nosso sistema você poderia gastar ${(5100.2331 * 0.83).toFixed(2)} <br> em meses normais 
+é ${(5100.2331 * 1.05).toFixed(2)} em meses de prova <br>
+você economezaria R$:${(5100.2331 - (5100.2331 * 0.83)).toFixed(2)} em meses normais`
 
         } else if (ax_alunos < 20000 && ax_alunos >= 15000){
+document.getElementById('spanText').innerHTML = `Você normalmente gastaria R$: ${(5100.2331).toFixed(2)}  mensalmente <br>
+adquirindo nosso sistema você poderia gastar ${(5100.2331 * 0.83).toFixed(2)} <br> em meses normais 
+é ${(5100.2331 * 1.05).toFixed(2)} em meses de prova <br>
+você economezaria R$:${(5100.2331 - (5100.2331 * 0.83)).toFixed(2)} em meses normais`
            
 
         } else if (ax_alunos < 30000 && ax_alunos >= 20000){
+document.getElementById('spanText').innerHTML = `Você normalmente gastaria R$: ${(5100.2331).toFixed(2)}  mensalmente <br>
+adquirindo nosso sistema você poderia gastar ${(5100.2331 * 0.83).toFixed(2)} <br> em meses normais 
+é ${(5100.2331 * 1.05).toFixed(2)} em meses de prova <br>
+você economezaria R$:${(5100.2331 - (5100.2331 * 0.83)).toFixed(2)} em meses normais`
             
 
         } else if (ax_alunos < 40000 && ax_alunos >= 30000) {
+document.getElementById('spanText').innerHTML = `Você normalmente gastaria R$: ${(5100.2331).toFixed(2)}  mensalmente <br>
+adquirindo nosso sistema você poderia gastar ${(5100.2331 * 0.83).toFixed(2)} <br> em meses normais 
+é ${(5100.2331 * 1.05).toFixed(2)} em meses de prova <br>
+você economezaria R$:${(5100.2331 - (5100.2331 * 0.83)).toFixed(2)} em meses normais`
            
 
         }else if (ax_alunos < 50000 && ax_alunos  >= 40000){
-           
+document.getElementById('spanText').innerHTML = `Você normalmente gastaria R$: ${(5100.2331).toFixed(2)}  mensalmente <br>
+adquirindo nosso sistema você poderia gastar ${(5100.2331 * 0.83).toFixed(2)} <br> em meses normais 
+é ${(5100.2331 * 1.05).toFixed(2)} em meses de prova <br>
+você economezaria R$:${(5100.2331 - (5100.2331 * 0.83)).toFixed(2)} em meses normais`
 
         }else{
+document.getElementById('spanText').innerHTML = `Você normalmente gastaria R$: ${(5100.2331).toFixed(2)}  mensalmente <br>
+adquirindo nosso sistema você poderia gastar ${(5100.2331 * 0.83).toFixed(2)} <br> em meses normais 
+é ${(5100.2331 * 1.05).toFixed(2)} em meses de prova <br>
+você economezaria R$:${(5100.2331 - (5100.2331 * 0.83)).toFixed(2)} em meses normais`
           
 
         }
@@ -102,22 +128,45 @@ adquirindo nosso sistema você poderia gastar ${(5100.2331 * 0.91).toFixed(2)} <
 você economezaria R$:${(5100.2331 - (5100.2331 * 0.91)).toFixed(2)} em meses normais`
 
         } else if (ax_alunos < 10000 && ax_alunos >= 7000){
-          
-
+document.getElementById('spanText').innerHTML = `Você normalmente gastaria R$: ${(5100.2331).toFixed(2)} mensalmente <br>
+adquirindo nosso sistema você poderia gastar ${(5100.2331 * 0.91).toFixed(2)} <br> em meses normais 
+é ${(5100.2331 * 1.08).toFixed(2)} em meses de prova <br>
+você economezaria R$:${(5100.2331 - (5100.2331 * 0.91)).toFixed(2)} em meses normais`
         } else if (ax_alunos < 15000 && ax_alunos >= 10000){
+document.getElementById('spanText').innerHTML = `Você normalmente gastaria R$: ${(5100.2331).toFixed(2)} mensalmente <br>
+adquirindo nosso sistema você poderia gastar ${(5100.2331 * 0.91).toFixed(2)} <br> em meses normais 
+é ${(5100.2331 * 1.08).toFixed(2)} em meses de prova <br>
+você economezaria R$:${(5100.2331 - (5100.2331 * 0.91)).toFixed(2)} em meses normais`
            
         } else if (ax_alunos < 20000 && ax_alunos >= 15000){
+document.getElementById('spanText').innerHTML = `Você normalmente gastaria R$: ${(5100.2331).toFixed(2)} mensalmente <br>
+adquirindo nosso sistema você poderia gastar ${(5100.2331 * 0.91).toFixed(2)} <br> em meses normais 
+é ${(5100.2331 * 1.08).toFixed(2)} em meses de prova <br>
+você economezaria R$:${(5100.2331 - (5100.2331 * 0.91)).toFixed(2)} em meses normais`
             
-
         } else if (ax_alunos < 30000 && ax_alunos >= 20000){
+document.getElementById('spanText').innerHTML = `Você normalmente gastaria R$: ${(5100.2331).toFixed(2)} mensalmente <br>
+adquirindo nosso sistema você poderia gastar ${(5100.2331 * 0.91).toFixed(2)} <br> em meses normais 
+é ${(5100.2331 * 1.08).toFixed(2)} em meses de prova <br>
+você economezaria R$:${(5100.2331 - (5100.2331 * 0.91)).toFixed(2)} em meses normais`
 
         } else if (ax_alunos < 40000 && ax_alunos >= 30000) {
+document.getElementById('spanText').innerHTML = `Você normalmente gastaria R$: ${(5100.2331).toFixed(2)} mensalmente <br>
+adquirindo nosso sistema você poderia gastar ${(5100.2331 * 0.91).toFixed(2)} <br> em meses normais 
+é ${(5100.2331 * 1.08).toFixed(2)} em meses de prova <br>
+você economezaria R$:${(5100.2331 - (5100.2331 * 0.91)).toFixed(2)} em meses normais`
 
         }else if (ax_alunos < 50000 && ax_alunos  >= 40000){
-           
+document.getElementById('spanText').innerHTML = `Você normalmente gastaria R$: ${(5100.2331).toFixed(2)} mensalmente <br>
+adquirindo nosso sistema você poderia gastar ${(5100.2331 * 0.91).toFixed(2)} <br> em meses normais 
+é ${(5100.2331 * 1.08).toFixed(2)} em meses de prova <br>
+você economezaria R$:${(5100.2331 - (5100.2331 * 0.91)).toFixed(2)} em meses normais`           
 
         }else{
-            
+document.getElementById('spanText').innerHTML = `Você normalmente gastaria R$: ${(5100.2331).toFixed(2)} mensalmente <br>
+adquirindo nosso sistema você poderia gastar ${(5100.2331 * 0.91).toFixed(2)} <br> em meses normais 
+é ${(5100.2331 * 1.08).toFixed(2)} em meses de prova <br>
+você economezaria R$:${(5100.2331 - (5100.2331 * 0.91)).toFixed(2)} em meses normais`
 
         }
     }
