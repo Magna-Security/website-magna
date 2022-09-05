@@ -17,7 +17,7 @@ function bt1() {
     if (ax_so == "linux") {
         
         if (ax_alunos < 1000) {
-            spanText.innerHTML = `Você normalmente gastaria R$: ${(2801.2331).toFixed(2)}  mensalmente <br>
+            document.getElementById('spanText').innerHTML = `Você normalmente gastaria R$: ${(2801.2331).toFixed(2)}  mensalmente <br>
             adquirindo nosso sistema você poderia gastar ${(2801.2331 * 0.80).toFixed(2)} <br> em meses normais 
             é ${(2801.2331 * 1.05).toFixed(2)} em meses de prova <br>
             você economezaria R$:${(  2801.2331 - (2801.2331 * 0.80) ).toFixed(2)} em meses normais  `
