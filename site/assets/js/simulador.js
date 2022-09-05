@@ -9,17 +9,18 @@ function simular(e) {
     formulario.classList.add('col-md-6');
     formulario.classList.remove('col-md-12');
 }
+
 function bt1() {
-    var ax_alunos = document.getElementById('alunos').value
-    var ax_so = (document.getElementById('so').value).toLowerCase()
-    var ax_func = document.getElementById('func').value
+    var ax_alunos = Number(document.getElementById('alunos').value);
+    var ax_so = (document.getElementById('so').value);
+    var ax_func = Number(document.getElementById('func').value);
 
     if (ax_so == "linux") {
         
         if (ax_alunos < 1000) {
-            document.getElementById('spanText').innerHTML = `Você normalmente gastaria R$: ${(2801.2331).toFixed(2)}  mensalmente <br>
-            adquirindo nosso sistema você poderia gastar ${(2801.2331 * 0.80).toFixed(2)} <br> em meses normais 
-            é ${(2801.2331 * 1.05).toFixed(2)} em meses de prova <br>
+            document.getElementById('spanText').innerHTML = `Você normalmente gastaria R$: ${(2801.2331).toFixed(2)}  mensalmente \n
+            adquirindo nosso sistema você poderia gastar ${(2801.2331 * 0.80).toFixed(2)} em meses normais 
+            é ${(2801.2331 * 1.05).toFixed(2)} em meses de prova\n
             você economezaria R$:${(  2801.2331 - (2801.2331 * 0.80) ).toFixed(2)} em meses normais  `
         } else if (ax_alunos < 2000 && ax_alunos >= 1000){
 
