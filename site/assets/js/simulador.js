@@ -10,9 +10,9 @@ function simular(e) {
     formulario.classList.remove('col-md-12');
 }
 function bt1() {
-    var ax_alunos = alunos.value
-    var ax_so = so.value.toLowerCase()
-    var ax_func = func.value
+    var ax_alunos = document.getElementById('alunos').value
+    var ax_so = (document.getElementById('so').value).toLowerCase()
+    var ax_func = document.getElementById('func').value
 
     if (ax_so == "linux") {
         
