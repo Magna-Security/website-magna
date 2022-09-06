@@ -178,7 +178,7 @@ você economezaria R$:${(5100.2331 - (5100.2331 * 0.91)).toFixed(2)} em meses no
 document.getElementById('spanText').innerHTML = `Você normalmente gastaria R$: ${(5100.2331).toFixed(2)} mensalmente <br>
 adquirindo nosso sistema você poderia gastar ${(5100.2331 * 0.91).toFixed(2)} <br> em meses normais 
 é ${(5100.2331 * 1.08).toFixed(2)} em meses de prova <br>
-você economezaria R$:${(5100.2331 - (5100.2331 * 0.91)).toFixed(2)} em meses normais`
+você economezaria R$:${(5100.2331 - (5100.2331 * 0.91)).toFixed(2)} em meses normais `
  }
 }  
 
