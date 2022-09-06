@@ -12,7 +12,6 @@
     <link rel="stylesheet" href="assets/css/index.css" />
     <link rel="stylesheet" href="assets/css/login-cadastro.css" />
 
-
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -22,16 +21,16 @@
   </head>
   <body>
     <div
-      class="container d-flex align-items-center justify-content-center h-100"
+      class="container h-100 d-flex align-items-center justify-content-center"
     >
-      <div class="row w-100 h-75">
+      <div class="row w-100">
         <div
           class="col-12 col-md-6 imgLogin d-flex align-items-center justify-content-center"
         >
           <img src="assets/img/cadastro-usuario.svg" class="img-fluid" alt="" />
         </div>
         <div
-          class="col-12 col-md-6 divLogin d-flex justify-content-center align-items-center formulario"
+          class="col-12 col-md-6 divLogin d-flex justify-content-center align-items-center formulario p-4 cadastro"
         >
           <div class="col-12 col-md-6">
             <a href="cadastro.html" class="voltar">
@@ -53,24 +52,39 @@
 
               <div class="mb-1">
                 <label for="inputUsuario" class="form-label">Usuário: </label>
-                <input type="text" id="inputUsuario" class="form-control" onkeyup="validarUsuario()"/>
+                <input
+                  type="text"
+                  id="inputUsuario"
+                  class="form-control"
+                  onkeyup="validarUsuario()"
+                />
                 <span id="spanUsuario"></span>
               </div>
 
               <div class="mb-1">
                 <label for="inputEmail" class="form-label">E-mail: </label>
-                <input type="email" id="inputEmail" class="form-control" onkeyup="validarEmail()"/>
+                <input
+                  type="email"
+                  id="inputEmail"
+                  class="form-control"
+                  onkeyup="validarEmail()"
+                />
                 <span id="spanEmail"></span>
               </div>
 
               <div class="mb-3">
                 <label for="inputSenha" class="form-label">Senha: </label>
-                <input type="password" id="inputSenha" class="form-control" onkeyup="validarSenha()"/>
+                <input
+                  type="password"
+                  id="inputSenha"
+                  class="form-control"
+                  onkeyup="validarSenha()"
+                />
                 <span id="spanSenha"></span>
               </div>
 
-              <a href="index.html" class="btn btn-primary w-100"> 
-                <button type="submit">Cadastrar</button>
+              <a href="index.html" class="btn btn-primary w-100">
+                <span type="submit">Cadastrar</span>
               </a>
             </form>
           </div>

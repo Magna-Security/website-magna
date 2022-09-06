@@ -23,12 +23,10 @@ body {
 .row {
   border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 5px;
-  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .imgLogin {
   background-image: linear-gradient(to right, #75c9d5, #49abb9);
-  border-radius: 0 5px 5px 0;
 }
 
 .opcao-cadastrar {
@@ -43,7 +41,6 @@ body {
 .formulario {
   position: relative;
   background-color: #fff;
-  border-radius: 5px 0 0 5px;
 }
 
 .fechar {
@@ -60,4 +57,8 @@ body {
 
 .resultado {
   display: none;
+}
+
+.cadastro {
+  border-radius: 0 5px 5px 0;
 }
