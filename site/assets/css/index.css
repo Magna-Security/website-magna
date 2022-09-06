@@ -1,8 +1,29 @@
 /** @format */
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital@0;1&display=swap");
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
   font-family: "Roboto", sans-serif;
+}
+
+nav {
+  position: relative;
+}
+
+nav::after {
+  content: "";
+  display: block;
+  width: 2px;
+  height: 25px;
+  background-image: linear-gradient(to bottom, #75c9d5, #49abb9);
+  position: absolute;
+  top: 15%;
+  right: 5px;
 }
 
 .container-header {
