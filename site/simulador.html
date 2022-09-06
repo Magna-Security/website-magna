@@ -11,7 +11,7 @@
     <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
     <link rel="stylesheet" href="assets/css/fonts.css" />
     <link rel="stylesheet" href="assets/css/index.css" />
-    <link rel="stylesheet" href="assets/css/login-cadastro.css" />
+    <link rel="stylesheet" href="assets/css/simulador.css" />
 
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
@@ -23,72 +23,122 @@
     <script src="assets/js/login.js"></script>
   </head>
   <body>
-    <div class="container d-flex align-items-center justify-content-center h-100">
-        <img src="assets/img/logo.svg" style="position: absolute; left: 50%; z-index: 99; top: 10px; width: 50px;">
-      <div class="row w-100 h-75">
-        <div class="col-12 col-md-12 divLogin d-flex justify-content-center align-items-center formulario">
-          <div class="col-12 col-md-6">
-            <a href="index.html" class="fechar">
-              <img src="assets/img/close.svg" alt="" />
-            </a>
-            <!-- <img
-              src="assets/img/logo.svg"
-              class="img-fluid w-5 mb-3"
-              alt=""
-            /> -->
-            <form>
-              <div class="d-flex justify-content-center">
-              </div>
-              <div class="mb-1">
-                <label for="alunos" class="form-label">Qtd. máxima de alunos por período</label>
-                <input id="alunos"
-                  type="text"
-                  id="inputEmail"
-                  class="form-control"
-                />
-                <span id="spanEmail"></span>
-              </div>
+    <div class="container-fluid container-header">
+      <div class="container">
+        <!-- =========================================================================================== -->
+        <!-- =========================================================================================== -->
+        <!-- HEADER -->
+        <!-- =========================================================================================== -->
+        <!-- =========================================================================================== -->
+        <header
+          class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-2 mb-4"
+        >
+          <a
+            href="index.html"
+            class="d-flex align-items-center col-sm-6 mb-2 mb-md-0 text-dark text-decoration-none text-center"
+          >
+            <img
+              class="ms-4"
+              width="60"
+              height="50"
+              role="img"
+              aria-label="Bootstrap"
+              src="assets/img/mini-logo.svg"
+            />
+            <span class="h4" class="col-12">Magna Security</span>
+          </a>
 
-              <div class="mb-1">
-                <label for="so" class="form-label">Qual o sistema operacional do seu servidor?</label>
-                <input id="so"
-                  type="text"
-                  id="inputEmail"
-                  class="form-control"
-                />
-                <span id="spanEmail"></span>
-              </div>
-
-              <div class="mb-1">
-                <label for="func" class="form-label">Quantos funcionários monitoram seu servidor?</label>
-                <input id="func"
-                  type="text"
-                  id="inputEmail"
-                  class="form-control"
-                />
-                <span id="spanEmail"></span>
-              </div>
-
-              <span class="mb-3 d-block opcao-cadastrar">
-                <a href="cadastro.html">
-                  Ainda não possui uma conta? Cadastre-se
-                </a>
-              </span>
-
-              
-              <button onclick="bt1()" class="btn btn-primary w-100 mb-4 algo ">Simule</button>
-            </form>
-        </div>
+          <div class="col-md-4 text-end d-flex">
+            <nav>
+              <a class="btn btn- me-2" href="simulador.html"
+                >Simulador Financeiro</a
+              >
+            </nav>
+            <a class="btn btn- me-2" href="login.html"> Login </a>
+            <a class="btn btn-primary" href="cadastro.html">Cadastrar</a>
+          </div>
+        </header>
+      </div>
     </div>
-    <div class="col-md-6 resultado">
-        <span class="mb-3 d-block opcao-cadastrar" id="spanText"></span>
-        
+
+    <!-- =========================================================================================== -->
+    <!-- =========================================================================================== -->
+    <!-- Conteudo Principal -->
+    <!-- =========================================================================================== -->
+    <!-- =========================================================================================== -->
+
+    <div class="container containerFinanceiro d-flex align-items-center">
+      <div class="row w-100">
+        <h2 class="h3">Simulador Financeiro</h2>
+        <div class="col-md-6">
+          <h3 class="h4">Dados</h3>
+          <form>
+            <div class="d-flex justify-content-center"></div>
+            <div class="mb-1">
+              <label for="alunos" class="form-label"
+                >Qtd. máxima de alunos por período</label
+              >
+              <input
+                id="alunos"
+                type="text"
+                id="inputEmail"
+                class="form-control"
+              />
+              <span id="spanEmail"></span>
+            </div>
+
+            <div class="mb-1">
+              <label for="so" class="form-label"
+                >Qual o sistema operacional do seu servidor?</label
+              >
+              <input id="so" type="text" id="inputEmail" class="form-control" />
+              <span id="spanEmail"></span>
+            </div>
+
+            <div class="mb-1">
+              <label for="func" class="form-label"
+                >Quantos funcionários monitoram seu servidor?</label
+              >
+              <input
+                id="func"
+                type="text"
+                id="inputEmail"
+                class="form-control"
+              />
+              <span id="spanEmail"></span>
+            </div>
+
+            <span class="mb-3 d-block opcao-cadastrar">
+              <a href="cadastro.html">
+                Ainda não possui uma conta? Cadastre-se
+              </a>
+            </span>
+
+            <button onclick="bt1()" class="btn btn-primary w-100 mb-4 algo">
+              Simule
+            </button>
+          </form>
         </div>
-        <!-- <div
-          class="col-12 col-md-6 imgLogin d-flex align-items-center justify-content-center">
-          <img src="assets/img/img-login.svg" class="img-fluid" alt="" />
-        </div> -->
+
+        <div class="col-md-6">
+          <h3 class="h4">Resultado</h3>
+          <p>dadsadasdsa</p>
         </div>
+      </div>
+    </div>
+
+    <!-- =========================================================================================== -->
+    <!-- =========================================================================================== -->
+    <!-- FOOTER -->
+    <!-- =========================================================================================== -->
+    <!-- =========================================================================================== -->
+
+    <div
+      class="container-fluid container-footer d-flex justify-content-center align-items-center"
+    >
+      <footer class="py-3">
+        <p class="text-center">&copy; 2022 Magna Security</p>
+      </footer>
     </div>
 
     <script src="teste.js"></script>
@@ -101,3 +151,7 @@
     ></script>
   </body>
 </html>
+
+<!-- <div class="col-md-6 resultado">
+  <span class="mb-3 d-block opcao-cadastrar" id="spanText"></span>
+</div> -->
