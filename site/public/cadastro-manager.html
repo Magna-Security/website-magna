@@ -20,19 +20,23 @@
     />
   </head>
   <body>
-    <div class="container h-100 d-flex align-items-center">
+    <div
+      class="container h-100 d-flex align-items-center justify-content-center"
+    >
       <div class="row w-100">
         <div
           class="col-12 col-md-6 imgLogin d-flex align-items-center justify-content-center"
-          style="border-radius: 5px 0 0 5px"
         >
-          <img src="assets/img/img-cadastro.png" class="img-fluid" alt="" />
+          <img src="assets/img/cadastro-usuario.svg" class="img-fluid" alt="" />
         </div>
         <div
           class="col-12 col-md-6 divLogin d-flex justify-content-center align-items-center formulario p-4 cadastro"
         >
-          <div class="col-12 col-md-6 ">
-            <a href="index.html" class="fechar text-muted">
+          <div class="col-12 col-md-6">
+            <a href="cadastro.html" class="voltar">
+              <img src="assets/img/back.svg" alt="" />
+            </a>
+            <a href="index.html" class="fechar">
               <img src="assets/img/close.svg" alt="" />
             </a>
             <form>
@@ -44,33 +48,43 @@
                 />
               </div>
 
-              <h3 class="h4">Etapa 1 de 2</h3>
+              <h3 class="h4">Etapa 2 de 2</h3>
 
               <div class="mb-1">
-                <label for="inputEmpresa" class="form-label"
-                  >Nome da empresa:
-                </label>
-                <input type="text" id="inputEmpresa" class="form-control" />
-                <span id="spanEmail"></span>
+                <label for="inputUsuario" class="form-label">Usuário: </label>
+                <input
+                  type="text"
+                  id="inputUsuario"
+                  class="form-control"
+                  onkeyup="validarUsuario()"
+                />
+                <span id="spanUsuario"></span>
               </div>
 
               <div class="mb-1">
-                <label for="inputTelefone" class="form-label">Telefone: </label>
-                <input type="tel" id="inputTelefone" class="form-control" />
+                <label for="inputEmail" class="form-label">E-mail: </label>
+                <input
+                  type="email"
+                  id="inputEmail"
+                  class="form-control"
+                  onkeyup="validarEmail()"
+                />
                 <span id="spanEmail"></span>
               </div>
 
-              <div class="mb-1">
-                <label for="inputCnpj" class="form-label">CNPJ: </label>
-                <input type="text" id="inputCnpj" class="form-control" />
+              <div class="mb-3">
+                <label for="inputSenha" class="form-label">Senha: </label>
+                <input
+                  type="password"
+                  id="inputSenha"
+                  class="form-control"
+                  onkeyup="validarSenha()"
+                />
                 <span id="spanSenha"></span>
               </div>
-              <span class="mb-3 d-block opcao-cadastrar">
-                <a href="login.html"> Já possui uma conta? Login </a>
-              </span>
 
-              <a href="cadastro-usuario.html" class="btn btn-primary w-100">
-                Próxima etapa
+              <a href="index.html" class="btn btn-primary w-100">
+                <span type="submit">Cadastrar</span>
               </a>
             </form>
           </div>
@@ -78,10 +92,15 @@
       </div>
     </div>
 
+    <script src="assets/js/validarCadastro.js"></script>
+
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
       crossorigin="anonymous"
     ></script>
+
+    <script src="assets/js/cadastro.js"></script>
+
   </body>
 </html>
