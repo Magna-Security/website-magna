@@ -7,6 +7,14 @@
   box-sizing: border-box;
 }
 
+h1::after {
+  content: "";
+  display: block;
+  width: 35px;
+  height: 5px;
+  background-image: linear-gradient(to right, #75c9d5, #49abb9);
+}
+
 body {
   font-family: "Roboto", sans-serif;
 }
