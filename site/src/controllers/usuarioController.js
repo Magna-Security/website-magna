@@ -94,9 +94,79 @@ function cadastrar(req, res) {
     }
 }
 
+function cadastrarEmpresa(req, res) {
+    // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
+    var nomeEmpresa = req.body.nomeServer;
+    var telefone = req.body.telefoneServer;
+    var cnpj = req.body.cnpjServer;
+
+    // Faça as validações dos valores
+    if (nomeEmpresa == undefined) {
+        res.status(400).send("Seu nome está indefinido!");
+    } else if (telefone == undefined) {
+        res.status(400).send("Seu telefone está indefinido!");
+    } else if (cnpj == undefined) {
+        res.status(400).send("Seu CNPJ está indefinido!");
+    } else {
+        
+        // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
+        usuarioModel.cadastrarEmpresa(nomeEmpresa, telefone, cnpj)
+            .then(
+                function (resultado) {
+                    res.json(resultado);
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log(
+                        "\nHouve um erro ao realizar o cadastro! Erro: ",
+                        erro.sqlMessage
+                    );
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+    }
+}
+
+function cadastrarManager(req, res) {
+    // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
+    var nome = req.body.nomeUsuarioServer;
+    var email = req.body.emailServer;
+    var senha = req.body.senhaServer;
+
+    // Faça as validações dos valores
+    if (nome == undefined) {
+        res.status(400).send("Seu nome está indefinido!");
+    } else if (email == undefined) {
+        res.status(400).send("Seu email está indefinido!");
+    } else if (senha == undefined) {
+        res.status(400).send("Sua senha está indefinida!");
+    } else {
+        
+        // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
+        usuarioModel.cadastrarManager(nome, email, senha)
+            .then(
+                function (resultado) {
+                    res.json(resultado);
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log(
+                        "\nHouve um erro ao realizar o cadastro! Erro: ",
+                        erro.sqlMessage
+                    );
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+    }
+}
+
 module.exports = {
     entrar,
     cadastrar,
+    cadastrarEmpresa,
+    cadastrarManager,
     listar,
     testar
 }
