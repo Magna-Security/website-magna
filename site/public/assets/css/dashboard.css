@@ -116,6 +116,19 @@ main {
 }
 
 .grafico-redondo {
-  width: 80%;
+  width: 60%;
   margin: 0 auto;
+}
+
+.mensagem {
+  background-image: linear-gradient(to right, #75c9d5, #49abb9);
+  border-radius: 5px;
+  padding: 15px;
+  width: 80%;
+}
+
+@media only screen and (max-width: 500px) {
+  .mensagem {
+    width: 100%;
+  }
 }
