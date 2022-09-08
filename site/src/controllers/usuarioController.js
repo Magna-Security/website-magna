@@ -24,6 +24,28 @@ function listar(req, res) {
         );
 }
 
+function getIdEmpresa(req, res) {
+
+    nomeEmpresa = req.body.nomeServer;
+    telefone = req.body.telefoneServer;
+    cnpj = req.body.cnpjServer;
+
+    usuarioModel.getIdEmpresa(nomeEmpresa, telefone, cnpj)
+        .then(function (resultado) {
+            if (resultado.length > 0) {
+                res.status(200).json(resultado);
+            } else {
+                res.status(204).send("Nenhum resultado encontrado!")
+            }
+        }).catch(
+            function (erro) {
+                console.log(erro);
+                console.log("Houve um erro ao realizar a consulta do ID Empresa! Erro: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+
 function entrar(req, res) {
     var email = req.body.emailServer;
     var senha = req.body.senhaServer;
@@ -133,18 +155,21 @@ function cadastrarManager(req, res) {
     var nome = req.body.nomeUsuarioServer;
     var email = req.body.emailServer;
     var senha = req.body.senhaServer;
+    var fkEmpresa = req.body.fkEmpresaServer;
 
     // Faça as validações dos valores
     if (nome == undefined) {
         res.status(400).send("Seu nome está indefinido!");
     } else if (email == undefined) {
         res.status(400).send("Seu email está indefinido!");
+    } else if (fkEmpresa == undefined) {
+        res.status(400).send("Sua empresa está indefinida!")
     } else if (senha == undefined) {
         res.status(400).send("Sua senha está indefinida!");
     } else {
         
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        usuarioModel.cadastrarManager(nome, email, senha)
+        usuarioModel.cadastrarManager(nome, email, senha, fkEmpresa)
             .then(
                 function (resultado) {
                     res.json(resultado);
@@ -168,5 +193,6 @@ module.exports = {
     cadastrarEmpresa,
     cadastrarManager,
     listar,
+    getIdEmpresa,
     testar
 }

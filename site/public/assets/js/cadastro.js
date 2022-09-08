@@ -40,6 +40,8 @@ function cadastrarEmpresa(nomeVar, telefoneVar, cnpjVar) {
         console.log("resposta: ", resposta);
 
         if (resposta.ok) {
+            getIdEmpresa(nomeVar, telefoneVar, cnpjVar);
+            console.log("Guardando ID Empresa no sessionStorage...")
             alert("Cadastro realizado com sucesso! Redirecionando para tela de Login...");
 
             // window.location = "login.html";
@@ -56,6 +58,8 @@ function cadastrarEmpresa(nomeVar, telefoneVar, cnpjVar) {
 
 function cadastrarManager(nomeVar, emailVar, senhaVar) {
 
+    var fkEmpresa = Number(sessionStorage.ID_EMPRESA);
+
     // Enviando o valor da nova input
     fetch("/usuarios/cadastrarManager", {
         method: "POST",
@@ -67,7 +71,8 @@ function cadastrarManager(nomeVar, emailVar, senhaVar) {
             // Agora vá para o arquivo routes/usuario.js
             nomeUsuarioServer: nomeVar,
             emailServer: emailVar,
-            senhaServer: senhaVar
+            senhaServer: senhaVar,
+            fkEmpresaServer: fkEmpresa
         })
     }).then(function (resposta) {
 
@@ -76,7 +81,10 @@ function cadastrarManager(nomeVar, emailVar, senhaVar) {
         if (resposta.ok) {
             alert("Cadastro realizado com sucesso! Redirecionando para a tela pós login...");
 
-            // window.location = "login.html";
+            setTimeout(() => {
+                window.location = "login.html";
+            }, 1000);
+
         } else {
             window.alert("Houve um erro ao tentar realizar o cadastro!")
             throw ("Houve um erro ao tentar realizar o cadastro!");
@@ -196,7 +204,10 @@ function armazenarValoresEmpresa() {
         telefoneEmpresa = inputTelefone.value;
         cnpjEmpresa = inputCnpj.value;
 
-        window.location.href = "cadastro-manager.html";
+        // setTimeout(() => {
+        //     window.location.href = "cadastro-manager.html";
+        // }, 1000);
+
 
         cadastrarEmpresa(nomeEmpresa, telefoneEmpresa, cnpjEmpresa);
     } else {
@@ -240,4 +251,47 @@ function validarSenha() {
             } 
         }  
     }  
+}
+
+function getIdEmpresa(nome, telefone, cnpj) {
+    fetch("/usuarios/getIdEmpresa", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            // crie um atributo que recebe o valor recuperado aqui
+            // Agora vá para o arquivo routes/usuario.js
+            nomeServer: nome,
+            telefoneServer: telefone,
+            cnpjServer: cnpj
+        })
+    }).then(function (resposta) {
+
+        console.log("resposta: ", resposta);
+
+        if (resposta.ok) {
+            resposta.json().then(json => {
+                console.log(json);
+                console.log(JSON.stringify(json));
+
+                let res = json[0];
+                console.log("mostrando res: " + res)
+                sessionStorage.ID_EMPRESA = JSON.stringify(res.idEmpresa);
+                // setTimeout(function () {
+                //     window.location = "./dashboard/cards.html";
+                // }, 1000); // apenas para exibir o loading
+
+            });
+
+            // window.location = "login.html";
+        } else {
+            window.alert("Houve um erro ao guardar o ID da empresa")
+            throw ("Houve um erro ao guardar o ID da empresa");
+        }
+    }).catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+    });
+
+    return false;
 }
