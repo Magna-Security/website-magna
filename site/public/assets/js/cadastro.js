@@ -58,6 +58,8 @@ function cadastrarEmpresa(nomeVar, telefoneVar, cnpjVar) {
 
 function cadastrarManager(nomeVar, emailVar, senhaVar) {
 
+    var fkEmpresa = Number(sessionStorage.ID_EMPRESA);
+
     // Enviando o valor da nova input
     fetch("/usuarios/cadastrarManager", {
         method: "POST",
@@ -69,7 +71,8 @@ function cadastrarManager(nomeVar, emailVar, senhaVar) {
             // Agora vá para o arquivo routes/usuario.js
             nomeUsuarioServer: nomeVar,
             emailServer: emailVar,
-            senhaServer: senhaVar
+            senhaServer: senhaVar,
+            fkEmpresaServer: fkEmpresa
         })
     }).then(function (resposta) {
 
@@ -78,7 +81,10 @@ function cadastrarManager(nomeVar, emailVar, senhaVar) {
         if (resposta.ok) {
             alert("Cadastro realizado com sucesso! Redirecionando para a tela pós login...");
 
-            // window.location = "login.html";
+            setTimeout(() => {
+                window.location = "login.html";
+            }, 1000);
+
         } else {
             window.alert("Houve um erro ao tentar realizar o cadastro!")
             throw ("Houve um erro ao tentar realizar o cadastro!");
