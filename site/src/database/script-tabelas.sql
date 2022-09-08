@@ -5,6 +5,14 @@
 create database magna;
 use magna;
 
+create table Empresa (
+	idEmpresa int primary key auto_increment,
+    nomeEmpresa varchar(50),
+    CNPJ char(14),
+    telefone varchar(20)
+);
+
+
 create table Usuario (
 	idUsuario int primary key auto_increment,
     fkEmpresa int,
@@ -15,13 +23,6 @@ create table Usuario (
     primeiroAcesso boolean,
     tipoUsuario varchar(50),
     constraint chkTipoUsuario check (tipoUsuario = "manager" or tipoUsuario = "gerente" or tipoUsuario = "suporte")
-);
-
-create table Empresa (
-	idEmpresa int primary key auto_increment,
-    nomeEmpresa varchar(50),
-    CNPJ char(14),
-    telefone varchar(20)
 );
 
 create table Servidor (
