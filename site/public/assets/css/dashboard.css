@@ -98,13 +98,6 @@ main {
   -webkit-overflow-scrolling: touch;
 }
 
-/* .b-example-vr {
-  flex-shrink: 0;
-  width: 1.5rem;
-  height: 100vh;
-  position: fixed;
-} */
-
 .sidebar {
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 }
@@ -131,4 +124,9 @@ main {
   .mensagem {
     width: 100%;
   }
+}
+
+.sidebar img {
+  display: block;
+  margin: 0 auto;
 }
