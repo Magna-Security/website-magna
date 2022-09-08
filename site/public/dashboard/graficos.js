@@ -7,7 +7,7 @@ const data = {
   labels: labels,
   datasets: [
     {
-      label: "My First dataset",
+      label: "Acessos",
       backgroundColor: ["#576E97"],
       borderColor: ["#68BECB", "#576E97", "#578E97"],
       data: [0, 10, 5, 2, 20, 30, 45],
@@ -37,7 +37,7 @@ const data2 = {
   labels: labels,
   datasets: [
     {
-      label: "My First Dataset",
+      label: "Acessos",
       data: [65, 59, 80, 81, 56, 55, 40],
       backgroundColor: ["#68BECB", "#576E97", "#578E97"],
       borderColor: ["rgb(201, 203, 207)"],
