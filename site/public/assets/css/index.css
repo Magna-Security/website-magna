@@ -150,12 +150,6 @@ nav::after {
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-/* .cartao:hover {
-  transform: scale(1.2);
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  z-index: 10;
-} */
-
 .cartao:hover {
   transform: scale(1.1) rotate(-5deg);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
