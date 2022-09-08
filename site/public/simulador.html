@@ -70,7 +70,7 @@
     <div class="container containerFinanceiro d-flex align-items-center">
       <div class="row w-100">
         <h2 class="h3">Simulador Financeiro</h2>
-        <div class="col-md-6">
+        <div class="col-md-6 mt-4">
           <h3 class="h4">Dados</h3>
           <form class="formulario">
             <div class="d-flex justify-content-center"></div>
@@ -95,18 +95,8 @@
               <span id="spanEmail"></span>
             </div>
 
-            <div class="mb-1">
-              <label for="func" class="form-label"
-                >Quantos funcionários monitoram seu servidor?</label
-              >
-              <input
-                id="func"
-                type="text"
-                id="inputEmail"
-                class="form-control"
-              />
-              <span id="spanEmail"></span>
-            </div>
+          
+              
 
             <span class="mb-3 d-block opcao-cadastrar">
               <a href="cadastro.html">
@@ -120,11 +110,41 @@
           </form>
         </div>
 
-        <div class="col-md-6 resultado">
+        <div class="col-md-6 d-flex justify-content-center align-items-center">
+          <img src="assets/img/img-simulador.svg" alt="" class="img-fluid" />
+        </div>
+
+        <div class="row mt-5 mb-5">
           <h3 class="h4">Resultado</h3>
-
-          <p id="resultSimulador"></p>
-
+          <div class="col-md-6">
+            <img src="assets/img/img-resultado.svg" alt="" class="img-fluid" />
+          </div>
+          <div
+            class="col-md-6 resultado d-flex justify-content-center align-items-center mt-5 mt-md-0"
+          >
+            <!-- <p id="resultSimulador"></p> -->
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th scope="col"></th>
+                  <th scope="col">Sem o nosso serviço</th>
+                  <th scope="col" class="nosso-servico">Com o nosso serviço</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Gastos mensais</td>
+                  <td class="h4 negativo gasto-mensal-negativo">R$ 0,0</td>
+                  <td class="h4 positivo gasto-mensal-positivo">R$ 0,0</td>
+                </tr>
+                <tr>
+                  <td>Gastos em meses de prova</td>
+                  <td class="h4 negativo gasto-prova-negativo">R$ 0,0</td>
+                  <td class="h4 positivo gasto-prova-positivo">R$ 0,0</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>
