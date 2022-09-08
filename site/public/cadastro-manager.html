@@ -58,7 +58,7 @@
                   type="text"
                   id="inputUsuario"
                   class="form-control"
-                  onkeyup="verificarCamposUsuario()"
+                  onkeyup="verificarNomeManager()"
                 />
                 <span id="spanUsuario"></span>
               </div>
@@ -69,7 +69,7 @@
                   type="email"
                   id="inputEmail"
                   class="form-control"
-                  onkeyup="verificarCamposUsuario()"
+                  onkeyup="verificarEmailManager()"
                 />
                 <span id="spanEmail"></span>
               </div>
@@ -86,8 +86,11 @@
               </div>
 
               <a href="index.html" class="btn btn-primary w-100">
-                <span onclick="armazenarValoresUsuario()" type="submit"
-                  >Cadastrar</span
+                <span 
+                  onclick="armazenarValoresManager()" 
+                  type="submit">
+                  Cadastrar
+                </span
                 >
               </a>
             </form>

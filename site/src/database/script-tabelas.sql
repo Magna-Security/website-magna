@@ -9,9 +9,8 @@ create table Empresa (
 	idEmpresa int primary key auto_increment,
     nomeEmpresa varchar(50),
     CNPJ char(14),
-    telefone varchar(20)
+    telefone char(11)
 );
-
 
 create table Usuario (
 	idUsuario int primary key auto_increment,

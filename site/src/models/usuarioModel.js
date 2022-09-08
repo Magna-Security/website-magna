@@ -63,7 +63,7 @@ function cadastrarManager(nome, email, senha) {
     // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
     //  e na ordem de inserção dos dados.
     var instrucao = `
-        insert into Usuario(nomeUsuario, fkEmpresa, email, senha, primeiroAcesso, tipoUsuario) values ("${nome}", 2, "${email}", "${senha}", 0, "manager");
+        insert into Usuario(nomeUsuario, fkEmpresa, email, senha, primeiroAcesso, tipoUsuario) values ("${nome}", 1, "${email}", "${senha}", 0, "manager");
     `;
 
     console.log("Executando a instrução SQL: \n" + instrucao);

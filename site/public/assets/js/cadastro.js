@@ -88,12 +88,59 @@ function cadastrarManager(nomeVar, emailVar, senhaVar) {
     return false;
 }
 
-function verificarCamposUsuario() {
-    tempNomeUsuario = inputUsuario.value;
-    tempEmailUsuario = inputEmail.value;
+// ================= VALIDAÇÕES EMPRESA =================
 
+function verificarNomeEmpresa() {
+    tempNomeEmpresa = inputEmpresa.value;
+    nomeValido = false;
+
+    if (tempNomeEmpresa.length >= 1) {
+        nomeValido = true;
+        document.getElementById("spanNomeEmpresa").innerHTML = "";
+    } else {
+        nomeValido = false;
+        document.getElementById("spanNomeEmpresa").innerHTML = "Insira um nome válido."
+    }
+}
+
+function verificarTelEmpresa() {
+    tempTelefoneEmpresa = inputTelefone.value;
+    telValido = false;
+    
+    if (tempTelefoneEmpresa.length >= 11) {
+        telValido = true;
+        document.getElementById("spanTelefoneEmpresa").innerHTML = "";
+    } else {
+
+        if (tempTelefoneEmpresa.length == 0) {
+            document.getElementById("spanTelefoneEmpresa").innerHTML = "";
+        } else {
+            telValido = false;
+            document.getElementById("spanTelefoneEmpresa").innerHTML = "Insira um número de telefone válido.";
+        }
+
+    }
+}
+
+function verificarCnpjEmpresa() {
+    tempCnpjEmpresa = inputCnpj.value;
+    
+    cnpjValido = false;
+    
+    if (tempCnpjEmpresa.length >= 14) {
+        cnpjValido = true;
+        document.getElementById("spanCnpjEmpresa").innerHTML = "";
+    } else {
+        cnpjValido = false;
+        document.getElementById("spanCnpjEmpresa").innerHTML = "Insira um CNPJ inválido.";
+    }
+}
+
+// ================= VALIDAÇÕES MANAGER =================
+
+function verificarNomeManager() {
+    tempNomeUsuario = inputUsuario.value;
     nomeUsuarioValido = false;
-    emailValido = false;
 
     if (tempNomeUsuario.length >= 1) {
         nomeUsuarioValido = true;
@@ -101,10 +148,14 @@ function verificarCamposUsuario() {
     } else {
         document.getElementById("spanUsuario").innerHTML = "Insira um nome de usuário válido.";
     }
+}
 
-
+function verificarEmailManager() {
+    tempEmailUsuario = inputEmail.value;
+    emailValido = false;
+    
     if (tempEmailUsuario.length >= 1) {
-
+    
         if (tempEmailUsuario.indexOf('@') <= -1 || tempEmailUsuario.indexOf(".com") <= -1) {
             document.getElementById("spanEmail").innerHTML = "Insira um e-mail válido.";
         } else {
@@ -117,41 +168,8 @@ function verificarCamposUsuario() {
     }
 }
 
-function verificarCamposEmpresa() {
-    tempNomeEmpresa = inputEmpresa.value;
-    tempTelefoneEmpresa = inputTelefone.value;
-    tempCnpjEmpresa = inputCnpj.value;
 
-    nomeValido = false;
-    telValido = false;
-    cnpjValido = false;
-
-    if (tempNomeEmpresa.length >= 1) {
-        nomeValido = true;
-        document.getElementById("spanNomeEmpresa").innerHTML = "";
-    } else {
-        document.getElementById("spanNomeEmpresa").innerHTML = "Insira um nome válido."
-    }
-
-
-    if (tempTelefoneEmpresa.length >= 8) {
-        telValido = true;
-        document.getElementById("spanTelefoneEmpresa").innerHTML = "";
-    } else {
-        document.getElementById("spanTelefoneEmpresa").innerHTML = "Insira um número de telefone inválido.";
-    }
-
-
-    if (tempCnpjEmpresa.length >= 14) {
-        cnpjValido = true;
-        document.getElementById("spanCnpjEmpresa").innerHTML = "";
-    } else {
-        document.getElementById("spanCnpjEmpresa").innerHTML = "Insira um CNPJ inválido.";
-    }
-
-}
-
-function armazenarValoresUsuario() {
+function armazenarValoresManager() {
 
     console.log(nomeUsuario);
     console.log(emailUsuario);
@@ -171,10 +189,6 @@ function armazenarValoresUsuario() {
     }
 }
 
-function sumirMensagem() {
-    cardErro.style.display = "none"
-}
-
 function armazenarValoresEmpresa() {
 
     if (nomeValido && telValido && cnpjValido) {
@@ -189,10 +203,6 @@ function armazenarValoresEmpresa() {
         alert("Há campos preenchidos incorretamente.")
         verificarCamposEmpresa();
     }
-}
-
-function sumirMensagem() {
-    cardErro.style.display = "none"
 }
 
 function validarSenha() {
