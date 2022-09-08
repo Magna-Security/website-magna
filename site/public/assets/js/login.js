@@ -10,17 +10,13 @@ function validarEmail() {
   }
 }
 
-function entrar() {
-  aguardar();
-
-  var emailVar = email_input.value;
-  var senhaVar = senha_input.value;
+function entrar(e) {
+  // e.preventDefault();
+  var emailVar = inputEmail.value;
+  var senhaVar = inputSenha.value;
 
   if (emailVar == "" || senhaVar == "") {
-    cardErro.style.display = "block";
-    mensagem_erro.innerHTML =
-      "(Mensagem de erro para todos os campos em branco)";
-    finalizarAguardar();
+    alert("Preencha todos os campos.");
     return false;
   } else {
     setInterval(sumirMensagem, 5000);
@@ -49,15 +45,17 @@ function entrar() {
           console.log(json);
           console.log(JSON.stringify(json));
 
+          sessionStorage.ID_USUARIO = json.idUsuario;
+          sessionStorage.ID_EMPRESA = json.fkEmpresa;
+          sessionStorage.NOME_USUARIO = json.nomeUsuario;
           sessionStorage.EMAIL_USUARIO = json.email;
-          sessionStorage.NOME_USUARIO = json.nome;
-          sessionStorage.ID_USUARIO = json.id;
+          sessionStorage.TIPO_USUARIO = json.tipoUsuario;
 
-          setTimeout(function () {
-            window.location = "./dashboard/dashboard.html";
-          }, 1000); // apenas para exibir o loading
+          window.location = "./dashboard/dashboard.html";
+         
         });
       } else {
+        alert("Login ou senha inválidos.")
         console.log("Houve um erro ao tentar realizar o login!");
 
         resposta.text().then((texto) => {
