@@ -24,6 +24,28 @@ function listar(req, res) {
         );
 }
 
+function getIdEmpresa(req, res) {
+
+    nomeEmpresa = req.body.nomeServer;
+    telefone = req.body.telefoneServer;
+    cnpj = req.body.cnpjServer;
+
+    usuarioModel.getIdEmpresa(nomeEmpresa, telefone, cnpj)
+        .then(function (resultado) {
+            if (resultado.length > 0) {
+                res.status(200).json(resultado);
+            } else {
+                res.status(204).send("Nenhum resultado encontrado!")
+            }
+        }).catch(
+            function (erro) {
+                console.log(erro);
+                console.log("Houve um erro ao realizar a consulta do ID Empresa! Erro: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+
 function entrar(req, res) {
     var email = req.body.emailServer;
     var senha = req.body.senhaServer;
@@ -168,5 +190,6 @@ module.exports = {
     cadastrarEmpresa,
     cadastrarManager,
     listar,
+    getIdEmpresa,
     testar
 }
