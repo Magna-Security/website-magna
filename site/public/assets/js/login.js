@@ -10,8 +10,8 @@ function validarEmail() {
   }
 }
 
-function entrar() {
-
+function entrar(e) {
+  // e.preventDefault();
   var emailVar = inputEmail.value;
   var senhaVar = inputSenha.value;
 
@@ -51,7 +51,7 @@ function entrar() {
           sessionStorage.EMAIL_USUARIO = json.email;
           sessionStorage.TIPO_USUARIO = json.tipoUsuario;
 
-          // window.location = "./dashboard/dashboard.html";
+          window.location = "./dashboard/dashboard.html";
          
         });
       } else {
