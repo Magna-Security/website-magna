@@ -41,10 +41,10 @@ function cadastrarEmpresa(nomeVar, telefoneVar, cnpjVar) {
 
         if (resposta.ok) {
             getIdEmpresa(nomeVar, telefoneVar, cnpjVar);
-            console.log("Guardando ID Empresa no sessionStorage...")
-            alert("Cadastro realizado com sucesso! Redirecionando para tela de Login...");
+            // console.log("Guardando ID Empresa no sessionStorage...")
+            alert("Cadastro realizado com sucesso! Redirecionando...");
 
-            // window.location = "login.html";
+            window.location = "cadastro-manager.html";
         } else {
             window.alert("Houve um erro ao tentar realizar o cadastro!")
             throw ("Houve um erro ao tentar realizar o cadastro!");
@@ -79,7 +79,7 @@ function cadastrarManager(nomeVar, emailVar, senhaVar) {
         console.log("resposta: ", resposta);
 
         if (resposta.ok) {
-            alert("Cadastro realizado com sucesso! Redirecionando para a tela pós login...");
+            alert("Cadastro realizado com sucesso! Redirecionando para a tela de login...");
 
             setTimeout(() => {
                 window.location = "login.html";
@@ -188,7 +188,7 @@ function armazenarValoresManager() {
         emailUsuario = inputEmail.value;
         senhaUsuario = inputSenha.value;
  
-        // window.location.href = "index.html";
+        window.location.href = "login.html";
 
         cadastrarManager(nomeUsuario, emailUsuario, senhaUsuario);
     } else {
