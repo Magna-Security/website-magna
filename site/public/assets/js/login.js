@@ -1,4 +1,6 @@
-/** @format */
+var btn = document.querySelector("#btnLogin");
+
+btnLogin.addEventListener("click", entrar);
 
 function validarEmail() {
   let email = inputEmail.value;
@@ -11,7 +13,7 @@ function validarEmail() {
 }
 
 function entrar(e) {
-  // e.preventDefault();
+  e.preventDefault();
   var emailVar = inputEmail.value;
   var senhaVar = inputSenha.value;
 
@@ -52,10 +54,9 @@ function entrar(e) {
           sessionStorage.TIPO_USUARIO = json.tipoUsuario;
 
           window.location = "./dashboard/dashboard.html";
-         
         });
       } else {
-        alert("Login ou senha inválidos.")
+        alert("Login ou senha inválidos.");
         console.log("Houve um erro ao tentar realizar o login!");
 
         resposta.text().then((texto) => {
