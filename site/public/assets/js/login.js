@@ -44,14 +44,13 @@ function entrar(e) {
         console.log(resposta);
 
         resposta.json().then((json) => {
-          console.log(json);
-          console.log(JSON.stringify(json));
+          console.log(json.id_usuario);
 
-          sessionStorage.ID_USUARIO = json.idUsuario;
-          sessionStorage.ID_EMPRESA = json.fkEmpresa;
-          sessionStorage.NOME_USUARIO = json.nomeUsuario;
-          sessionStorage.EMAIL_USUARIO = json.email;
-          sessionStorage.TIPO_USUARIO = json.tipoUsuario;
+          sessionStorage.setItem("idUser", json.id_usuario);
+          sessionStorage.setItem("idEmpresa", json.fk_empresa);
+          sessionStorage.setItem("user", json.nome_usuario);
+          sessionStorage.setItem("email", json.email);
+          sessionStorage.setItem("cargo", json.tipo_usuario);
 
           window.location = "./dashboard/dashboard.html";
         });
@@ -61,7 +60,6 @@ function entrar(e) {
 
         resposta.text().then((texto) => {
           console.error(texto);
-          finalizarAguardar(texto);
         });
       }
     })

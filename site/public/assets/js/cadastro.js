@@ -56,8 +56,7 @@ function cadastrarEmpresa(nomeVar, telefoneVar, cnpjVar) {
 
       if (resposta.ok) {
         getIdEmpresa(nomeVar, telefoneVar, cnpjVar);
-        // console.log("Guardando ID Empresa no sessionStorage...")
-        alert("Cadastro realizado com sucesso! Redirecionando...");
+        //alert("Cadastro realizado com sucesso! Redirecionando...");
 
         window.location = "cadastro-manager.html";
       } else {
