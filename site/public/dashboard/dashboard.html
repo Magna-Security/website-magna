@@ -27,7 +27,7 @@
     <main class="d-flex flex-nowrap">
       <div
         class="d-flex flex-column flex-shrink-0 bg-light justify-content-center sidebar"
-        style="width: 4.5rem; height: 100vh"
+        style="width: 4.5rem; height: 100vh; position: fixed"
       >
         <img
           src="../assets/img/mini-logoo.png"
@@ -78,44 +78,90 @@
         </div>
       </div>
       <div class="containerDash w-100">
-        <div class="row linhaGerente">
-          <h2>Dados do sistema</h2>
+        <!-- ====================================== gerente ===================================== -->
+        <div class="row formatarRow">
+          <div class="headerSuporte">
+            <div class="col-6">CPU</div>
+            <div class="col-6">RAM</div>
+          </div>
           <div class="col-6">
-            <div class="grafico-linha">
+            <div class="kpi">
+              <div class="seguro">10%</div>
+              <div class="mediano">50%</div>
+              <div class="perigo">90%</div>
+            </div>
+            <div class="grafico-linha2">
               <canvas id="graficoGerente"></canvas>
             </div>
           </div>
           <div class="col-6">
-            <div class="grafico-linha">
+            <div class="kpi">
+              <div class="seguro">10%</div>
+              <div class="mediano">50%</div>
+              <div class="perigo">90%</div>
+            </div>
+            <div class="grafico-linha2">
               <canvas id="graficoGerente2"></canvas>
             </div>
           </div>
+          <table class="table table-bordered tabelaGerente">
+            <thead>
+              <tr>
+                <th scope="col">Processo</th>
+                <th scope="col">Uso da CPU</th>
+                <th scope="col">Uso de RAM</th>
+                <th scope="col">Threads</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Host de serviço</td>
+                <td>20%</td>
+                <td>10%</td>
+                <td>35</td>
+              </tr>
+              <tr>
+                <td>Google Chrome</td>
+                <td>54%</td>
+                <td>16%</td>
+                <td>17</td>
+              </tr>
+              <tr>
+                <td>Security System</td>
+                <td>25%</td>
+                <td>20%</td>
+                <td>20</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
 
-        <div class="row linhaSuporte">
-          <h2>Suporte</h2>
-          <div class="col-6">
-            <div class="grafico-linha">
-              <canvas id="graficoSuporte"></canvas>
+        <!-- ====================================== gerente ===================================== -->
+        <div class="linhaSuporte">
+          <div class="row formatarRow">
+            <div class="headerSuporte">
+              <div class="col-6">CPU</div>
+              <div class="col-6">RAM</div>
             </div>
-          </div>
-          <div class="col-6">
-            <div class="">
-              <canvas id="graficoSuporte2"></canvas>
+            <div class="col-6">
+              <div class="kpi">
+                <div class="seguro">10%</div>
+                <div class="mediano">50%</div>
+                <div class="perigo">90%</div>
+              </div>
+              <div class="grafico-linha">
+                <canvas id="graficoSuporte"></canvas>
+              </div>
             </div>
-          </div>
-        </div>
-
-        <div class="row linhaSuporte">
-          <h2>Suporte</h2>
-          <div class="col-6">
-            <div class="grafico-linha">
-              <canvas id="graficoSuporte"></canvas>
-            </div>
-          </div>
-          <div class="col-6">
-            <div class="">
-              <canvas id="graficoSuporte2"></canvas>
+            <div class="col-6">
+              <div class="kpi">
+                <div class="seguro">10%</div>
+                <div class="mediano">50%</div>
+                <div class="perigo">90%</div>
+              </div>
+              <div class="grafico-linha">
+                <canvas id="graficoSuporte2"></canvas>
+              </div>
             </div>
           </div>
         </div>

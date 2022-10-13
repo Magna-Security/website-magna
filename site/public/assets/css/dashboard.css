@@ -1,5 +1,6 @@
 /** @format */
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css");
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
 body {
   /* min-height: 100vh; */
   min-height: -webkit-fill-available;
@@ -7,7 +8,7 @@ body {
 }
 
 html {
-  height: -webkit-fill-available;
+  height: 100%;
 }
 
 main {
@@ -103,9 +104,7 @@ main {
 }
 
 .containerDash {
-  overflow-x: hidden;
-  color: white;
-  padding: 20px 100px;
+  margin-left: 4.5rem;
 }
 
 .grafico-redondo {
@@ -133,4 +132,66 @@ main {
 
 .invisivel {
   display: none !important;
+}
+
+.formatarRow {
+  margin-right: 0 !important;
+  margin-left: 0 !important;
+}
+
+.seguro {
+  background-color: #27ae60;
+}
+
+.perigo {
+  background-color: #eb5757;
+}
+
+.mediano {
+  background-color: #eaee1b;
+}
+
+/* ================================== Suporte =================================== */
+.headerSuporte {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  height: 100px;
+  color: white;
+  font-size: 55px;
+  font-family: "Bebas Neue", cursive;
+}
+
+.kpi {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 50px;
+}
+
+.kpi div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 140px;
+  height: 50px;
+  font-size: 25px;
+  text-align: center;
+  border-radius: 5px;
+}
+
+.grafico-linha {
+  margin: 0 auto;
+  width: 75%;
+}
+
+.grafico-linha2 {
+  margin: 0 auto;
+  width: 90%;
+}
+
+.tabelaGerente {
+  width: 90% !important;
+  margin: 50px auto !important;
+  color: white !important;
+  background-color: transparent !important;
 }

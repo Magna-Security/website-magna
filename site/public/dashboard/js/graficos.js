@@ -10,7 +10,7 @@ const data = {
       label: "Acessos",
       backgroundColor: ["#576E97"],
       borderColor: ["#68BECB", "#576E97", "#578E97"],
-      data: [0, 10, 5, 2, 20, 30, 45],
+      data: [0, 10, 45, 50, 30, 30, 45],
       fill: true,
     },
   ],

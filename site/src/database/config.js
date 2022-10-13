@@ -24,7 +24,7 @@ var mySqlConfig = {
   host: "localhost",
   database: "magna",
   user: "root",
-  password: "admin123",
+  password: "admin",
 };
 
 function executar(instrucao) {
