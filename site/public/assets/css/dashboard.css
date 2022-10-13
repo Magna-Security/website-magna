@@ -105,7 +105,7 @@ main {
 .containerDash {
   overflow-x: hidden;
   color: white;
-  padding: 20px 30px;
+  padding: 20px 100px;
 }
 
 .grafico-redondo {
@@ -132,5 +132,5 @@ main {
 }
 
 .invisivel {
-  display: none;
+  display: none !important;
 }

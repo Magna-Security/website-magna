@@ -1,3 +1,5 @@
+/** @format */
+
 var mysql = require("mysql2");
 var sql = require("mssql");
 
@@ -22,7 +24,7 @@ var mySqlConfig = {
   host: "localhost",
   database: "magna",
   user: "root",
-  password: "admin",
+  password: "admin123",
 };
 
 function executar(instrucao) {
