@@ -135,8 +135,8 @@ main {
 }
 
 .formatarRow {
-  margin-right: 0 !important;
-  margin-left: 0 !important;
+  margin-right: 15px !important;
+  margin-left: 15px !important;
 }
 
 .seguro {
@@ -194,4 +194,50 @@ main {
   margin: 50px auto !important;
   color: white !important;
   background-color: transparent !important;
+}
+
+.status {
+  /* width: 300px !important; */
+  background-color: white;
+  border-radius: 5px;
+  padding: 25px;
+  /* width: 90%; */
+  background-image: linear-gradient(to right, #75c9d5, #49abb9);
+}
+
+.status p {
+  font-size: 30px;
+  text-align: center;
+}
+
+.status span {
+  display: block;
+  font-size: 70px;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.containerBaixo {
+  display: flex;
+  justify-content: space-between;
+  margin: 30px 0 50px;
+}
+
+.linhaBaixa div:nth-child(2) {
+  margin-top: 30px;
+}
+
+.linhaAdmin .subtitulo {
+  margin-top: 50px;
+  margin-bottom: 20px;
+}
+
+.linhaAdmin h2 {
+  font-family: "Bebas Neue", cursive;
+  font-size: 50px;
+}
+
+form label,
+h2 {
+  color: white;
 }

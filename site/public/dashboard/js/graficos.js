@@ -44,6 +44,28 @@ const config2 = {
   options: {},
 };
 
+// Gráfico 3 =====================================================================
+
+const labels3 = ["January", "February", "March", "April", "May", "June"];
+const data3 = {
+  labels: labels,
+  datasets: [
+    {
+      label: "Acessos",
+      backgroundColor: ["#576E97"],
+      borderColor: ["#68BECB", "#576E97", "#578E97"],
+      data: [0, 10, 5, 2, 20, 30, 45],
+      fill: true,
+    },
+  ],
+};
+
+const config3 = {
+  type: "line",
+  data: data,
+  options: {},
+};
+
 // Gráfico 2 =====================================================================
 
 // const labels2 = [
@@ -139,4 +161,11 @@ const graficoSuporte = new Chart(
 const graficoSuporte2 = new Chart(
   document.getElementById("graficoSuporte2"),
   configSuporte2
+);
+
+//=======================================================================
+
+const graficoAdmin = new Chart(
+  document.getElementById("graficoAdmin"),
+  config3
 );
