@@ -2,15 +2,15 @@
 
 // Gráfico 1 =====================================================================
 
-const labels = ["January", "February", "March", "April", "May", "June"];
+const labels = ["12:00", "13:00", "14:00", "15:00", "16:00", "17:00"];
 const data = {
   labels: labels,
   datasets: [
     {
-      label: "Acessos",
+      label: "Uso de CPU (%)",
       backgroundColor: ["#576E97"],
       borderColor: ["#68BECB", "#576E97", "#578E97"],
-      data: [0, 10, 45, 50, 30, 30, 45],
+      data: [0, 10, 45, 50, 30, 30, 51],
       fill: true,
     },
   ],
@@ -24,15 +24,15 @@ const config = {
 
 // Gráfico 2 =====================================================================
 
-const labels2 = ["January", "February", "March", "April", "May", "June"];
+const labels2 = ["12:00", "13:00", "14:00", "15:00", "16:00", "17:00"];
 const data2 = {
   labels: labels,
   datasets: [
     {
-      label: "Acessos",
+      label: "Uso de RAM (%)",
       backgroundColor: ["#576E97"],
       borderColor: ["#68BECB", "#576E97", "#578E97"],
-      data: [0, 10, 5, 2, 20, 30, 45],
+      data: [80, 60, 30, 80, 20, 30, 60],
       fill: true,
     },
   ],
@@ -40,21 +40,21 @@ const data2 = {
 
 const config2 = {
   type: "line",
-  data: data,
+  data: data2,
   options: {},
 };
 
 // Gráfico 3 =====================================================================
 
-const labels3 = ["January", "February", "March", "April", "May", "June"];
+const labels3 = ["12:00", "13:00", "14:00", "15:00", "16:00", "17:00"];
 const data3 = {
   labels: labels,
   datasets: [
     {
-      label: "Acessos",
+      label: "Uso de CPU",
       backgroundColor: ["#576E97"],
       borderColor: ["#68BECB", "#576E97", "#578E97"],
-      data: [0, 10, 5, 2, 20, 30, 45],
+      data: [0, 10, 5, 2, 20, 30, 50],
       fill: true,
     },
   ],
@@ -106,11 +106,11 @@ const config3 = {
 //Gráfico 4 =====================================================================
 
 const dataSuporte = {
-  labels: ["Memória em uso", "Não utilizado"],
+  labels: ["CPU em uso (%)", "Não utilizado (%)"],
   datasets: [
     {
-      label: "My First Dataset",
-      data: [300, 100],
+      label: "Dados",
+      data: [80, 20],
       backgroundColor: ["#68BECB", "#576E97"],
       hoverOffset: 4,
     },
@@ -125,11 +125,11 @@ const configSuporte = {
 //Gráfico 5 =====================================================================
 
 const dataSuporte2 = {
-  labels: ["1", "2", "3"],
+  labels: ["RAM em uso (%)", "RAM não utilizada (%)"],
   datasets: [
     {
-      label: "My First Dataset",
-      data: [300, 50, 100],
+      label: "Dados",
+      data: [40, 60],
       backgroundColor: ["#68BECB", "#576E97", "#578E97"],
       hoverOffset: 4,
     },
@@ -144,13 +144,13 @@ const configSuporte2 = {
 //Gráfico 6 =====================================================================
 
 const dataSuporte3 = {
-  labels: ["1", "2", "3"],
+  labels: ["Chamados resolvidos", "Chamados não resolvidos"],
   datasets: [
     {
-      label: "My First Dataset",
-      data: [300, 50, 100],
-      backgroundColor: ["#576E97"],
-      borderColor: ["#68BECB", "#576E97", "#578E97"],
+      label: "Dados",
+      data: [16, 2],
+      backgroundColor: ["#576E97", "#68BECB"],
+      borderColor: ["#68BECB", "#576E97", "#68BECB"],
       hoverOffset: 4,
       fill: true,
     },

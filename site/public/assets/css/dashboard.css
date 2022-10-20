@@ -271,35 +271,35 @@ h2 {
 .kpi-aproveitamento * {
   display: block;
   background-color: transparent;
-  margin-bottom: 10px;
+  margin-bottom: 50px;
 }
 
 .kpi-aproveitamento .seguro::before {
   content: "";
-  width: 20px;
-  height: 20px;
+  width: 40px;
+  height: 40px;
   position: absolute;
-  left: -25px;
+  left: -50px;
   display: block;
   background-color: #27ae60;
 }
 
 .kpi-aproveitamento .mediano::before {
   content: "";
-  width: 20px;
-  height: 20px;
+  width: 40px;
+  height: 40px;
   position: absolute;
-  left: -25px;
+  left: -50px;
   display: block;
   background-color: #eaee1b;
 }
 
 .kpi-aproveitamento .perigo::before {
   content: "";
-  width: 20px;
-  height: 20px;
+  width: 40px;
+  height: 40px;
   position: absolute;
-  left: -25px;
+  left: -50px;
   display: block;
   background-color: #eb5757;
 }
