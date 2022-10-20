@@ -169,40 +169,62 @@
         <div class="linhaAdmin">
           <div class="row formatarRow">
             <h2 class="h2" style="color: white">Informações gerais</h2>
-            <div class="col-6 linhaBaixa">
-              <div class="status">
-                <p>Processos</p>
-                <span>221</span>
+            <div class="col-6">
+              <div class="kpi">
+                <div class="seguro">10%</div>
+                <div class="mediano">50%</div>
+                <div class="perigo">90%</div>
               </div>
-              <div class="grafico-linha">
-                <canvas id="graficoAdmin"></canvas>
-              </div>
-            </div>
-            <div class="col-6 linhaBaixa">
               <div class="status">
                 <p>Média CPU</p>
                 <span>75%</span>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="kpi">
+                <div class="seguro">10%</div>
+                <div class="mediano">50%</div>
+                <div class="perigo">90%</div>
               </div>
               <div class="status">
                 <p>Média RAM</p>
                 <span>81%</span>
               </div>
             </div>
-            <h2 style="color: white" class="h2 subtitulo">
-              Seu servidor deveria ter caído 10 vezes
-            </h2>
-            <div class="containerBaixo">
+
+            <div class="col-12">
+              <div class="grafico-linha grafico-linha-admin">
+                <canvas id="graficoAdmin"></canvas>
+              </div>
+            </div>
+            <h2 style="color: white" class="h2 subtitulo">Suporte</h2>
+            <div class="col-6">
               <div class="status">
                 <p>Chamados abertos mês</p>
                 <span>18</span>
               </div>
+            </div>
+            <div class="col-6">
               <div class="status">
                 <p>Problemas resolvidos</p>
                 <span>16</span>
               </div>
-              <div class="status">
+            </div>
+
+            <div class="col-6 classeSuporte">
+              <div class="grafico-linha grafico-suporte">
+                <canvas id="graficoSuporte3"></canvas>
+              </div>
+            </div>
+            <div class="col-6 classeSuporte">
+              <div class="status aproveitamento">
+                <div class="kpi-aproveitamento">
+                  <div class="seguro">Bom</div>
+                  <div class="mediano">Médio</div>
+                  <div class="perigo">Ruim</div>
+                </div>
                 <p>Aproveitamento</p>
-                <span>96%</span>
+                <span>88,89%</span>
               </div>
             </div>
           </div>

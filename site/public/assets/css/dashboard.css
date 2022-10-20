@@ -241,3 +241,69 @@ form label,
 h2 {
   color: white;
 }
+
+.grafico-linha-admin {
+  padding-top: 70px;
+  width: 70%;
+}
+
+.grafico-suporte {
+  width: 60%;
+}
+
+.aproveitamento {
+  height: 100%;
+
+  background-image: none;
+  background-color: transparent;
+  color: white;
+}
+
+.aproveitamento span {
+  font-size: 100px;
+}
+
+.kpi-aproveitamento {
+  position: absolute;
+  right: 50px;
+}
+
+.kpi-aproveitamento * {
+  display: block;
+  background-color: transparent;
+  margin-bottom: 10px;
+}
+
+.kpi-aproveitamento .seguro::before {
+  content: "";
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  left: -25px;
+  display: block;
+  background-color: #27ae60;
+}
+
+.kpi-aproveitamento .mediano::before {
+  content: "";
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  left: -25px;
+  display: block;
+  background-color: #eaee1b;
+}
+
+.kpi-aproveitamento .perigo::before {
+  content: "";
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  left: -25px;
+  display: block;
+  background-color: #eb5757;
+}
+
+.classeSuporte {
+  margin-top: 30px !important;
+}

@@ -103,7 +103,7 @@ const config3 = {
 //   },
 // };
 
-//Gráfico 3 =====================================================================
+//Gráfico 4 =====================================================================
 
 const dataSuporte = {
   labels: ["Memória em uso", "Não utilizado"],
@@ -122,7 +122,7 @@ const configSuporte = {
   data: dataSuporte,
 };
 
-//Gráfico 3 =====================================================================
+//Gráfico 5 =====================================================================
 
 const dataSuporte2 = {
   labels: ["1", "2", "3"],
@@ -139,6 +139,27 @@ const dataSuporte2 = {
 const configSuporte2 = {
   type: "pie",
   data: dataSuporte2,
+};
+
+//Gráfico 6 =====================================================================
+
+const dataSuporte3 = {
+  labels: ["1", "2", "3"],
+  datasets: [
+    {
+      label: "My First Dataset",
+      data: [300, 50, 100],
+      backgroundColor: ["#576E97"],
+      borderColor: ["#68BECB", "#576E97", "#578E97"],
+      hoverOffset: 4,
+      fill: true,
+    },
+  ],
+};
+
+const configSuporte3 = {
+  type: "doughnut",
+  data: dataSuporte3,
 };
 
 //======================================================================
@@ -161,6 +182,11 @@ const graficoSuporte = new Chart(
 const graficoSuporte2 = new Chart(
   document.getElementById("graficoSuporte2"),
   configSuporte2
+);
+
+const graficoSuporte3 = new Chart(
+  document.getElementById("graficoSuporte3"),
+  configSuporte3
 );
 
 //=======================================================================
