@@ -164,10 +164,10 @@ const configSuporte3 = {
 
 //======================================================================
 
-const graficoGerente = new Chart(
-  document.getElementById("graficoGerente"),
-  config
-);
+// const graficoGerente = new Chart(
+//   document.getElementById("graficoGerente"),
+//   config
+// );
 const graficoGerente2 = new Chart(
   document.getElementById("graficoGerente2"),
   config2
