@@ -4,7 +4,7 @@
 body {
   /* min-height: 100vh; */
   min-height: -webkit-fill-available;
-  background-color: #242424 !important;
+  background-color: #12161f !important;
 }
 
 html {
@@ -15,6 +15,7 @@ main {
   height: 100vh;
   height: -webkit-fill-available;
   max-height: 100vh;
+  background-color: #12161f;
 }
 
 .dropdown-toggle {
@@ -105,6 +106,7 @@ main {
 
 .containerDash {
   margin-left: 4.5rem;
+  height: 100vh;
 }
 
 .grafico-redondo {
@@ -153,10 +155,10 @@ main {
 
 /* ================================== Suporte =================================== */
 .headerSuporte {
-  display: flex;
+  /* display: flex;
   text-align: center;
-  align-items: center;
-  height: 100px;
+  align-items: center; */
+  /* height: 100px; */
   color: white;
   font-size: 55px;
   font-family: "Bebas Neue", cursive;
@@ -190,8 +192,8 @@ main {
 }
 
 .tabelaGerente {
-  width: 90% !important;
-  margin: 50px auto !important;
+  width: 100% !important;
+  margin: 0px auto !important;
   color: white !important;
   background-color: transparent !important;
 }
@@ -203,6 +205,8 @@ main {
   padding: 25px;
   /* width: 90%; */
   background-image: linear-gradient(to right, #75c9d5, #49abb9);
+  width: 75%;
+  margin: 0 auto;
 }
 
 .status p {
@@ -306,4 +310,11 @@ h2 {
 
 .classeSuporte {
   margin-top: 30px !important;
+}
+
+.colGraficoTecnico {
+  background-color: #2e3442;
+  border-radius: 10px;
+  margin-top: 20px;
+  padding: 20px;
 }
