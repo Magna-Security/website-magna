@@ -206,7 +206,7 @@ main {
   /* width: 90%; */
   background-image: linear-gradient(to right, #75c9d5, #49abb9);
   width: 75%;
-  margin: 0 auto;
+  margin: 0 auto 40px;
 }
 
 .status p {
@@ -317,4 +317,30 @@ h2 {
   border-radius: 10px;
   margin-top: 20px;
   padding: 20px;
+}
+
+.containerForm {
+  background-color: #2e3442;
+  max-width: 500px;
+  border-radius: 10px;
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center4;
+}
+
+.containerForm input,
+.containerForm select {
+  margin-bottom: 25px;
+}
+
+.containerForm label {
+  margin-bottom: 5px;
+}
+
+.dashForm {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
