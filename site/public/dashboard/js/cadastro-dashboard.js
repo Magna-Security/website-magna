@@ -1,3 +1,5 @@
+/** @format */
+
 let cargo = document.querySelector("#sltCargo");
 
 if (sessionStorage.getItem("cargo") == "gerente") {

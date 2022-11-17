@@ -27,7 +27,7 @@
     <main class="d-flex flex-nowrap">
       <div
         class="d-flex flex-column flex-shrink-0 bg-light justify-content-center sidebar"
-        style="width: 4.5rem; height: 100vh"
+        style="width: 4.5rem; height: 100vh; position: fixed"
       >
         <img
           src="../assets/img/mini-logoo.png"
@@ -78,23 +78,670 @@
         </div>
       </div>
       <div class="containerDash w-100">
-        <div class="row">
-          <div class="col">
-            <h2>Dados do sistema</h2>
-            <div class="grafico-linha">
-              <canvas id="grafico"></canvas>
+        <!-- ====================================== tecnico ===================================== -->
+        <!-- ====================================== tecnico ===================================== -->
+        <!-- ====================================== tecnico ===================================== -->
+        <!-- ====================================== tecnico ===================================== -->
+        <!-- ====================================== tecnico ===================================== -->
+        <div class="linhaTecnico linhaArray">
+          <div class="row gy-3 gx-3 formatarRow">
+            <div class="col-6">
+              <div class="colGraficoTecnico">
+                <div class="headerSuporte text-center">CPU</div>
+                <div class="kpi">
+                  <div class="seguro">10%</div>
+                  <div class="mediano">50%</div>
+                  <div class="perigo">90%</div>
+                </div>
+                <div class="grafico-linha2">
+                  <canvas id="graficoGerente"></canvas>
+                </div>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="colGraficoTecnico">
+                <div class="headerSuporte text-center">RAM</div>
+                <div class="kpi">
+                  <div class="seguro">10%</div>
+                  <div class="mediano">50%</div>
+                  <div class="perigo">90%</div>
+                </div>
+                <div class="grafico-linha2">
+                  <canvas id="graficoGerente2"></canvas>
+                </div>
+              </div>
             </div>
           </div>
+          <div class="row gx-3 gy-3 formatarRow">
+            <div class="col-12">
+              <div class="colGraficoTecnico">
+                <div class="headerSuporte">Processos</div>
+                <table class="table table-bordered tabelaGerente">
+                  <thead>
+                    <tr>
+                      <th scope="col">Processo</th>
+                      <th scope="col">Uso da CPU</th>
+                      <th scope="col">Uso de RAM</th>
+                      <th scope="col">Threads</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Host de serviço</td>
+                      <td>20%</td>
+                      <td>10%</td>
+                      <td>35</td>
+                    </tr>
+                    <tr>
+                      <td>Google Chrome</td>
+                      <td>54%</td>
+                      <td>16%</td>
+                      <td>17</td>
+                    </tr>
+                    <tr>
+                      <td>Security System</td>
+                      <td>25%</td>
+                      <td>20%</td>
+                      <td>20</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- ====================================== Suporte ===================================== -->
+        <!-- ====================================== Suporte ===================================== -->
+        <!-- ====================================== Suporte ===================================== -->
+        <!-- ====================================== Suporte ===================================== -->
+        <!-- ====================================== Suporte ===================================== -->
+        <!-- ====================================== Suporte ===================================== -->
+        <div class="linhaSuporte linhaArray">
+          <div class="row formatarRow gx-3 gy-3">
+            <div class="col-6">
+              <div class="colGraficoTecnico">
+                <div class="headerSuporte text-center">Disco 1</div>
+                <div class="kpi">
+                  <div class="seguro">10%</div>
+                  <div class="mediano">50%</div>
+                  <div class="perigo">90%</div>
+                </div>
+                <div class="grafico-linha">
+                  <canvas id="graficoSuporte"></canvas>
+                </div>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="colGraficoTecnico">
+                <div class="headerSuporte text-center">Disco 2</div>
+                <div class="kpi">
+                  <div class="seguro">10%</div>
+                  <div class="mediano">50%</div>
+                  <div class="perigo">90%</div>
+                </div>
+                <div class="grafico-linha">
+                  <canvas id="graficoSuporte2"></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ====================================== Gerente ===================================== -->
+        <!-- ====================================== Gerente ===================================== -->
+        <!-- ====================================== Gerente ===================================== -->
+        <!-- ====================================== Gerente ===================================== -->
+        <!-- ====================================== Gerente ===================================== -->
+        <!-- ====================================== Gerente ===================================== -->
+
+        <div class="linhaAdmin linhaArray">
+          <div class="row formatarRow gy-3 gx-3">
+            <h2 class="h2 mt-5" style="color: white">Informações gerais</h2>
+            <div class="col-6">
+              <div class="colGraficoTecnico m-0">
+                <div class="kpi">
+                  <div class="seguro">10%</div>
+                  <div class="mediano">50%</div>
+                  <div class="perigo">90%</div>
+                </div>
+                <div class="status">
+                  <p>Média CPU</p>
+                  <span>75%</span>
+                </div>
+                <div class="grafico-linha">
+                  <canvas id="graficoGerente3"></canvas>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-6">
+              <div class="colGraficoTecnico m-0">
+                <div class="kpi">
+                  <div class="seguro">10%</div>
+                  <div class="mediano">50%</div>
+                  <div class="perigo">90%</div>
+                </div>
+                <div class="status">
+                  <p>Média RAM</p>
+                  <span>81%</span>
+                </div>
+                <div class="grafico-linha">
+                  <canvas id="graficoGerente4"></canvas>
+                </div>
+              </div>
+            </div>
+
+            <!-- <div class="col-12">
+              <div class="grafico-linha grafico-linha-admin">
+                <canvas id="graficoAdmin"></canvas>
+              </div>
+            </div> -->
+
+            <h2 style="color: white" class="h2">Suporte</h2>
+            <div class="colGraficoTecnico">
+              <div></div>
+              <div class="d-flex mt-2">
+                <div class="col-6">
+                  <div class="status">
+                    <p>Chamados abertos mês</p>
+                    <span>18</span>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="status">
+                    <p>Problemas resolvidos</p>
+                    <span>16</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-6 classeSuporte">
+              <div class="grafico-linha grafico-suporte">
+                <canvas id="graficoSuporte3"></canvas>
+              </div>
+            </div>
+            <!-- <div class="col-6 classeSuporte">
+              <div class="status aproveitamento">
+                <div class="kpi-aproveitamento">
+                  <div class="seguro">Bom</div>
+                  <div class="mediano">Médio</div>
+                  <div class="perigo">Ruim</div>
+                </div>
+                <p>Aproveitamento</p>
+                <span>88,89%</span>
+              </div>
+            </div> -->
+          </div>
+        </div>
       </div>
     </main>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="graficos.js"></script>
+    <script src="js/graficos.js"></script>
     <script src="js/geral-dash.js"></script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
       crossorigin="anonymous"
     ></script>
+
+    <script>
+      let proximaAtualizacao;
+      let configGerente;
+      let configGerente2;
+      let configSuporte;
+      let configSuporte2;
+
+      window.onload = obterDadosGrafico(1, "graficoGerente", configGerente);
+      window.onload = obterDadosGrafico(2, "graficoGerente2", configGerente2);
+      window.onload = obterDadosGrafico(5, "graficoGerente3", configGerente);
+      window.onload = obterDadosGrafico(6, "graficoGerente4", configGerente);
+      window.onload = obterDadosGrafico(3, "graficoSuporte", configSuporte);
+      window.onload = obterDadosGrafico(4, "graficoSuporte2", configSuporte2);
+
+      // O gráfico é construído com três funções:
+      // 1. obterDadosGrafico -> Traz dados do Banco de Dados para montar o gráfico da primeira vez
+      // 2. plotarGrafico -> Monta o gráfico com os dados trazidos e exibe em tela
+      // 3. atualizarGrafico -> Atualiza o gráfico, trazendo novamente dados do Banco
+
+      // Esta função *obterDadosGrafico* busca os últimos dados inseridos em tabela de medidas.
+      // para, quando carregar o gráfico da primeira vez, já trazer com vários dados.
+      // A função *obterDadosGrafico* também invoca a função *plotarGrafico*
+
+      //     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
+      //     Para ajustar o "select", ajuste o comando sql em src/models
+      function obterDadosGrafico(idAquario, grafico, configEscolhida) {
+        if (proximaAtualizacao != undefined) {
+          clearTimeout(proximaAtualizacao);
+        }
+
+        if (
+          idAquario == 1 ||
+          idAquario == 2 ||
+          idAquario == 5 ||
+          idAquario == 6
+        ) {
+          fetch(`/medidas/ultimas/${idAquario}`, { cache: "no-store" })
+            .then(function (response) {
+              if (response.ok) {
+                response.json().then(function (resposta) {
+                  // console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                  resposta.reverse();
+
+                  plotarGrafico(resposta, idAquario, grafico, configEscolhida);
+                });
+              } else {
+                console.error("Nenhum dado encontrado ou erro na API");
+              }
+            })
+            .catch(function (error) {
+              console.error(
+                `Erro na obtenção dos dados p/ gráfico: ${error.message}`
+              );
+            });
+        } else {
+          fetch(`/medidas/ultimasSuporte/${idAquario}`, { cache: "no-store" })
+            .then(function (response) {
+              if (response.ok) {
+                response.json().then(function (resposta) {
+                  // console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                  resposta.reverse();
+
+                  plotarGraficoSuporte(
+                    resposta,
+                    idAquario,
+                    grafico,
+                    configEscolhida
+                  );
+                });
+              } else {
+                console.error("Nenhum dado encontrado ou erro na API");
+              }
+            })
+            .catch(function (error) {
+              console.error(
+                `Erro na obtenção dos dados p/ gráfico: ${error.message}`
+              );
+            });
+        }
+      }
+
+      // Esta função *plotarGrafico* usa os dados capturados na função anterior para criar o gráfico
+      // Configura o gráfico (cores, tipo, etc), materializa-o na página e,
+      // A função *plotarGrafico* também invoca a função *atualizarGrafico*
+      function plotarGrafico(resposta, idAquario, grafico, configEscolhida) {
+        console.log("iniciando plotagem do gráfico...");
+
+        // Criando estrutura para plotar gráfico - labels
+        let labels = [];
+        let labels2 = [];
+
+        // Criando estrutura para plotar gráfico - dados
+        // Gerente ======================================================================
+        let dadosGerente = {
+          labels: labels,
+          datasets: [
+            {
+              label: "Uso de CPU",
+              data: [1],
+              fill: false,
+              backgroundColor: ["#4da5b3", "#68BECB"],
+              borderColor: ["#68BECB", "#576E97", "#68BECB"],
+              tension: 0.1,
+              fill: true,
+            },
+          ],
+        };
+
+        let dadosGerente2 = {
+          labels: labels2,
+          datasets: [
+            {
+              label: "Uso de RAM (%)",
+              data: [],
+              fill: false,
+              backgroundColor: ["#4da5b3", "#68BECB"],
+              borderColor: ["#68BECB", "#576E97", "#68BECB"],
+              tension: 0.1,
+              fill: true,
+            },
+          ],
+        };
+
+        // console.log("----------------------------------------------");
+        // console.log(
+        //   'Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":'
+        // );
+        // console.log(resposta);
+
+        // Inserindo valores recebidos em estrutura para plotar o gráfico
+        console.log(idAquario);
+        if (
+          grafico == "graficoGerente" ||
+          grafico == "graficoGerente2" ||
+          grafico == "graficoGerente3" ||
+          grafico == "graficoGerente4"
+        ) {
+          for (i = 0; i < resposta.length; i++) {
+            var registro = resposta[i];
+            var vetor = registro.dt_registro.split("T");
+            var horario = vetor[1].slice(0, 8);
+            labels.push(horario);
+            dadosGerente.datasets[0].data.push(registro.cpu_em_uso);
+          }
+
+          for (i = 0; i < resposta.length; i++) {
+            var registro = resposta[i];
+            var vetor = registro.dt_registro.split("T");
+            var horario = vetor[1].slice(0, 8);
+            labels2.push(horario);
+            let totalPor = 8000000000;
+            let porcentagem = (registro.ram_em_uso / totalPor) * 100;
+            dadosGerente2.datasets[0].data.push(porcentagem);
+          }
+        }
+
+        // console.log("----------------------------------------------");
+        // console.log("O gráfico será plotado com os respectivos valores:");
+        // console.log("Labels:");
+        // console.log(labels);
+        // console.log("Dados:");
+        // console.log(dadosGerente.datasets[0].data);
+        // console.log("----------------------------------------------");
+
+        // Criando estrutura para plotar gráfico - config
+        if (grafico == "graficoGerente" || grafico == "graficoGerente3") {
+          configGerente = {
+            type: "line",
+            data: dadosGerente,
+
+            options: {
+              plugins: {
+                legend: {
+                  labels: {
+                    font: {
+                      size: 25,
+                    },
+                  },
+                },
+              },
+            },
+          };
+
+          configEscolhida = configGerente;
+        } else if (
+          grafico == "graficoGerente2" ||
+          grafico == "graficoGerente4"
+        ) {
+          configGerente2 = {
+            type: "line",
+            data: dadosGerente2,
+            options: {
+              plugins: {
+                legend: {
+                  labels: {
+                    font: {
+                      size: 25,
+                    },
+                  },
+                },
+              },
+            },
+          };
+
+          configEscolhida = configGerente2;
+        }
+
+        // Adicionando gráfico criado em div na tela
+        let myChart = new Chart(
+          document.getElementById(grafico),
+          configEscolhida
+        );
+
+        if (grafico == "graficoGerente" || grafico == "graficoGerente3") {
+          setTimeout(
+            () => atualizarGrafico(idAquario, dadosGerente, myChart),
+            2000
+          );
+        } else if (
+          grafico == "graficoGerente2" ||
+          grafico == "graficoGerente4"
+        ) {
+          // console.log("aa");
+          setTimeout(
+            () => atualizarGrafico(idAquario, dadosGerente2, myChart),
+            2000
+          );
+        }
+      }
+
+      function plotarGraficoSuporte(
+        resposta,
+        idAquario,
+        grafico,
+        configEscolhida
+      ) {
+        console.log("iniciando plotagem do gráfico...");
+        let labels = [];
+        let labels2 = [];
+
+        const dadosSuporte = {
+          labels: labels,
+          datasets: [
+            {
+              label: ["Em uso"],
+              data: [],
+              backgroundColor: ["#576E97"],
+              hoverOffset: 4,
+            },
+            {
+              label: ["Total"],
+              data: [],
+              backgroundColor: ["#68BECB"],
+              hoverOffset: 4,
+            },
+          ],
+        };
+
+        const dadosSuporte2 = {
+          labels: labels2,
+          datasets: [
+            {
+              label: ["Em uso"],
+              data: [],
+              backgroundColor: ["#576E97"],
+              hoverOffset: 4,
+            },
+            {
+              label: ["Total"],
+              data: [],
+              backgroundColor: ["#68BECB"],
+              hoverOffset: 4,
+            },
+          ],
+        };
+
+        for (i = 0; i < resposta.length; i++) {
+          var registro = resposta[i];
+          var vetor = registro.dt_registro.split("T");
+          var horario = vetor[1].slice(0, 8);
+          // var dataTemp = new Date(
+          //   vetor[0],
+          //   vetor[1],
+          //   String(vetor[2]).slice(0, 2)
+          // );
+          // var dataFinal = `${dataTemp.getDate()}/${dataTemp.getMonth()}/${dataTemp.getFullYear()}`;
+
+          labels.push(horario);
+          dadosSuporte.datasets[0].data[i] = registro.disco_em_uso_1;
+          dadosSuporte.datasets[1].data[i] =
+            registro.total_armazenamento_disco_1;
+        }
+
+        for (i = 0; i < resposta.length; i++) {
+          var registro = resposta[i];
+          var vetor = registro.dt_registro.split("T");
+          var horario = vetor[1].slice(0, 8);
+
+          labels2.push(horario);
+          dadosSuporte2.datasets[0].data[i] = registro.disco_em_uso_2;
+          dadosSuporte2.datasets[1].data[i] =
+            registro.total_armazenamento_disco_2;
+        }
+
+        if (grafico == "graficoSuporte") {
+          const configSuporte = {
+            type: "bar",
+            data: dadosSuporte,
+          };
+
+          configEscolhida = configSuporte;
+        } else if (grafico == "graficoSuporte2") {
+          const configSuporte2 = {
+            type: "bar",
+            data: dadosSuporte2,
+          };
+
+          configEscolhida = configSuporte2;
+        }
+        // Adicionando gráfico criado em div na tela
+        let myChart2 = new Chart(
+          document.getElementById(grafico),
+          configEscolhida
+        );
+        if (grafico == "graficoSuporte") {
+          setTimeout(
+            () => atualizarGraficoSuporte(idAquario, dadosSuporte, myChart2),
+            2000
+          );
+        } else if (grafico == "graficoSuporte2") {
+          setTimeout(
+            () => atualizarGraficoSuporte(idAquario, dadosSuporte2, myChart2),
+            2000
+          );
+        }
+      }
+
+      // Esta função *atualizarGrafico* atualiza o gráfico que foi renderizado na página,
+      // buscando a última medida inserida em tabela contendo as capturas,
+
+      //     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
+      //     Para ajustar o "select", ajuste o comando sql em src/models
+      function atualizarGrafico(idAquario, dados, myChart) {
+        fetch(`/medidas/tempo-real/${idAquario}`, { cache: "no-store" })
+          .then(function (response) {
+            if (response.ok) {
+              response.json().then(function (novoRegistro) {
+                // console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
+                // console.log(`Dados atuais do gráfico:`);
+                console.log(novoRegistro);
+
+                // document.getElementById("avisoCaptura").innerHTML = "";
+
+                var vetor = novoRegistro[0].dt_registro.split("T");
+                var horario = vetor[1].slice(0, 8);
+
+                if (horario == dados.labels[dados.labels.length - 1]) {
+                  console.log(
+                    "---------------------------------------------------------------"
+                  );
+                  console.log(
+                    "Como não há dados novos para captura, o gráfico não atualizará."
+                  );
+                  // document.getElementById("avisoCaptura").innerHTML =
+                  //   "<i class='fa-solid fa-triangle-exclamation'></i> Foi trazido o dado mais atual capturado pelo sensor. <br> Como não há dados novos a exibir, o gráfico não atualizará.";
+                  // console.log("Horário do novo dado capturado:");
+                  // console.log(novoRegistro[0].momento_grafico);
+                  // console.log("Horário do último dado capturado:");
+                  // console.log(dados.labels[dados.labels.length - 1]);
+                  // console.log(
+                  //   "---------------------------------------------------------------"
+                  // );
+                } else {
+                  // tirando e colocando valores no gráfico
+                  console.log("aaaaaaaaaaaaaaaaa");
+                  dados.labels.shift(); // apagar o primeiro
+                  dados.labels.push(horario); // incluir um novo momento
+
+                  // dados.datasets[0].data.shift(); // apagar o primeiro de umidade
+                  // dados.datasets[0].data.push(novoRegistro[0].umidade); // incluir uma nova medida de umidade
+
+                  // dados.datasets[1].data.shift(); // apagar o primeiro de temperatura
+                  // dados.datasets[1].data.push(novoRegistro[0].temperatura); // incluir uma nova medida de temperatura
+
+                  myChart.update();
+                }
+
+                // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+                proximaAtualizacao = setTimeout(
+                  () => atualizarGrafico(idAquario, dados, myChart),
+                  2000
+                );
+              });
+            } else {
+              console.error("Nenhum dado encontrado ou erro na API");
+              // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+              proximaAtualizacao = setTimeout(
+                () => atualizarGrafico(idAquario, dados, myChart),
+                2000
+              );
+            }
+          })
+          .catch(function (error) {
+            console.error(
+              `Erro na obtenção dos dados p/ gráfico: ${error.message}`
+            );
+          });
+      }
+
+      function atualizarGraficoSuporte(idAquario, dados, myChart) {
+        fetch(`/medidas/tempo-real-suporte/${idAquario}`, { cache: "no-store" })
+          .then(function (response) {
+            if (response.ok) {
+              response.json().then(function (novoRegistro) {
+                // console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
+                // console.log(`Dados atuais do gráfico:`);
+                // console.log(novoRegistro);
+
+                // document.getElementById("avisoCaptura").innerHTML = "";
+
+                var vetor = novoRegistro[0].dt_registro.split("T");
+                var horario = vetor[1].slice(0, 8);
+
+                if (horario == dados.labels[dados.labels.length - 1]) {
+                  console.log(
+                    "---------------------------------------------------------------"
+                  );
+                  console.log(
+                    "Como não há dados novos para captura, o gráfico não atualizará."
+                  );
+                } else {
+                  dados.labels.shift(); // apagar o primeiro
+                  dados.labels.push(horario); // incluir um novo momento
+
+                  myChart.update();
+                }
+
+                proximaAtualizacao = setTimeout(
+                  () => atualizarGraficoSuporte(idAquario, dados, myChart),
+                  2000
+                );
+              });
+            } else {
+              console.error("Nenhum dado encontrado ou erro na API");
+              proximaAtualizacao = setTimeout(
+                () => atualizarGrafico(idAquario, dados, myChart),
+                2000
+              );
+            }
+          })
+          .catch(function (error) {
+            console.error(
+              `Erro na obtenção dos dados p/ gráfico: ${error.message}`
+            );
+          });
+      }
+    </script>
   </body>
 </html>

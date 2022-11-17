@@ -6,14 +6,14 @@ create database magna;
 use magna;
 
 -- MySQL
-CREATE TABLE IF NOT EXISTS Empresa(
+CREATE TABLE Empresa(
     id_empresa int primary key auto_increment,
     nome_empresa varchar(50),
     CNPJ char(14),
     telefone varchar(20)
 );
 
-CREATE TABLE IF NOT EXISTS Usuario(
+CREATE TABLE Usuario(
     id_usuario int primary key auto_increment,
     fk_empresa int,
     foreign key (fk_empresa) references Empresa(id_empresa),
@@ -25,7 +25,7 @@ CREATE TABLE IF NOT EXISTS Usuario(
     primeiro_acesso tinyint
 );
 
-CREATE TABLE IF NOT EXISTS Servidor(
+CREATE TABLE Servidor(
     id_servidor int primary key auto_increment,
     fk_empresa int,
     foreign key(fk_empresa) references Empresa(id_empresa),
@@ -48,4 +48,6 @@ CREATE TABLE RegistroServer(
     data_registro datetime
 );
 
-INSERT INTO usuario (email, senha) VALUES ("a@a.com", "123");
+INSERT INTO usuario (email, senha, tipo_usuario) VALUES ("a@a.com", "123", "admin");
+INSERT INTO usuario (email, senha, tipo_usuario) VALUES ("@.com", "456", "gerente");
+INSERT INTO usuario (email, senha, tipo_usuario) VALUES ("@.com", "789", "suporte");
