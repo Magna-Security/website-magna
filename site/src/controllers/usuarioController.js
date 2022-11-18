@@ -154,15 +154,19 @@ function cadastrarManager(req, res) {
   var email = req.body.emailServer;
   var senha = req.body.senhaServer;
   var fkEmpresa = req.body.fkEmpresaServer;
+  // console.log();
+  console.log(nome, email, senha, fkEmpresa);
 
   // Faça as validações dos valores
   if (nome == undefined) {
     res.status(400).send("Seu nome está indefinido!");
   } else if (email == undefined) {
     res.status(400).send("Seu email está indefinido!");
-  } else if (fkEmpresa == undefined) {
-    res.status(400).send("Sua empresa está indefinida!");
-  } else if (senha == undefined) {
+  }
+  // else if (fkEmpresa == undefined) {
+  //   res.status(400).send("Sua empresa está indefinida!");
+  // }
+  else if (senha == undefined) {
     res.status(400).send("Sua senha está indefinida!");
   } else {
     // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js

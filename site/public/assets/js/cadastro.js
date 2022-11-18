@@ -98,7 +98,7 @@ function cadastrarManager(nomeVar, emailVar, senhaVar) {
         );
 
         setTimeout(() => {
-          window.location = "login.html";
+          //window.location = "login.html";
         }, 1000);
       } else {
         window.alert("Houve um erro ao tentar realizar o cadastro!");
@@ -239,7 +239,7 @@ function verificarEmailManager() {
 }
 
 function armazenarValoresManager() {
-  console.log(nomeUsuario);
+  console.log(inputUsuario.value);
   console.log(emailUsuario);
   console.log(senhaUsuario);
 
@@ -248,7 +248,7 @@ function armazenarValoresManager() {
     emailUsuario = inputEmail.value;
     senhaUsuario = inputSenha.value;
 
-    window.location.href = "login.html";
+    //window.location.href = "login.html";
 
     cadastrarManager(nomeUsuario, emailUsuario, senhaUsuario);
   } else {

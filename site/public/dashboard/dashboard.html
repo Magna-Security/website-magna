@@ -436,8 +436,11 @@
             var vetor = registro.dt_registro.split("T");
             var horario = vetor[1].slice(0, 8);
             labels2.push(horario);
-            let totalPor = 8000000000;
-            let porcentagem = (registro.ram_em_uso / totalPor) * 100;
+            let totalPor = 120000000000;
+            let porcentagem = ((registro.ram_em_uso / totalPor) * 100).toFixed(
+              2
+            );
+            console.log(registro.ram_em_uso, totalPor);
             dadosGerente2.datasets[0].data.push(porcentagem);
           }
         }
