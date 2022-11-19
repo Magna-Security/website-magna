@@ -1,0 +1,248 @@
+<!-- @format -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <meta
+      name="author"
+      content="Mark Otto, Jacob Thornton, and Bootstrap contributors"
+    />
+    <meta name="generator" content="Hugo 0.101.0" />
+    <title>Dashboard</title>
+    <link rel="icon" type="image/x-icon" href="../assets/img/favicon.ico" />
+
+    <link rel="stylesheet" href="../assets/css/index.css" />
+    <link rel="stylesheet" href="../assets/css/dashboard.css" />
+    <link rel="stylesheet" href="css/cadastro.css" />
+    <link rel="stylesheet" href="css/servidor.css" />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <main class="d-flex flex-nowrap">
+      <div
+        class="d-flex flex-column flex-shrink-0 bg-light justify-content-center sidebar"
+        style="width: 4.5rem; height: 100vh"
+      >
+        <img
+          src="../assets/img/mini-logoo.png"
+          class="img-fluid"
+          alt=""
+          width="60"
+        />
+
+        <ul
+          class="nav nav-pills nav-flush flex-column mb-auto text-center mt-4 border-top"
+        >
+          <li>
+            <a
+              href="dashboard.html"
+              class="nav-link py-3 rounded-0"
+              title="Dashboard"
+              data-bs-toggle="tooltip"
+              data-bs-placement="right"
+            >
+              <i class="bi bi-graph-up" style="font-size: 20px"></i>
+            </a>
+          </li>
+
+          <li class="adicionar-usuario">
+            <a
+              href="cadastro-dashboard.html"
+              class="nav-link py-3 rounded-0"
+              title="Cadastro usuário"
+              data-bs-toggle="tooltip"
+              data-bs-placement="right"
+            >
+              <i class="bi bi-person-circle" style="font-size: 20px"></i>
+            </a>
+          </li>
+
+          <li>
+            <a
+              href="cadastro-dashboard.html"
+              class="nav-link py-3 rounded-0 active"
+              title="Cadastro usuário"
+              data-bs-toggle="tooltip"
+              data-bs-placement="right"
+            >
+              <i class="bi bi-server" style="font-size: 20px"></i>
+            </a>
+          </li>
+        </ul>
+        <div class="dropdown border-top">
+          <a
+            href="#"
+            class="d-flex align-items-center justify-content-center p-3 link-dark text-decoration-none dropdown-toggle"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            <i class="bi bi-person-circle" style="font-size: 30px"></i>
+          </a>
+          <ul class="dropdown-menu text-small shadow">
+            <li><a class="dropdown-item" href="../index.html">Sair</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="containerDash w-100">
+        <div class="row">
+          <div class="col-1"></div>
+          <div class="col-10">
+            <h2 class="headerSuporte mt-3">Servidores</h2>
+            <table class="table table-bordered table-light">
+              <thead>
+                <tr>
+                  <th scope="col">ID</th>
+                  <th scope="col">Servidor</th>
+                  <th scope="col">Cidade</th>
+                  <th scope="col">Memória RAM</th>
+                  <th scope="col">Qtd. Núcleos Físicos</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+            <button class="btn btn-primary" id="pre-add">
+              Adicionar servidor
+            </button>
+            <div class="containerFormServer">
+              <h2 class="headerSuporte">Informe os dados</h2>
+              <form action="" class="">
+                <div class="row">
+                  <div class="col-6">
+                    <label for="">Nome do servidor</label>
+                    <input type="text" class="form-control mb-2" id="nome" />
+                    <label for="">Cidade</label>
+                    <input type="text" class="form-control mb-2" id="cidade" />
+                    <label for="">Núcleos</label>
+                    <input type="text" class="form-control mb-2" id="nucleos" />
+                  </div>
+                  <div class="col-6">
+                    <label for="">Capacidade disco 1 (GB)</label>
+                    <input type="text" class="form-control mb-2" id="disco1" />
+                    <label for="">Capacidade disco 2 (GB)</label>
+                    <input type="text" class="form-control" id="disco2" />
+                    <label for="">Memória RAM (GB)</label>
+                    <input type="text" class="form-control mb-2" id="ram" />
+                  </div>
+                </div>
+                <a href="#" class="btn btn-primary mt-4" id="add-server">
+                  Adicionar
+                </a>
+              </form>
+            </div>
+          </div>
+          <div class="col-1"></div>
+        </div>
+      </div>
+    </main>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="../assets/js/cadastro.js"></script>
+    <!-- <script src="js/geral-dash.js"></script> -->
+
+    <!-- <script src="js/cadastro-dashboard.js"></script> -->
+
+    <script>
+      let preAdd = document.querySelector("#pre-add");
+      let add = document.querySelector("#add-server");
+      let containerForm = document.querySelector(".containerFormServer");
+      let addUsuario = document.querySelector(".adicionar-usuario");
+
+      if (sessionStorage.getItem("cargo") == "suporte") {
+        preAdd.style.display = "none";
+        addUsuario.style.display = "none";
+      }
+
+      preAdd.addEventListener("click", () => {
+        preAdd.style.display = "none";
+        containerForm.style.display = "block";
+      });
+
+      add.addEventListener("click", adicionarServidor);
+
+      let nomeServidor = "";
+      let totalServidor = null;
+      let cidadeServidro = "";
+      window.onload = buscarServidores();
+      function buscarServidores() {
+        // if (proximaAtualizacao != undefined) {
+        //   clearTimeout(proximaAtualizacao);
+        // }
+
+        fetch(`/medidas/servidor`, { cache: "no-store" })
+          .then(function (response) {
+            if (response.ok) {
+              response.json().then(function (resposta) {
+                // console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                // resposta.reverse();
+                // console.log(resposta);
+
+                let tbody = document.querySelector("tbody");
+
+                for (let i = 0; i < resposta.length; i++) {
+                  let linha = resposta[i];
+                  // console.log(linha);
+                  let texto = document.createTextNode(linha.cidade);
+                  let ram = document.createTextNode(linha.qtd_memoria_ram);
+                  let nucleos = document.createTextNode(
+                    linha.qtd_nucleos_fisicoas
+                  );
+                  let row = document.createElement("tr");
+                  let th = document.createElement("th");
+                  let td1 = document.createElement("td");
+                  let td2 = document.createElement("td");
+
+                  let cell1 = document
+                    .createElement("td")
+                    .appendChild(document.createTextNode(linha.id_servidor));
+                  let cell2 = document
+                    .createElement("td")
+                    .appendChild(document.createTextNode(linha.nome_servidor));
+                  let cell3 = document.createElement("td").appendChild(texto);
+
+                  let cell4 = document.createElement("td");
+                  cell4.innerHTML = linha.qtd_memoria_ram / 10 ** 9 + " GB";
+                  let cell5 = document.createElement("td");
+                  cell5.innerHTML = linha.qtd_nucleos_fisicos;
+
+                  th.appendChild(cell1);
+                  td1.appendChild(cell2);
+                  td2.appendChild(cell3);
+                  row.appendChild(th);
+                  row.appendChild(td1);
+                  row.appendChild(td2);
+                  row.appendChild(cell4);
+                  row.appendChild(cell5);
+
+                  tbody.appendChild(row);
+                }
+
+                resposta.forEach((linha) => {});
+                // let objeto = {id}
+              });
+            } else {
+              console.error("Nenhum dado encontrado ou erro na API");
+            }
+          })
+          .catch(function (error) {
+            console.error(
+              `Erro na obtenção dos dados p/ gráfico: ${error.message}`
+            );
+          });
+      }
+    </script>
+  </body>
+</html>

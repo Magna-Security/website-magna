@@ -1,3 +1,5 @@
+/** @format */
+
 var express = require("express");
 var router = express.Router();
 
@@ -34,6 +36,10 @@ router.post("/cadastrarFuncionario", function (req, res) {
 
 router.post("/autenticar", function (req, res) {
   usuarioController.entrar(req, res);
+});
+
+router.post("/add-server", function (req, res) {
+  usuarioController.adicionarServidor(req, res);
 });
 
 module.exports = router;

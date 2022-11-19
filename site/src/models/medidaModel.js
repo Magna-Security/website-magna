@@ -108,9 +108,34 @@ function buscarMedidasEmTempoRealSuporte(idAquario) {
   return database.executar(instrucaoSql);
 }
 
+function buscarServidores() {
+  instrucaoSql = "";
+
+  if (process.env.AMBIENTE_PROCESSO == "producao") {
+    instrucaoSql = `
+    SELECT
+        id_servidor,
+        nome_servidor,
+        total_armazenamento_disco_1,    
+        qtd_nucleos_fisicos,
+        qtd_memoria_ram,
+        ISNULL(cidade, ' ') as cidade
+    FROM Servidor`;
+  } else {
+    console.log(
+      "\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n"
+    );
+    return;
+  }
+
+  console.log("Executando a instrução SQL: \n" + instrucaoSql);
+  return database.executar(instrucaoSql);
+}
+
 module.exports = {
   buscarUltimasMedidas,
   buscarUltimasMedidasSuporte,
   buscarMedidasEmTempoReal,
   buscarMedidasEmTempoRealSuporte,
+  buscarServidores,
 };

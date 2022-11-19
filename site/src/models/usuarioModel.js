@@ -1,3 +1,5 @@
+/** @format */
+
 var database = require("../database/config");
 
 function listar() {
@@ -101,7 +103,7 @@ function cadastrarManager(nome, email, senha, fkEmpresa) {
   // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
   //  e na ordem de inserção dos dados.
   var instrucao = `
-        insert into Usuario(nome_usuario, fk_empresa, email, senha, tipo_usuario) values ('${nome}', ${fkEmpresa}, '${email}', '${senha}', 'manager');
+        INSERT INTO Usuario(nome_usuario, fk_empresa, email, senha, tipo_usuario) values ('${nome}', 1, '${email}', '${senha}', 'gerente');
     `;
 
   console.log("Executando a instrução SQL: \n" + instrucao);
@@ -128,12 +130,32 @@ function cadastrarFuncionario(nome, email, senha, cargo, fkEmpresa) {
   return database.executar(instrucao);
 }
 
+function adicionarServidor(nome, cidade, nucleos, ram, disco1, disco2) {
+  instrucaoSql = "";
+
+  if (process.env.AMBIENTE_PROCESSO == "producao") {
+    instrucaoSql = `
+    INSERT INTO Servidor
+        (nome_servidor, cidade, qtd_memoria_ram, 	
+          qtd_nucleos_fisicos, total_armazenamento_disco_1, total_armazenamento_disco_2) values ('${nome}', '${cidade}', ${ram}, ${nucleos}, ${disco1}, ${disco2})`;
+  } else {
+    console.log(
+      "\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n"
+    );
+    return;
+  }
+
+  console.log("Executando a instrução SQL: \n" + instrucaoSql);
+  return database.executar(instrucaoSql);
+}
+
 module.exports = {
   entrar,
   cadastrar,
   cadastrarEmpresa,
   cadastrarManager,
   cadastrarFuncionario,
+  adicionarServidor,
   listar,
   getIdEmpresa,
 };

@@ -21,4 +21,8 @@ router.get("/tempo-real-suporte/:idAquario", function (req, res) {
   medidaController.buscarMedidasEmTempoRealSuporte(req, res);
 });
 
+router.get("/servidor", function (req, res) {
+  medidaController.buscarServidores(req, res);
+});
+
 module.exports = router;

@@ -1,3 +1,5 @@
+/** @format */
+
 // DADOS DA EMPRESA
 var nomeEmpresa;
 var telefoneEmpresa;
@@ -34,7 +36,9 @@ let caracEspecial = [
 
 let btnCadastrarDash = document.querySelector(".btnCadastrarDashboard");
 
-btnCadastrarDash.addEventListener("click", cadastrarFuncionario);
+if (btnCadastrarDash != null) {
+  btnCadastrarDash.addEventListener("click", cadastrarFuncionario);
+}
 
 function cadastrarEmpresa(nomeVar, telefoneVar, cnpjVar) {
   // Enviando o valor da nova input
@@ -135,6 +139,48 @@ function cadastrarFuncionario() {
       senhaServer: senhaVar,
       fkEmpresaServer: fkEmpresa,
       cargoServer: cargoVar,
+    }),
+  })
+    .then(function (resposta) {
+      console.log("resposta: ", resposta);
+
+      if (resposta.ok) {
+        alert("Cadastro realizado com sucesso!");
+      } else {
+        window.alert("Houve um erro ao tentar realizar o cadastro!");
+        throw "Houve um erro ao tentar realizar o cadastro!";
+      }
+    })
+    .catch(function (resposta) {
+      console.log(`#ERRO: ${resposta}`);
+    });
+
+  return false;
+}
+
+function adicionarServidor() {
+  var nome = document.querySelector("#nome").value;
+  var cidade = document.querySelector("#cidade").value;
+  var disco1 = document.querySelector("#disco1").value;
+  var disco2 = document.querySelector("#disco2").value;
+  var ram = document.querySelector("#ram").value;
+  var nucleos = document.querySelector("#nucleos").value;
+
+  // Enviando o valor da nova input
+  fetch("/usuarios/add-server", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      // crie um atributo que recebe o valor recuperado aqui
+      // Agora vá para o arquivo routes/usuario.js
+      nomeServer: nome,
+      cidadeServer: cidade,
+      nucleosServer: ram,
+      ramServer: nucleos,
+      disco1Server: disco1,
+      disco2Server: disco2,
     }),
   })
     .then(function (resposta) {
