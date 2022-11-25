@@ -90,17 +90,21 @@
         </div>
       </div>
       <div class="containerDash w-100">
-        <!-- ====================================== tecnico ===================================== -->
-        <!-- ====================================== tecnico ===================================== -->
-        <!-- ====================================== tecnico ===================================== -->
-        <!-- ====================================== tecnico ===================================== -->
-        <!-- ====================================== tecnico ===================================== -->
+        <!-- ====================================== Técnico ===================================== -->
+        <!-- ====================================== Técnico ===================================== -->
+        <!-- ====================================== Técnico ===================================== -->
+        <!-- ====================================== Técnico ===================================== -->
+        <!-- ====================================== Técnico ===================================== -->
         <div class="linhaTecnico linhaArray">
-          <div class="row formatarRow ">
-            <h2 class="headerSuporte">Servidor <span id="numServidor">1</span></h2>
-            <select id="comboServidor" class="w-25 d-block form-select" onchange="atualizarTitulo(event)">
-            </select>
-
+          <div class="row formatarRow">
+            <h2 class="headerSuporte">
+              Servidor <span id="numServidor">1</span>
+            </h2>
+            <select
+              id="comboServidor"
+              class="w-25 d-block form-select"
+              onchange="atualizarTitulo(event)"
+            ></select>
           </div>
           <div class="row gy-3 gx-3 formatarRow">
             <div class="col-6">
@@ -131,7 +135,7 @@
             </div>
           </div>
           <div class="row gx-3 gy-3 formatarRow">
-            <div class="col-12">
+            <!-- <div class="col-12">
               <div class="colGraficoTecnico">
                 <div class="headerSuporte">Processos</div>
                 <table class="table table-bordered tabelaGerente">
@@ -165,23 +169,7 @@
                   </tbody>
                 </table>
               </div>
-            </div>
-          </div>
-        </div>
-        <!-- ====================================== Suporte ===================================== -->
-        <!-- ====================================== Suporte ===================================== -->
-        <!-- ====================================== Suporte ===================================== -->
-        <!-- ====================================== Suporte ===================================== -->
-        <!-- ====================================== Suporte ===================================== -->
-        <!-- ====================================== Suporte ===================================== -->
-        <div class="linhaSuporte linhaArray">
-          <div class="row formatarRow ">
-            <h2 class="headerSuporte">Servidor <span id="numServidor2">1</span></h2>
-            <select id="comboServidor2" class="w-25 d-block form-select" onchange="atualizarTitulo2(event)">
-            </select>
-
-          </div>
-          <div class="row formatarRow gx-3 gy-3">
+            </div> -->
             <div class="col-6">
               <div class="colGraficoTecnico">
                 <div class="headerSuporte text-center">Disco 1</div>
@@ -210,50 +198,87 @@
             </div>
           </div>
         </div>
-
-        <!-- ====================================== Gerente ===================================== -->
-        <!-- ====================================== Gerente ===================================== -->
-        <!-- ====================================== Gerente ===================================== -->
-        <!-- ====================================== Gerente ===================================== -->
-        <!-- ====================================== Gerente ===================================== -->
-        <!-- ====================================== Gerente ===================================== -->
-
-        <!-- <div class="linhaAdmin linhaArray">
-          <div class="row formatarRow gy-3 gx-3">
-            <h2 class="h2 mt-5" style="color: white">Informações gerais</h2>
+        <!-- ====================================== Suporte ===================================== -->
+        <!-- ====================================== Suporte ===================================== -->
+        <!-- ====================================== Suporte ===================================== -->
+        <!-- ====================================== Suporte ===================================== -->
+        <!-- ====================================== Suporte ===================================== -->
+        <!-- ====================================== Suporte ===================================== -->
+        <div class="linhaSuporte linhaArray">
+          <div class="row formatarRow">
+            <h2 class="headerSuporte">
+              Servidor <span id="numServidor2">1</span>
+            </h2>
+            <select
+              id="comboServidor2"
+              class="w-25 d-block form-select"
+              onchange="atualizarTitulo2(event)"
+            ></select>
+          </div>
+          <div class="row formatarRow gx-3 gy-3">
             <div class="col-6">
-              <div class="colGraficoTecnico m-0">
+              <div class="colGraficoTecnico">
+                <div class="headerSuporte text-center">CPU</div>
                 <div class="kpi">
                   <div class="seguro">10%</div>
                   <div class="mediano">50%</div>
                   <div class="perigo">90%</div>
                 </div>
+                <div class="grafico-linha">
+                  <canvas id="graficoSuporte3"></canvas>
+                </div>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="colGraficoTecnico">
+                <div class="headerSuporte text-center">RAM</div>
+                <div class="kpi">
+                  <div class="seguro">10%</div>
+                  <div class="mediano">50%</div>
+                  <div class="perigo">90%</div>
+                </div>
+                <div class="grafico-linha">
+                  <canvas id="graficoSuporte4"></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ====================================== Gerente ===================================== -->
+        <!-- ====================================== Gerente ===================================== -->
+        <!-- ====================================== Gerente ===================================== -->
+        <!-- ====================================== Gerente ===================================== -->
+        <!-- ====================================== Gerente ===================================== -->
+        <!-- ====================================== Gerente ===================================== -->
+
+        <div class="linhaAdmin linhaArray">
+          <div class="row formatarRow gy-3 gx-3">
+            <h2 class="h2 mt-5" style="color: white">Informações gerais</h2>
+            <div class="col-4">
+              <div class="m-0">
                 <div class="status">
                   <p>Média CPU</p>
                   <span>75%</span>
                 </div>
-                <div class="grafico-linha">
-                  <canvas id="graficoGerente3"></canvas>
-                </div>
               </div>
             </div>
-
-            <div class="col-6">
-              <div class="colGraficoTecnico m-0">
-                <div class="kpi">
-                  <div class="seguro">10%</div>
-                  <div class="mediano">50%</div>
-                  <div class="perigo">90%</div>
-                </div>
+            <div class="col-4">
+              <div class="m-0">
                 <div class="status">
                   <p>Média RAM</p>
                   <span>81%</span>
                 </div>
-                <div class="grafico-linha">
-                  <canvas id="graficoGerente4"></canvas>
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="m-0">
+                <div class="status">
+                  <p>Média RAM</p>
+                  <span>81%</span>
                 </div>
               </div>
-            </div> -->
+            </div>
 
             <!-- <div class="col-12">
               <div class="grafico-linha grafico-linha-admin">
@@ -261,24 +286,30 @@
               </div>
             </div> -->
 
-            <!-- <h2 style="color: white" class="h2">Suporte</h2>
-            <div class="colGraficoTecnico">
+            <h2 style="color: white" class="h2">Suporte</h2>
+            <div class="">
               <div></div>
               <div class="d-flex mt-2">
-                <div class="col-6">
+                <div class="col-4">
                   <div class="status">
                     <p>Chamados abertos mês</p>
                     <span>18</span>
                   </div>
                 </div>
-                <div class="col-6">
+                <div class="col-4">
+                  <div class="status">
+                    <p>Problemas resolvidos</p>
+                    <span>16</span>
+                  </div>
+                </div>
+                <div class="col-4">
                   <div class="status">
                     <p>Problemas resolvidos</p>
                     <span>16</span>
                   </div>
                 </div>
               </div>
-            </div> -->
+            </div>
 
             <!-- <div class="col-6 classeSuporte">
               <div class="grafico-linha grafico-suporte">
@@ -321,6 +352,8 @@
       let myChart1;
       let myChart2;
       let myChart3;
+      let myChart4;
+      let myChart5;
 
       let contadorGrafico = 0;
       let contadorGrafico2 = 0;
@@ -346,27 +379,54 @@
           clearTimeout(proximaAtualizacao);
         }
 
-     
-          fetch(`/medidas/ultimas/${idAquario}`, { cache: "no-store" })
-            .then(function (response) {
-              if (response.ok) {
-                response.json().then(function (resposta) {
-                  // console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
-                  resposta.reverse();
+        fetch(`/medidas/ultimas/${idAquario}`, { cache: "no-store" })
+          .then(function (response) {
+            if (response.ok) {
+              response.json().then(function (resposta) {
+                // console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                resposta.reverse();
 
-                  plotarGrafico(resposta, idAquario, grafico, configEscolhida);
-                });
-              } else {
-                console.error("Nenhum dado encontrado ou erro na API");
-              }
-            })
-            .catch(function (error) {
-              console.error(
-                `Erro na obtenção dos dados p/ gráfico: ${error.message}`
-              );
-            });
-      
-        
+                plotarGrafico(resposta, idAquario, grafico, configEscolhida);
+              });
+            } else {
+              console.error("Nenhum dado encontrado ou erro na API");
+            }
+          })
+          .catch(function (error) {
+            console.error(
+              `Erro na obtenção dos dados p/ gráfico: ${error.message}`
+            );
+          });
+      }
+
+      function obterDadosGraficoSuporte2(idAquario, grafico, configEscolhida) {
+        if (proximaAtualizacao != undefined) {
+          clearTimeout(proximaAtualizacao);
+        }
+
+        fetch(`/medidas/ultimas/${idAquario}`, { cache: "no-store" })
+          .then(function (response) {
+            if (response.ok) {
+              response.json().then(function (resposta) {
+                // console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                resposta.reverse();
+                console.log("aa");
+                plotarGraficoSuporte2(
+                  resposta,
+                  idAquario,
+                  grafico,
+                  configEscolhida
+                );
+              });
+            } else {
+              console.error("Nenhum dado encontrado ou erro na API");
+            }
+          })
+          .catch(function (error) {
+            console.error(
+              `Erro na obtenção dos dados p/ gráfico: ${error.message}`
+            );
+          });
       }
 
       function obterDadosGraficoSuporte(idAquario, grafico, configEscolhida) {
@@ -374,35 +434,35 @@
           clearTimeout(proximaAtualizacao);
         }
         fetch(`/medidas/ultimasSuporte/${idAquario}`, { cache: "no-store" })
-            .then(function (response) {
-              if (response.ok) {
-                response.json().then(function (resposta) {
-                  // console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
-                  resposta.reverse();
+          .then(function (response) {
+            if (response.ok) {
+              response.json().then(function (resposta) {
+                // console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                resposta.reverse();
 
-                  plotarGraficoSuporte(
-                    resposta,
-                    idAquario,
-                    grafico,
-                    configEscolhida
-                  );
-                });
-              } else {
-                console.error("Nenhum dado encontrado ou erro na API");
-              }
-            })
-            .catch(function (error) {
-              console.error(
-                `Erro na obtenção dos dados p/ gráfico: ${error.message}`
-              );
-            });
+                plotarGraficoSuporte(
+                  resposta,
+                  idAquario,
+                  grafico,
+                  configEscolhida
+                );
+              });
+            } else {
+              console.error("Nenhum dado encontrado ou erro na API");
+            }
+          })
+          .catch(function (error) {
+            console.error(
+              `Erro na obtenção dos dados p/ gráfico: ${error.message}`
+            );
+          });
       }
 
       // Esta função *plotarGrafico* usa os dados capturados na função anterior para criar o gráfico
       // Configura o gráfico (cores, tipo, etc), materializa-o na página e,
       // A função *plotarGrafico* também invoca a função *atualizarGrafico*
       function plotarGrafico(resposta, idAquario, grafico, configEscolhida) {
-        console.log('chegou')
+        console.log("chegou");
         console.log("iniciando plotagem do gráfico...");
 
         // Criando estrutura para plotar gráfico - labels
@@ -448,9 +508,7 @@
         // console.log(resposta);
 
         // Inserindo valores recebidos em estrutura para plotar o gráfico
-        if (
-          grafico == "graficoGerente"
-        ) {
+        if (grafico == "graficoGerente") {
           for (i = 0; i < resposta.length; i++) {
             var registro = resposta[i];
             var vetor = registro.dt_registro.split("T");
@@ -459,7 +517,6 @@
             dadosGerente.datasets[0].data.push(registro.cpu_em_uso);
           }
         } else if (grafico == "graficoGerente2") {
-
           for (i = 0; i < resposta.length; i++) {
             var registro = resposta[i];
             var vetor = registro.dt_registro.split("T");
@@ -472,8 +529,6 @@
             dadosGerente2.datasets[0].data.push(porcentagem);
           }
         }
-
-        
 
         // console.log("----------------------------------------------");
         // console.log("O gráfico será plotado com os respectivos valores:");
@@ -531,14 +586,14 @@
           myChart = new Chart(
             document.getElementById(grafico),
             configEscolhida
-            );
+          );
         } else if (grafico == "graficoGerente2") {
           myChart1 = new Chart(
             document.getElementById(grafico),
             configEscolhida
-            );
-        }      
-        
+          );
+        }
+
         if (grafico == "graficoGerente") {
           setTimeout(
             () => atualizarGrafico(idAquario, dadosGerente, myChart),
@@ -657,11 +712,96 @@
           );
         } else if (grafico == "graficoSuporte2") {
           myChart3 = new Chart(
-          document.getElementById(grafico),
-          configEscolhida
-            );
-          }
-        
+            document.getElementById(grafico),
+            configEscolhida
+          );
+        }
+
+        if (grafico == "graficoSuporte") {
+          setTimeout(
+            () => atualizarGraficoSuporte(idAquario, dadosSuporte, myChart2),
+            2000
+          );
+        } else if (grafico == "graficoSuporte2") {
+          setTimeout(
+            () => atualizarGraficoSuporte(idAquario, dadosSuporte2, myChart2),
+            2000
+          );
+        }
+      }
+
+      function plotarGraficoSuporte2(
+        resposta,
+        idAquario,
+        grafico,
+        configEscolhida
+      ) {
+        console.log("iniciando plotagem do gráfico...");
+        let labels = [];
+        let labels2 = [];
+
+        const dadosSuporte = {
+          labels: labels,
+          datasets: [
+            {
+              label: ["CPU em uso"],
+              data: [],
+              backgroundColor: ["#576E97"],
+              hoverOffset: 4,
+            },
+          ],
+        };
+
+        const dadosSuporte2 = {
+          labels: labels2,
+          datasets: [
+            {
+              label: ["RAM em uso"],
+              data: [],
+              backgroundColor: ["#576E97"],
+              hoverOffset: 4,
+            },
+          ],
+        };
+
+        if (grafico == "graficoSuporte3") {
+          var registro = resposta[resposta.length - 1];
+          dadosSuporte.datasets[0].data.push(registro.cpu_em_uso);
+        } else if (grafico == "graficoSuporte4") {
+          var registro = resposta[resposta.length - 1];
+          let totalPor = 120000000000;
+          let porcentagem = ((registro.ram_em_uso / totalPor) * 100).toFixed(2);
+          dadosSuporte2.datasets[0].data.push(porcentagem);
+        }
+
+        if (grafico == "graficoSuporte3") {
+          const configSuporte = {
+            type: "pie",
+            data: dadosSuporte,
+          };
+
+          configEscolhida = configSuporte;
+        } else if (grafico == "graficoSuporte4") {
+          const configSuporte2 = {
+            type: "pie",
+            data: dadosSuporte2,
+          };
+
+          configEscolhida = configSuporte2;
+        }
+        // Adicionando gráfico criado em div na tela
+        if (grafico == "graficoSuporte3") {
+          myChart4 = new Chart(
+            document.getElementById(grafico),
+            configEscolhida
+          );
+        } else if (grafico == "graficoSuporte4") {
+          myChart5 = new Chart(
+            document.getElementById(grafico),
+            configEscolhida
+          );
+        }
+
         if (grafico == "graficoSuporte") {
           setTimeout(
             () => atualizarGraficoSuporte(idAquario, dadosSuporte, myChart2),
@@ -810,16 +950,43 @@
                 let numServidor = document.querySelector("#numServidor");
                 let numServidor2 = document.querySelector("#numServidor2");
 
-                obterDadosGrafico(resposta[0].id_servidor, "graficoGerente", configGerente);
-                obterDadosGrafico(resposta[0].id_servidor, "graficoGerente2", configGerente2);
-                obterDadosGraficoSuporte(resposta[0].id_servidor, "graficoSuporte", configSuporte);
-                obterDadosGraficoSuporte(resposta[0].id_servidor, "graficoSuporte2", configSuporte2);
+                obterDadosGrafico(
+                  resposta[0].id_servidor,
+                  "graficoGerente",
+                  configGerente
+                );
+                obterDadosGrafico(
+                  resposta[0].id_servidor,
+                  "graficoGerente2",
+                  configGerente2
+                );
+                obterDadosGraficoSuporte(
+                  resposta[0].id_servidor,
+                  "graficoSuporte",
+                  configSuporte
+                );
+                obterDadosGraficoSuporte(
+                  resposta[0].id_servidor,
+                  "graficoSuporte2",
+                  configSuporte2
+                );
 
-                numServidor.innerHTML = resposta[0].id_servidor + " - " + resposta[0].nome_servidor;
-                numServidor2.innerHTML = resposta[0].id_servidor + " - " + resposta[0].nome_servidor;
+                obterDadosGraficoSuporte2(
+                  resposta[0].id_servidor,
+                  "graficoSuporte3",
+                  configSuporte
+                );
+                obterDadosGraficoSuporte2(
+                  resposta[0].id_servidor,
+                  "graficoSuporte4",
+                  configSuporte2
+                );
 
-                
-     
+                numServidor.innerHTML =
+                  resposta[0].id_servidor + " - " + resposta[0].nome_servidor;
+                numServidor2.innerHTML =
+                  resposta[0].id_servidor + " - " + resposta[0].nome_servidor;
+
                 let select = document.querySelector("#comboServidor");
                 let select2 = document.querySelector("#comboServidor2");
 
@@ -861,38 +1028,89 @@
         myChart2.destroy();
         myChart3.destroy();
         if (contadorGrafico == 0) {
-          obterDadosGrafico(optEscolhida.value, "graficoGerente", configGerente);
-          obterDadosGrafico(optEscolhida.value, "graficoGerente2", configGerente2);
+          obterDadosGrafico(
+            optEscolhida.value,
+            "graficoGerente",
+            configGerente
+          );
+          obterDadosGrafico(
+            optEscolhida.value,
+            "graficoGerente2",
+            configGerente2
+          );
+
+          obterDadosGraficoSuporte(
+            optEscolhida.value,
+            "graficoSuporte",
+            configSuporte
+          );
+          obterDadosGraficoSuporte(
+            optEscolhida.value,
+            "graficoSuporte2",
+            configSuporte2
+          );
           contadorGrafico++;
         } else {
-         obterDadosGrafico(optEscolhida.value, "graficoGerente", configGerente);
-          obterDadosGrafico(optEscolhida.value, "graficoGerente2", configGerente2);
+          obterDadosGrafico(
+            optEscolhida.value,
+            "graficoGerente",
+            configGerente
+          );
+          obterDadosGrafico(
+            optEscolhida.value,
+            "graficoGerente2",
+            configGerente2
+          );
+
+          obterDadosGraficoSuporte(
+            optEscolhida.value,
+            "graficoSuporte",
+            configSuporte
+          );
+          obterDadosGraficoSuporte(
+            optEscolhida.value,
+            "graficoSuporte2",
+            configSuporte2
+          );
         }
 
-       
-
-        numServidor.innerHTML = optEscolhida.value + " - " + optEscolhida.innerHTML;
+        numServidor.innerHTML =
+          optEscolhida.value + " - " + optEscolhida.innerHTML;
       }
 
       function atualizarTitulo2() {
         let numServidor2 = document.querySelector("#numServidor2");
         let lista2 = document.querySelector("#comboServidor2");
         let optEscolhida2 = lista2.options[lista2.selectedIndex];
-        // myChart.destroy();
-        // myChart1.destroy();
-        myChart2.destroy();
-        myChart3.destroy();
-
+        myChart4.destroy();
+        myChart5.destroy();
         if (contadorGrafico2 == 0) {
-          obterDadosGraficoSuporte(optEscolhida2.value, "graficoSuporte", configSuporte);
-          obterDadosGraficoSuporte(optEscolhida2.value, "graficoSuporte2", configSuporte2);
+          obterDadosGraficoSuporte2(
+            optEscolhida2.value,
+            "graficoSuporte3",
+            configSuporte
+          );
+          obterDadosGraficoSuporte2(
+            optEscolhida2.value,
+            "graficoSuporte4",
+            configSuporte2
+          );
           contadorGrafico2++;
         } else {
-          obterDadosGraficoSuporte(optEscolhida2.value, "graficoSuporte", configSuporte);
-          obterDadosGraficoSuporte(optEscolhida2.value, "graficoSuporte2", configSuporte2);
+          obterDadosGraficoSuporte2(
+            optEscolhida2.value,
+            "graficoSuporte3",
+            configSuporte
+          );
+          obterDadosGraficoSuporte2(
+            optEscolhida2.value,
+            "graficoSuporte4",
+            configSuporte2
+          );
         }
 
-        numServidor2.innerHTML = optEscolhida2.value + " - " + optEscolhida2.innerHTML;
+        numServidor2.innerHTML =
+          optEscolhida2.value + " - " + optEscolhida2.innerHTML;
       }
     </script>
   </body>
