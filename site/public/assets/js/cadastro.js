@@ -146,6 +146,7 @@ function cadastrarFuncionario() {
 
       if (resposta.ok) {
         alert("Cadastro realizado com sucesso!");
+        window.location.reload();
       } else {
         window.alert("Houve um erro ao tentar realizar o cadastro!");
         throw "Houve um erro ao tentar realizar o cadastro!";

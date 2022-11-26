@@ -25,4 +25,24 @@ router.get("/servidor", function (req, res) {
   medidaController.buscarServidores(req, res);
 });
 
+router.get("/servidor/deletar/:idLinha", function (req, res) {
+  medidaController.deletarServidor(req, res);
+});
+
+router.put("/servidor/atualizar/:idLinha", function (req, res) {
+  medidaController.atualizarServidor(req, res);
+});
+
+router.get("/usuarios", function (req, res) {
+  medidaController.buscarUsuarios(req, res);
+});
+
+router.get("/usuarios/deletar/:idLinha", function (req, res) {
+  medidaController.deletarUsuario(req, res);
+});
+
+router.put("/usuarios/atualizar/:idLinha", function (req, res) {
+  medidaController.atualizarUsuario(req, res);
+});
+
 module.exports = router;

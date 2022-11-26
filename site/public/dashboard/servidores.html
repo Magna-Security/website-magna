@@ -105,6 +105,7 @@
                   <th scope="col">Cidade</th>
                   <th scope="col">Memória RAM</th>
                   <th scope="col">Qtd. Núcleos Físicos</th>
+                  <th scope="col">Ações</th>
                 </tr>
               </thead>
               <tbody></tbody>
@@ -133,8 +134,16 @@
                     <input type="text" class="form-control mb-2" id="ram" />
                   </div>
                 </div>
-                <a href="#" class="btn btn-primary mt-4" id="add-server">
+                <a href="#" class="btn btn-primary mt-4 w-25" id="add-server">
                   Adicionar
+                </a>
+                <a
+                  href="#"
+                  class="btn btn-primary mt-4 w-25"
+                  id="edit-server"
+                  onclick="atualizarDados(event)"
+                >
+                  Salvar
                 </a>
               </form>
             </div>
@@ -158,8 +167,12 @@
     <script>
       let preAdd = document.querySelector("#pre-add");
       let add = document.querySelector("#add-server");
+      let edit = document.querySelector("#edit-server");
       let containerForm = document.querySelector(".containerFormServer");
       let addUsuario = document.querySelector(".adicionar-usuario");
+      let listaServidores;
+      let servidorParaModificar;
+      let idLinha;
 
       if (sessionStorage.getItem("cargo") == "suporte") {
         preAdd.style.display = "none";
@@ -168,7 +181,10 @@
 
       preAdd.addEventListener("click", () => {
         preAdd.style.display = "none";
+        edit.style.display = "none";
+        add.style.display = "block";
         containerForm.style.display = "block";
+        limparCamposCadastroServidor();
       });
 
       add.addEventListener("click", adicionarServidor);
@@ -189,21 +205,28 @@
                 // console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
                 // resposta.reverse();
                 // console.log(resposta);
+                listaServidores = resposta;
+                // console.log(listaServidores);
 
                 let tbody = document.querySelector("tbody");
 
                 for (let i = 0; i < resposta.length; i++) {
                   let linha = resposta[i];
-                  // console.log(linha);
                   let texto = document.createTextNode(linha.cidade);
                   let ram = document.createTextNode(linha.qtd_memoria_ram);
                   let nucleos = document.createTextNode(
-                    linha.qtd_nucleos_fisicoas
+                    linha.qtd_nucleos_fisicos
                   );
                   let row = document.createElement("tr");
                   let th = document.createElement("th");
                   let td1 = document.createElement("td");
                   let td2 = document.createElement("td");
+                  let td3 = document.createElement("td");
+                  td3.classList.add("text-center");
+                  td3.innerHTML +=
+                    "<button class='bi bi-pencil-square btn btn-warning' style='margin-right: 10px; display: inline-block' onclick='atualizarLinha(event)'></button>";
+                  td3.innerHTML +=
+                    "<button class='bi bi-x btn btn-danger' style='margin-right: 10px; display: inline-block' onclick='excluirLinha(event)'></button>";
 
                   let cell1 = document
                     .createElement("td")
@@ -226,6 +249,7 @@
                   row.appendChild(td2);
                   row.appendChild(cell4);
                   row.appendChild(cell5);
+                  row.appendChild(td3);
 
                   tbody.appendChild(row);
                 }
@@ -242,6 +266,111 @@
               `Erro na obtenção dos dados p/ gráfico: ${error.message}`
             );
           });
+      }
+
+      function excluirLinha(e) {
+        let idLinha = e.target.parentElement.parentElement.firstChild.innerHTML;
+
+        fetch(`/medidas/servidor/deletar/${idLinha}`, { cache: "no-store" })
+          .then(function (response) {
+            console.log(response.ok == true);
+            if (response.ok == true) {
+              // response.json().then(function (resposta) {
+              //   // console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+              //   // resposta.reverse();
+              // });
+            } else {
+              console.error("Nenhum dado encontrado ou erro na API");
+            }
+          })
+          .catch(function (error) {
+            console.error(
+              `Erro na obtenção dos dados p/ gráfico: ${error.message}`
+            );
+          });
+      }
+
+      function atualizarLinha(e) {
+        idLinha = e.target.parentElement.parentElement.firstChild.innerHTML;
+        edit.style.display = "block";
+        preAdd.style.display = "block";
+        add.style.display = "none";
+
+        listaServidores.forEach((linha) => {
+          if (linha.id_servidor == idLinha) {
+            servidorParaModificar = linha;
+          }
+        });
+
+        let nomeForm = (containerForm.querySelector("#nome").value =
+          servidorParaModificar.nome_servidor);
+        let cidadeForm = (containerForm.querySelector("#cidade").value =
+          servidorParaModificar.cidade);
+        let nucleosForm = (containerForm.querySelector("#nucleos").value =
+          servidorParaModificar.qtd_nucleos_fisicos);
+        let disco1Form = (containerForm.querySelector("#disco1").value =
+          servidorParaModificar.total_armazenamento_disco_1 / (1 * 10 ** 9));
+        let disco2Form = (containerForm.querySelector("#disco2").value =
+          servidorParaModificar.total_armazenamento_disco_2 / (1 * 10 ** 9));
+        let ramForm = (containerForm.querySelector("#ram").value =
+          servidorParaModificar.qtd_memoria_ram / (1 * 10 ** 9));
+        containerForm.style.display = "block";
+      }
+
+      function atualizarDados(e) {
+        listaServidores.forEach((linha) => {
+          if (linha.id_servidor == idLinha) {
+            servidorParaModificar = linha;
+          }
+        });
+        let nomeForm = containerForm.querySelector("#nome").value;
+        let cidadeForm = containerForm.querySelector("#cidade").value;
+        let nucleosForm = containerForm.querySelector("#nucleos").value;
+        let disco1Form = containerForm.querySelector("#disco1").value;
+        let disco2Form = containerForm.querySelector("#disco2").value;
+        let ramForm = containerForm.querySelector("#ram").value;
+        disco1Form *= 1 * 10 ** 9;
+        disco2Form *= 1 * 10 ** 9;
+        ramForm *= 1 * 10 ** 9;
+
+        fetch(`/medidas/servidor/atualizar/${idLinha}`, {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            // crie um atributo que recebe o valor recuperado aqui
+            // Agora vá para o arquivo routes/usuario.js
+            nomeServer: nomeForm,
+            cidadeServer: cidadeForm,
+            nucleosServer: nucleosForm,
+            ramServer: ramForm,
+            disco1Server: disco1Form,
+            disco2Server: disco2Form,
+          }),
+        })
+          .then(function (resposta) {
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+              alert("Atualização realizada com sucesso!");
+            } else {
+              window.alert("Houve um erro ao tentar realizar a atualização!");
+              throw "Houve um erro ao tentar realizar a atualização!";
+            }
+          })
+          .catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+          });
+      }
+
+      function limparCamposCadastroServidor() {
+        let nomeForm = (containerForm.querySelector("#nome").value = "");
+        let cidadeForm = (containerForm.querySelector("#cidade").value = "");
+        let nucleosForm = (containerForm.querySelector("#nucleos").value = "");
+        let disco1Form = (containerForm.querySelector("#disco1").value = "");
+        let disco2Form = (containerForm.querySelector("#disco2").value = "");
+        let ramForm = (containerForm.querySelector("#ram").value = "");
       }
     </script>
   </body>

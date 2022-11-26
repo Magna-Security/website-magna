@@ -522,7 +522,7 @@
             var vetor = registro.dt_registro.split("T");
             var horario = vetor[1].slice(0, 8);
             labels2.push(horario);
-            let totalPor = 120000000000;
+            let totalPor = 4000000000;
             let porcentagem = ((registro.ram_em_uso / totalPor) * 100).toFixed(
               2
             );
@@ -738,7 +738,7 @@
       ) {
         console.log("iniciando plotagem do gráfico...");
         let labels = [];
-        let labels2 = [];
+        let labels2 = ["RAM em uso", "RAM restante"];
 
         const dadosSuporte = {
           labels: labels,
@@ -756,9 +756,9 @@
           labels: labels2,
           datasets: [
             {
-              label: ["RAM em uso"],
+              label: ["RAM"],
               data: [],
-              backgroundColor: ["#576E97"],
+              backgroundColor: ["#576E97", "#49abb9"],
               hoverOffset: 4,
             },
           ],
@@ -769,9 +769,13 @@
           dadosSuporte.datasets[0].data.push(registro.cpu_em_uso);
         } else if (grafico == "graficoSuporte4") {
           var registro = resposta[resposta.length - 1];
-          let totalPor = 120000000000;
-          let porcentagem = ((registro.ram_em_uso / totalPor) * 100).toFixed(2);
+          let totalPor = 4000000000;
+          let porcentagem = ((registro.ram_em_uso / totalPor) * 100).toFixed(1);
           dadosSuporte2.datasets[0].data.push(porcentagem);
+          dadosSuporte2.datasets[0].data.push(
+            ((totalPor - registro.ram_em_uso) / (1 * 10 ** 9)).toFixed(1)
+          );
+          console.log(dadosSuporte2.datasets[0].data);
         }
 
         if (grafico == "graficoSuporte3") {
