@@ -395,6 +395,7 @@
       let contadorGrafico = 0;
       let contadorGrafico2 = 0;
       let contadorGrafico3 = 0;
+      let totalPor = 16000000000;
 
       window.onload = getDadosGerente(1);
 
@@ -562,7 +563,7 @@
             var vetor = registro.dt_registro.split("T");
             var horario = vetor[1].slice(0, 8);
             labels2.push(horario);
-            let totalPor = 4000000000;
+            // let totalPor = 4000000000;
             let porcentagem = ((registro.ram_em_uso / totalPor) * 100).toFixed(
               2
             );
@@ -725,7 +726,7 @@
               parseFloat(registro.total_armazenamento_disco_2)) *
             100
           ).toFixed(2);
-          dadosSuporte2.datasets[0].data[i] = registro.disco_em_uso_2;
+          dadosSuporte2.datasets[0].data[i] = valorDisco;
           dadosSuporte2.datasets[1].data[i] = 100;
         }
 
@@ -764,7 +765,7 @@
           );
         } else if (grafico == "graficoSuporte2") {
           setTimeout(
-            () => atualizarGraficoSuporte(idAquario, dadosSuporte2, myChart2),
+            () => atualizarGraficoSuporte(idAquario, dadosSuporte2, myChart3),
             2000
           );
         }
@@ -812,7 +813,6 @@
           dadosSuporte.datasets[0].data.push(totalCpu - registro.cpu_em_uso);
         } else if (grafico == "graficoSuporte4") {
           var registro = resposta[resposta.length - 1];
-          let totalPor = 4000000000;
           let porcentagem = ((registro.ram_em_uso / totalPor) * 100).toFixed(1);
           dadosSuporte2.datasets[0].data.push(porcentagem);
           dadosSuporte2.datasets[0].data.push(
@@ -849,14 +849,14 @@
           );
         }
 
-        if (grafico == "graficoSuporte") {
+        if (grafico == "graficoSuporte3") {
           setTimeout(
-            () => atualizarGraficoSuporte(idAquario, dadosSuporte, myChart2),
+            () => atualizarGraficoSuporte2(idAquario, dadosSuporte, myChart4),
             2000
           );
-        } else if (grafico == "graficoSuporte2") {
+        } else if (grafico == "graficoSuporte4") {
           setTimeout(
-            () => atualizarGraficoSuporte(idAquario, dadosSuporte2, myChart2),
+            () => atualizarGraficoSuporte2(idAquario, dadosSuporte2, myChart5),
             2000
           );
         }
@@ -875,7 +875,6 @@
                 // console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
                 // console.log(`Dados atuais do gráfico:`);
                 // console.log(novoRegistro);
-
                 // document.getElementById("avisoCaptura").innerHTML = "";
                 var vetor = novoRegistro[0].dt_registro.split("T");
                 var horario = vetor[1].slice(0, 8);
@@ -900,9 +899,19 @@
                   // tirando e colocando valores no gráfico
                   dados.labels.shift(); // apagar o primeiro
                   dados.labels.push(horario); // incluir um novo momento
-
                   // dados.datasets[0].data.shift(); // apagar o primeiro de umidade
-                  // dados.datasets[0].data.push(novoRegistro[0].umidade); // incluir uma nova medida de umidade
+                  // dados.datasets[0].data.push(novoRegistro[0].cpu_em_uso); // incluir uma nova medida de umidade
+
+                  if (myChart.canvas.id == "graficoGerente") {
+                    // console.log("foi");
+                    dados.datasets[0].data.shift(); // apagar o primeiro de umidade
+                    dados.datasets[0].data.push(novoRegistro[0].cpu_em_uso); // incluir uma nova medida de umidade
+                  } else if (myChart.canvas.id == "graficoGerente2") {
+                    dados.datasets[0].data.shift(); // apagar o primeiro de umidade
+                    dados.datasets[0].data.push(
+                      (novoRegistro[0].ram_em_uso / totalPor) * 100
+                    ); // incluir uma nova medida de umidade
+                  }
 
                   // dados.datasets[1].data.shift(); // apagar o primeiro de temperatura
                   // dados.datasets[1].data.push(novoRegistro[0].temperatura); // incluir uma nova medida de temperatura
@@ -942,6 +951,7 @@
                 // console.log(novoRegistro);
 
                 // document.getElementById("avisoCaptura").innerHTML = "";
+                // console.log(myChart.canvas.id, novoRegistro);
 
                 var vetor = novoRegistro[0].dt_registro.split("T");
                 var horario = vetor[1].slice(0, 8);
@@ -956,6 +966,24 @@
                 } else {
                   dados.labels.shift(); // apagar o primeiro
                   dados.labels.push(horario); // incluir um novo momento
+                  // console.log(myChart.canvas.id, novoRegistro);
+                  if (myChart.canvas.id == "graficoSuporte") {
+                    // console.log("foi");
+                    dados.datasets[0].data.shift(); // apagar o primeiro de umidade
+
+                    dados.datasets[0].data.push(
+                      (novoRegistro[0].disco_em_uso_1 /
+                        novoRegistro[0].total_armazenamento_disco_1) *
+                        100
+                    ); // incluir uma nova medida de umidade
+                  } else if (myChart.canvas.id == "graficoSuporte2") {
+                    dados.datasets[0].data.shift(); // apagar o primeiro de umidade
+                    dados.datasets[0].data.push(
+                      (novoRegistro[0].disco_em_uso_2 /
+                        novoRegistro[0].total_armazenamento_disco_2) *
+                        100
+                    );
+                  }
 
                   myChart.update();
                 }
@@ -969,6 +997,75 @@
               console.error("Nenhum dado encontrado ou erro na API");
               proximaAtualizacao = setTimeout(
                 () => atualizarGrafico(idAquario, dados, myChart),
+                2000
+              );
+            }
+          })
+          .catch(function (error) {
+            console.error(
+              `Erro na obtenção dos dados p/ gráfico: ${error.message}`
+            );
+          });
+      }
+
+      function atualizarGraficoSuporte2(idAquario, dados, myChart) {
+        fetch(`/medidas/tempo-real/${idAquario}`, { cache: "no-store" })
+          .then(function (response) {
+            if (response.ok) {
+              response.json().then(function (novoRegistro) {
+                // console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
+                // console.log(`Dados atuais do gráfico:`);
+                // console.log(novoRegistro);
+
+                // document.getElementById("avisoCaptura").innerHTML = "";
+                // console.log(myChart.canvas.id, novoRegistro);
+
+                var vetor = novoRegistro[0].dt_registro.split("T");
+                var horario = vetor[1].slice(0, 8);
+
+                if (horario == dados.labels[dados.labels.length - 1]) {
+                  // console.log(
+                  //   "---------------------------------------------------------------"
+                  // );
+                  // console.log(
+                  //   "Como não há dados novos para captura, o gráfico não atualizará."
+                  // );
+                } else {
+                  // dados.labels.shift(); // apagar o primeiro
+                  // dados.labels.push(horario); // incluir um novo momento
+                  // console.log(myChart.canvas.id, novoRegistro);
+                  // console.log(dados, "aa", novoRegistro);
+                  if (myChart.canvas.id == "graficoSuporte3") {
+                    dados.datasets[0].data.shift(); // apagar o primeiro de umidade
+                    dados.datasets[0].data.shift(); // apagar o primeiro de umidade
+                    dados.datasets[0].data.push(novoRegistro[0].cpu_em_uso);
+                    dados.datasets[0].data.push(
+                      100 - novoRegistro[0].cpu_em_uso
+                    );
+                  } else if (myChart.canvas.id == "graficoSuporte4") {
+                    dados.datasets[0].data.shift(); // apagar o primeiro de umidade
+                    dados.datasets[0].data.shift();
+                    dados.datasets[0].data.push(
+                      (novoRegistro[0].ram_em_uso / totalPor) * 100
+                    );
+                    dados.datasets[0].data.push(
+                      100 - (novoRegistro[0].ram_em_uso / totalPor) * 100
+                    );
+                    // console.log((novoRegistro[0].ram_em_uso / totalPor) * 100);
+                  }
+
+                  myChart.update();
+                }
+
+                proximaAtualizacao = setTimeout(
+                  () => atualizarGraficoSuporte2(idAquario, dados, myChart),
+                  2000
+                );
+              });
+            } else {
+              console.error("Nenhum dado encontrado ou erro na API");
+              proximaAtualizacao = setTimeout(
+                () => atualizarGraficoSuporte2(idAquario, dados, myChart),
                 2000
               );
             }
