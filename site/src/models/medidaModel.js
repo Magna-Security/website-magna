@@ -13,6 +13,7 @@ function buscarUltimasMedidas(idAquario, limite_linhas) {
         ram_em_uso,    
         dt_registro
     FROM RegistroServer
+    WHERE fk_servidor = ${idAquario}
     ORDER BY id_dado DESC`;
   } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
     instrucaoSql = `SELECT top 1
@@ -22,6 +23,8 @@ function buscarUltimasMedidas(idAquario, limite_linhas) {
         ram_em_uso,    
         dt_registro
     FROM RegistroServer
+    WHERE fk_servidor = ${idAquario}
+
                     order by id_dado desc`;
   } else {
     console.log(
@@ -46,6 +49,7 @@ function buscarUltimasMedidasSuporte(idAquario, limite_linhas) {
         total_armazenamento_disco_2,
         dt_registro
     FROM RegistroServer INNER JOIN Servidor ON fk_servidor = id_servidor
+    WHERE fk_servidor = ${idAquario}
     ORDER BY id_dado desc`;
   } else {
     console.log(
@@ -71,6 +75,9 @@ function buscarMedidasEmTempoReal(idAquario) {
       dt_registro
     FROM 
       RegistroServer
+    WHERE fk_servidor = ${idAquario}
+
+
     ORDER BY id_dado DESC`;
   } else {
     console.log(
@@ -96,6 +103,7 @@ function buscarMedidasEmTempoRealSuporte(idAquario) {
         total_armazenamento_disco_2,
         dt_registro
     FROM RegistroServer INNER JOIN Servidor ON fk_servidor = id_servidor
+    WHERE fk_servidor = ${idAquario}
     ORDER BY id_dado desc`;
   } else {
     console.log(
@@ -245,6 +253,75 @@ function atualizarUsuario(idLinha, nome, email, senha, cargo) {
   return database.executar(instrucaoSql);
 }
 
+function coletarDadosMedia(idLinha) {
+  instrucaoSql = "";
+
+  if (process.env.AMBIENTE_PROCESSO == "producao") {
+    instrucaoSql = `
+    SELECT AVG(cpu_em_uso) as media
+      FROM(
+        SELECT TOP 7
+        cpu_em_uso
+        FROM RegistroServer
+        WHERE fk_servidor = ${idLinha}
+        ORDER BY id_dado DESC
+      ) A
+
+      UNION ALL
+
+      SELECT AVG(ram_em_uso)
+      FROM(
+        SELECT TOP 7
+        ram_em_uso
+        FROM RegistroServer
+        WHERE fk_servidor = ${idLinha}
+        ORDER BY id_dado DESC
+      ) A
+
+      UNION ALL
+
+      SELECT AVG(disco_em_uso_1)
+      FROM(
+        SELECT TOP 7
+        disco_em_uso_1
+        FROM RegistroServer
+        WHERE fk_servidor = ${idLinha}
+        ORDER BY id_dado DESC
+      ) A
+
+      UNION ALL
+
+      SELECT AVG(disco_em_uso_2)
+      FROM(
+        SELECT TOP 7
+        disco_em_uso_2
+        FROM RegistroServer
+        WHERE fk_servidor = ${idLinha}
+        ORDER BY id_dado DESC
+      ) A
+
+      UNION ALL
+
+      SELECT COUNT(*) 
+      FROM RegistroServer
+      WHERE cpu_em_uso > 80 AND fk_servidor = ${idLinha}
+      
+      UNION ALL
+
+      SELECT COUNT(*) 
+      FROM RegistroServer
+      WHERE ram_em_uso > 6400000000 AND fk_servidor = ${idLinha}`;
+  } else {
+    console.log(
+      "\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n"
+    );
+    return;
+  }
+
+  console.log("Executando a instrução SQL: \n" + instrucaoSql);
+  return database.executar(instrucaoSql);
+}
+
 module.exports = {
   buscarUltimasMedidas,
   buscarUltimasMedidasSuporte,
@@ -256,4 +333,5 @@ module.exports = {
   buscarUsuarios,
   deletarUsuario,
   atualizarUsuario,
+  coletarDadosMedia,
 };

@@ -233,6 +233,26 @@ function atualizarUsuario(req, res) {
     });
 }
 
+function coletarDadosMedia(req, res) {
+  var idLinha = req.params.idAquario;
+  // console.log(`Buscando servidores`);
+
+  medidaModel
+    .coletarDadosMedia(idLinha)
+    .then(function (resultado) {
+      if (resultado.length > 0) {
+        res.status(200).json(resultado);
+      } else {
+        res.status(204).send("Nenhum resultado encontrado!");
+      }
+    })
+    .catch(function (erro) {
+      console.log(erro);
+      console.log("Houve um erro ao buscar servidor.", erro.sqlMessage);
+      res.status(500).json(erro.sqlMessage);
+    });
+}
+
 module.exports = {
   buscarUltimasMedidas,
   buscarUltimasMedidasSuporte,
@@ -244,4 +264,5 @@ module.exports = {
   buscarUsuarios,
   deletarUsuario,
   atualizarUsuario,
+  coletarDadosMedia,
 };

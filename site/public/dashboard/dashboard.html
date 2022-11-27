@@ -253,13 +253,23 @@
         <!-- ====================================== Gerente ===================================== -->
 
         <div class="linhaAdmin linhaArray">
+          <div class="row formatarRow">
+            <h2 class="headerSuporte">
+              Servidor <span id="numServidor3">1</span>
+            </h2>
+            <select
+              id="comboServidor3"
+              class="w-25 d-block form-select"
+              onchange="atualizarTitulo3(event)"
+            ></select>
+          </div>
           <div class="row formatarRow gy-3 gx-3">
             <h2 class="h2 mt-5" style="color: white">Informações gerais</h2>
             <div class="col-4">
               <div class="m-0">
                 <div class="status">
                   <p>Média CPU</p>
-                  <span>75%</span>
+                  <span id="mediaCpu"></span>
                 </div>
               </div>
             </div>
@@ -267,15 +277,42 @@
               <div class="m-0">
                 <div class="status">
                   <p>Média RAM</p>
-                  <span>81%</span>
+                  <span id="mediaRam"></span>
                 </div>
               </div>
             </div>
             <div class="col-4">
               <div class="m-0">
                 <div class="status">
-                  <p>Média RAM</p>
-                  <span>81%</span>
+                  <p>Quantas vezes passou 80% (CPU)</p>
+                  <span id="limite"></span>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-4">
+              <div class="m-0">
+                <div class="status">
+                  <p>Média disco 1</p>
+                  <span id="mediaDisco1"></span>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-4">
+              <div class="m-0">
+                <div class="status">
+                  <p>Média disco 2</p>
+                  <span id="mediaDisco2"></span>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-4">
+              <div class="m-0">
+                <div class="status">
+                  <p>Quantas vezes passou 80% (RAM)</p>
+                  <span id="limiteRam"></span>
                 </div>
               </div>
             </div>
@@ -286,7 +323,7 @@
               </div>
             </div> -->
 
-            <h2 style="color: white" class="h2">Suporte</h2>
+            <!-- <h2 style="color: white" class="h2">Suporte</h2>
             <div class="">
               <div></div>
               <div class="d-flex mt-2">
@@ -309,7 +346,7 @@
                   </div>
                 </div>
               </div>
-            </div>
+            </div> -->
 
             <!-- <div class="col-6 classeSuporte">
               <div class="grafico-linha grafico-suporte">
@@ -357,6 +394,9 @@
 
       let contadorGrafico = 0;
       let contadorGrafico2 = 0;
+      let contadorGrafico3 = 0;
+
+      window.onload = getDadosGerente(1);
 
       // window.onload = obterDadosGrafico(1, "graficoGerente", configGerente);
       // window.onload = obterDadosGrafico(1, "graficoGerente2", configGerente2);
@@ -410,7 +450,7 @@
               response.json().then(function (resposta) {
                 // console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
                 resposta.reverse();
-                console.log("aa");
+                console.log(idAquario);
                 plotarGraficoSuporte2(
                   resposta,
                   idAquario,
@@ -737,16 +777,17 @@
         configEscolhida
       ) {
         console.log("iniciando plotagem do gráfico...");
-        let labels = [];
+        let labels = ["CPU em uso", "CPU restante"];
         let labels2 = ["RAM em uso", "RAM restante"];
 
         const dadosSuporte = {
           labels: labels,
           datasets: [
             {
-              label: ["CPU em uso"],
+              label: ["CPU"],
               data: [],
-              backgroundColor: ["#576E97"],
+              backgroundColor: ["#576E97", "#49abb9"],
+
               hoverOffset: 4,
             },
           ],
@@ -766,7 +807,9 @@
 
         if (grafico == "graficoSuporte3") {
           var registro = resposta[resposta.length - 1];
+          let totalCpu = 100;
           dadosSuporte.datasets[0].data.push(registro.cpu_em_uso);
+          dadosSuporte.datasets[0].data.push(totalCpu - registro.cpu_em_uso);
         } else if (grafico == "graficoSuporte4") {
           var registro = resposta[resposta.length - 1];
           let totalPor = 4000000000;
@@ -953,6 +996,7 @@
                 console.log(resposta);
                 let numServidor = document.querySelector("#numServidor");
                 let numServidor2 = document.querySelector("#numServidor2");
+                let numServidor3 = document.querySelector("#numServidor3");
 
                 obterDadosGrafico(
                   resposta[0].id_servidor,
@@ -990,9 +1034,12 @@
                   resposta[0].id_servidor + " - " + resposta[0].nome_servidor;
                 numServidor2.innerHTML =
                   resposta[0].id_servidor + " - " + resposta[0].nome_servidor;
+                numServidor3.innerHTML =
+                  resposta[0].id_servidor + " - " + resposta[0].nome_servidor;
 
                 let select = document.querySelector("#comboServidor");
                 let select2 = document.querySelector("#comboServidor2");
+                let select3 = document.querySelector("#comboServidor3");
 
                 for (let i = 0; i < resposta.length; i++) {
                   let linha = resposta[i];
@@ -1005,8 +1052,13 @@
                   opt2.setAttribute("value", linha.id_servidor);
                   opt2.innerText = linha.nome_servidor;
 
+                  let opt3 = document.createElement("option");
+                  opt3.setAttribute("value", linha.id_servidor);
+                  opt3.innerText = linha.nome_servidor;
+
                   select.appendChild(opt);
                   select2.appendChild(opt2);
+                  select3.appendChild(opt3);
                 }
 
                 // let objeto = {id}
@@ -1032,6 +1084,8 @@
         myChart2.destroy();
         myChart3.destroy();
         if (contadorGrafico == 0) {
+          console.log(optEscolhida.value);
+          getDadosGerente(optEscolhida.value);
           obterDadosGrafico(
             optEscolhida.value,
             "graficoGerente",
@@ -1055,6 +1109,7 @@
           );
           contadorGrafico++;
         } else {
+          getDadosGerente(optEscolhida.value);
           obterDadosGrafico(
             optEscolhida.value,
             "graficoGerente",
@@ -1089,6 +1144,7 @@
         myChart4.destroy();
         myChart5.destroy();
         if (contadorGrafico2 == 0) {
+          // getDadosGerente();
           obterDadosGraficoSuporte2(
             optEscolhida2.value,
             "graficoSuporte3",
@@ -1101,6 +1157,7 @@
           );
           contadorGrafico2++;
         } else {
+          // getDadosGerente(optEscolhida2.value);
           obterDadosGraficoSuporte2(
             optEscolhida2.value,
             "graficoSuporte3",
@@ -1115,6 +1172,59 @@
 
         numServidor2.innerHTML =
           optEscolhida2.value + " - " + optEscolhida2.innerHTML;
+      }
+
+      function atualizarTitulo3() {
+        let numServidor2 = document.querySelector("#numServidor3");
+        let lista2 = document.querySelector("#comboServidor3");
+        let optEscolhida2 = lista2.options[lista2.selectedIndex];
+
+        if (contadorGrafico3 == 0) {
+          getDadosGerente(optEscolhida2.value);
+          contadorGrafico3++;
+        } else {
+          getDadosGerente(optEscolhida2.value);
+        }
+
+        numServidor2.innerHTML =
+          optEscolhida2.value + " - " + optEscolhida2.innerHTML;
+      }
+
+      function getDadosGerente(idAquario) {
+        fetch(`/medidas/dados/${idAquario}`, { cache: "no-store" })
+          .then(function (response) {
+            // console.log(response);
+            if (response.ok) {
+              response.json().then(function (resposta) {
+                // console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                // resposta.reverse();
+                console.log(resposta);
+                let mediaCpu = document.querySelector("#mediaCpu");
+                let mediaRam = document.querySelector("#mediaRam");
+                let mediaDisco1 = document.querySelector("#mediaDisco1");
+                let mediaDisco2 = document.querySelector("#mediaDisco2");
+                let limite = document.querySelector("#limite");
+                let limiteRam = document.querySelector("#limiteRam");
+
+                mediaCpu.innerHTML = resposta[0].media.toFixed(2) + "%";
+                mediaRam.innerHTML =
+                  (resposta[1].media / (1 * 10 ** 9)).toFixed(2) + "%";
+                mediaDisco1.innerHTML =
+                  (resposta[2].media / (1 * 10 ** 9)).toFixed(2) + "%";
+                mediaDisco2.innerHTML =
+                  (resposta[3].media / (1 * 10 ** 9)).toFixed(2) + "%";
+                limite.innerHTML = resposta[4].media + "";
+                limiteRam.innerHTML = resposta[5].media + "";
+              });
+            } else {
+              console.error("Nenhum dado encontrado ou erro na API");
+            }
+          })
+          .catch(function (error) {
+            console.error(
+              `Erro na obtenção dos dados p/ gráfico: ${error.message}`
+            );
+          });
       }
     </script>
   </body>

@@ -45,4 +45,8 @@ router.put("/usuarios/atualizar/:idLinha", function (req, res) {
   medidaController.atualizarUsuario(req, res);
 });
 
+router.get("/dados/:idAquario", function (req, res) {
+  medidaController.coletarDadosMedia(req, res);
+});
+
 module.exports = router;
