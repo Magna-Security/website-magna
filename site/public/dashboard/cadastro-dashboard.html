@@ -87,7 +87,7 @@
             <i class="bi bi-person-circle" style="font-size: 30px"></i>
           </a>
           <ul class="dropdown-menu text-small shadow">
-            <li><a class="dropdown-item" href="../index.html">Sair</a></li>
+            <li><a class="dropdown-item" href="../index.html" onclick="sessionStorage.clear()">Sair</a></li>
           </ul>
         </div>
       </div>
@@ -122,9 +122,9 @@
                   class="form-control"
                 >
                   <option>Selecione um cargo</option>
-                  <option>gerente</option>
-                  <option>tecnico</option>
-                  <option>suporte</option>
+                  <option>Gerente</option>
+                  <option>Técnico</option>
+                  <option>Suporte</option>
                 </select>
 
                 <label for="nome">Nome:</label>
@@ -134,7 +134,7 @@
                 <input type="text" id="inputEmail" class="form-control" />
 
                 <label for="senha">Senha</label>
-                <input type="text" id="inputSenha" class="form-control" />
+                <input type="password" id="inputSenha" class="form-control" />
 
                 <a
                   class="btnCadastrarDashboard btn btn-primary"

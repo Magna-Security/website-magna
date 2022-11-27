@@ -102,7 +102,7 @@ function cadastrarManager(nomeVar, emailVar, senhaVar) {
         );
 
         setTimeout(() => {
-          //window.location = "login.html";
+          window.location = "login.html";
         }, 1000);
       } else {
         window.alert("Houve um erro ao tentar realizar o cadastro!");
