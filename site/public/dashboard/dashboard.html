@@ -409,6 +409,7 @@
       let myChart3;
       let myChart4;
       let myChart5;
+      let myChart6;
 
       let contadorGrafico = 0;
       let contadorGrafico2 = 0;
@@ -570,7 +571,7 @@
           labels: labels,
           datasets: [
             {
-              label: "Uso de CPU",
+              label: "Uso de CPU (%)",
               data: [],
               fill: false,
               backgroundColor: ["#4da5b3", "#68BECB"],
@@ -678,7 +679,7 @@
 
         // Adicionando gráfico criado em div na tela
         if (grafico == "graficoGerente") {
-          myChart = new Chart(
+          myChart6 = new Chart(
             document.getElementById(grafico),
             configEscolhida
           );
@@ -721,7 +722,7 @@
           labels: labels,
           datasets: [
             {
-              label: "Média de CPU por mês (%)",
+              label: "Média do uso do hardware por mês (%)",
               data: [],
               fill: false,
               backgroundColor: ["#4da5b3", "#68BECB"],
@@ -1326,9 +1327,10 @@
         myChart1.destroy();
         myChart2.destroy();
         myChart3.destroy();
+        myChart6.destroy();
         if (contadorGrafico == 0) {
-          console.log(optEscolhida.value);
-          getDadosGerente(optEscolhida.value);
+          // console.log(optEscolhida.value);
+          // getDadosGerente(optEscolhida.value);
           obterDadosGrafico(
             optEscolhida.value,
             "graficoGerente",
@@ -1352,7 +1354,7 @@
           );
           contadorGrafico++;
         } else {
-          getDadosGerente(optEscolhida.value);
+          // getDadosGerente(optEscolhida.value);
           obterDadosGrafico(
             optEscolhida.value,
             "graficoGerente",
@@ -1425,6 +1427,9 @@
         myChart1.destroy();
         myChart2.destroy();
         myChart3.destroy();
+        myChart4.destroy();
+        myChart5.destroy();
+        myChart6.destroy();
         if (contadorGrafico3 == 0) {
           getDadosGerente(optEscolhida2.value);
           obterDadosGraficoGerente2(optEscolhida2.value, "graficoGerente5");
