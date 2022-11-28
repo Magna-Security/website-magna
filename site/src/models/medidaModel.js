@@ -37,6 +37,31 @@ function buscarUltimasMedidas(idAquario, limite_linhas) {
   return database.executar(instrucaoSql);
 }
 
+function buscarUltimasMedidasMedia(idAquario, limite_linhas) {
+  instrucaoSql = "";
+
+  if (process.env.AMBIENTE_PROCESSO == "producao") {
+    instrucaoSql = `SELECT TOP 7 MONTH (dt_registro) as data, AVG(ram_em_uso) as ram
+    FROM RegistroServer
+    WHERE fk_servidor = ${idAquario}
+    GROUP BY MONTH(dt_registro)
+    ORDER BY data DESC;`;
+  } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
+    instrucaoSql = `SELECT TOP 7 MONTH (dt_registro), AVG(ram_em_uso)
+    FROM RegistroServer
+    WHERE fk_servidor = ${idAquario}
+    GROUP BY MONTH(dt_registro);`;
+  } else {
+    console.log(
+      "\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n"
+    );
+    return;
+  }
+
+  console.log("Executando a instrução SQL: \n" + instrucaoSql);
+  return database.executar(instrucaoSql);
+}
+
 function buscarUltimasMedidasSuporte(idAquario, limite_linhas) {
   instrucaoSql = "";
 
@@ -116,7 +141,7 @@ function buscarMedidasEmTempoRealSuporte(idAquario) {
   return database.executar(instrucaoSql);
 }
 
-function buscarServidores() {
+function buscarServidores(idEmpresa) {
   instrucaoSql = "";
 
   if (process.env.AMBIENTE_PROCESSO == "producao") {
@@ -129,7 +154,8 @@ function buscarServidores() {
         qtd_nucleos_fisicos,
         qtd_memoria_ram,
         ISNULL(cidade, ' ') as cidade
-    FROM Servidor`;
+    FROM Servidor
+    WHERE fk_empresa = ${idEmpresa}`;
   } else {
     console.log(
       "\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n"
@@ -191,7 +217,7 @@ function atualizarServidor(
   return database.executar(instrucaoSql);
 }
 
-function buscarUsuarios() {
+function buscarUsuarios(fkEmpresa) {
   instrucaoSql = "";
 
   if (process.env.AMBIENTE_PROCESSO == "producao") {
@@ -201,7 +227,8 @@ function buscarUsuarios() {
         tipo_usuario,
         nome_usuario,    
         email
-    FROM Usuario`;
+    FROM Usuario
+    WHERE fk_empresa = ${fkEmpresa}`;
   } else {
     console.log(
       "\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n"
@@ -334,4 +361,5 @@ module.exports = {
   deletarUsuario,
   atualizarUsuario,
   coletarDadosMedia,
+  buscarUltimasMedidasMedia,
 };

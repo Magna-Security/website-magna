@@ -194,11 +194,12 @@
       let cidadeServidro = "";
       window.onload = buscarServidores();
       function buscarServidores() {
+        let idEmpresa = sessionStorage.getItem("idEmpresa");
         // if (proximaAtualizacao != undefined) {
         //   clearTimeout(proximaAtualizacao);
         // }
 
-        fetch(`/medidas/servidor`, { cache: "no-store" })
+        fetch(`/medidas/servidor/${idEmpresa}`, { cache: "no-store" })
           .then(function (response) {
             if (response.ok) {
               response.json().then(function (resposta) {

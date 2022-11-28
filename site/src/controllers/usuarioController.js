@@ -30,12 +30,10 @@ function listar(req, res) {
 }
 
 function getIdEmpresa(req, res) {
-  nomeEmpresa = req.body.nomeServer;
-  telefone = req.body.telefoneServer;
-  cnpj = req.body.cnpjServer;
+  let nome = req.params.nome;
 
   usuarioModel
-    .getIdEmpresa(nomeEmpresa, telefone, cnpj)
+    .getIdEmpresa(nome)
     .then(function (resultado) {
       if (resultado.length > 0) {
         res.status(200).json(resultado);
@@ -235,6 +233,7 @@ function adicionarServidor(req, res) {
   var ram = req.body.ramServer;
   var disco1 = req.body.disco1Server;
   var disco2 = req.body.disco2Server;
+  var idEmpresa = req.body.idEmpresaServer;
 
   nucleos = Number(nucleos);
   ram = Number(ram);
@@ -255,7 +254,7 @@ function adicionarServidor(req, res) {
   } else {
     // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
     usuarioModel
-      .adicionarServidor(nome, cidade, nucleos, ram, disco1, disco2)
+      .adicionarServidor(nome, cidade, nucleos, ram, disco1, disco2, idEmpresa)
       .then(function (resultado) {
         res.json(resultado);
       })

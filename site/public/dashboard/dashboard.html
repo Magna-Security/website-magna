@@ -85,7 +85,14 @@
             <i class="bi bi-person-circle" style="font-size: 30px"></i>
           </a>
           <ul class="dropdown-menu text-small shadow">
-            <li><a class="dropdown-item" href="../index.html" onclick="sessionStorage.clear()">Sair</a></li>
+            <li>
+              <a
+                class="dropdown-item"
+                href="../index.html"
+                onclick="sessionStorage.clear()"
+                >Sair</a
+              >
+            </li>
           </ul>
         </div>
       </div>
@@ -317,6 +324,17 @@
               </div>
             </div>
 
+            <div class="col-2"></div>
+            <div class="col-8">
+              <div
+                class="grafico-linha colGraficoTecnico"
+                style="padding: 10px"
+              >
+                <canvas id="graficoGerente5"></canvas>
+              </div>
+            </div>
+            <div class="col-2"></div>
+
             <!-- <div class="col-12">
               <div class="grafico-linha grafico-linha-admin">
                 <canvas id="graficoAdmin"></canvas>
@@ -396,8 +414,9 @@
       let contadorGrafico2 = 0;
       let contadorGrafico3 = 0;
       let totalPor = 16000000000;
+      let totalDisco = 1000000000000;
 
-      window.onload = getDadosGerente(1);
+      window.onload = getDadosGerente(sessionStorage.getItem("idEmpresa"));
 
       // window.onload = obterDadosGrafico(1, "graficoGerente", configGerente);
       // window.onload = obterDadosGrafico(1, "graficoGerente2", configGerente2);
@@ -428,6 +447,41 @@
                 resposta.reverse();
 
                 plotarGrafico(resposta, idAquario, grafico, configEscolhida);
+              });
+            } else {
+              console.error("Nenhum dado encontrado ou erro na API");
+            }
+          })
+          .catch(function (error) {
+            console.error(
+              `Erro na obtenção dos dados p/ gráfico: ${error.message}`
+            );
+          });
+      }
+
+      function obterDadosGraficoGerente2(
+        idAquario,
+        grafico,
+        configEscolhida = null
+      ) {
+        if (proximaAtualizacao != undefined) {
+          clearTimeout(proximaAtualizacao);
+        }
+
+        fetch(`/medidas/ultimas-media/${idAquario}`, { cache: "no-store" })
+          .then(function (response) {
+            if (response.ok) {
+              response.json().then(function (resposta) {
+                // console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                resposta.reverse();
+                console.log(resposta);
+
+                plotarGraficoGerente2(
+                  resposta,
+                  idAquario,
+                  grafico,
+                  configEscolhida
+                );
               });
             } else {
               console.error("Nenhum dado encontrado ou erro na API");
@@ -648,6 +702,92 @@
         }
       }
 
+      function plotarGraficoGerente2(
+        resposta,
+        idAquario,
+        grafico,
+        configEscolhida
+      ) {
+        console.log("chegou");
+        console.log("iniciando plotagem do gráfico...");
+
+        // Criando estrutura para plotar gráfico - labels
+        let labels = [];
+        let labels2 = [];
+
+        // Criando estrutura para plotar gráfico - dados
+        // Gerente ======================================================================
+        let dadosGerente = {
+          labels: labels,
+          datasets: [
+            {
+              label: "Média de CPU por mês (%)",
+              data: [],
+              fill: false,
+              backgroundColor: ["#4da5b3", "#68BECB"],
+              borderColor: ["#68BECB", "#576E97", "#68BECB"],
+              tension: 0.1,
+              fill: true,
+            },
+          ],
+        };
+
+        // console.log("----------------------------------------------");
+        // console.log(
+        //   'Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":'
+        // );
+        // console.log(resposta);
+
+        // Inserindo valores recebidos em estrutura para plotar o gráfico
+        if (grafico == "graficoGerente5") {
+          for (i = 0; i < resposta.length; i++) {
+            var registro = resposta[i];
+            console.log(registro);
+            // var vetor = registro.dt_registro.split("T");
+            var horario = registro.data + "/2022";
+            // let
+            labels.push(horario);
+            dadosGerente.datasets[0].data.push(registro.ram / (1 * 10 ** 9));
+          }
+        }
+
+        if (grafico == "graficoGerente5") {
+          configGerente = {
+            type: "bar",
+            data: dadosGerente,
+
+            options: {
+              plugins: {
+                legend: {
+                  labels: {
+                    font: {
+                      size: 25,
+                    },
+                  },
+                },
+              },
+            },
+          };
+
+          configEscolhida = configGerente;
+        }
+
+        // Adicionando gráfico criado em div na tela
+        if (grafico == "graficoGerente5") {
+          myChart = new Chart(
+            document.getElementById(grafico),
+            configEscolhida
+          );
+        }
+
+        // if (grafico == "graficoGerente") {
+        //   setTimeout(
+        //     () => atualizarGrafico(idAquario, dadosGerente, myChart),
+        //     2000
+        //   );
+        // }
+      }
+
       function plotarGraficoSuporte(
         resposta,
         idAquario,
@@ -852,12 +992,12 @@
         if (grafico == "graficoSuporte3") {
           setTimeout(
             () => atualizarGraficoSuporte2(idAquario, dadosSuporte, myChart4),
-            2000
+            10000
           );
         } else if (grafico == "graficoSuporte4") {
           setTimeout(
             () => atualizarGraficoSuporte2(idAquario, dadosSuporte2, myChart5),
-            2000
+            10000
           );
         }
       }
@@ -1059,7 +1199,7 @@
 
                 proximaAtualizacao = setTimeout(
                   () => atualizarGraficoSuporte2(idAquario, dados, myChart),
-                  2000
+                  10000
                 );
               });
             } else {
@@ -1077,13 +1217,13 @@
           });
       }
 
-      window.onload = buscarServidores();
-      function buscarServidores() {
+      window.onload = buscarServidores(sessionStorage.getItem("idEmpresa"));
+      function buscarServidores(idEmpresa) {
         // if (proximaAtualizacao != undefined) {
         //   clearTimeout(proximaAtualizacao);
         // }
 
-        fetch(`/medidas/servidor`, { cache: "no-store" })
+        fetch(`/medidas/servidor/${idEmpresa}`, { cache: "no-store" })
           .then(function (response) {
             if (response.ok) {
               response.json().then(function (resposta) {
@@ -1125,6 +1265,12 @@
                   resposta[0].id_servidor,
                   "graficoSuporte4",
                   configSuporte2
+                );
+
+                obterDadosGraficoGerente2(
+                  resposta[0].id_servidor,
+                  "graficoGerente5",
+                  null
                 );
 
                 numServidor.innerHTML =
@@ -1275,12 +1421,18 @@
         let numServidor2 = document.querySelector("#numServidor3");
         let lista2 = document.querySelector("#comboServidor3");
         let optEscolhida2 = lista2.options[lista2.selectedIndex];
-
+        myChart.destroy();
+        myChart1.destroy();
+        myChart2.destroy();
+        myChart3.destroy();
         if (contadorGrafico3 == 0) {
           getDadosGerente(optEscolhida2.value);
+          obterDadosGraficoGerente2(optEscolhida2.value, "graficoGerente5");
+
           contadorGrafico3++;
         } else {
           getDadosGerente(optEscolhida2.value);
+          obterDadosGraficoGerente2(optEscolhida2.value, "graficoGerente5");
         }
 
         numServidor2.innerHTML =
@@ -1288,6 +1440,7 @@
       }
 
       function getDadosGerente(idAquario) {
+        console.log(idAquario);
         fetch(`/medidas/dados/${idAquario}`, { cache: "no-store" })
           .then(function (response) {
             // console.log(response);
@@ -1307,9 +1460,9 @@
                 mediaRam.innerHTML =
                   (resposta[1].media / (1 * 10 ** 9)).toFixed(2) + "%";
                 mediaDisco1.innerHTML =
-                  (resposta[2].media / (1 * 10 ** 9)).toFixed(2) + "%";
+                  ((resposta[2].media / totalDisco) * 100).toFixed(2) + "%";
                 mediaDisco2.innerHTML =
-                  (resposta[3].media / (1 * 10 ** 9)).toFixed(2) + "%";
+                  ((resposta[3].media / totalDisco) * 100).toFixed(2) + "%";
                 limite.innerHTML = resposta[4].media + "";
                 limiteRam.innerHTML = resposta[5].media + "";
               });

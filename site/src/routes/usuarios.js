@@ -13,7 +13,7 @@ router.get("/listar", function (req, res) {
   usuarioController.listar(req, res);
 });
 
-router.post("/getIdEmpresa", function (req, res) {
+router.get("/getIdEmpresa/:nome", function (req, res) {
   usuarioController.getIdEmpresa(req, res);
 });
 

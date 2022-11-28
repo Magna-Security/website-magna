@@ -28,6 +28,32 @@ function buscarUltimasMedidas(req, res) {
     });
 }
 
+function buscarUltimasMedidasMedia(req, res) {
+  const limite_linhas = 7;
+
+  var idAquario = req.params.idAquario;
+
+  console.log(`Recuperando as ultimas ${limite_linhas} medidas`);
+
+  medidaModel
+    .buscarUltimasMedidasMedia(idAquario, limite_linhas)
+    .then(function (resultado) {
+      if (resultado.length > 0) {
+        res.status(200).json(resultado);
+      } else {
+        res.status(204).send("Nenhum resultado encontrado!");
+      }
+    })
+    .catch(function (erro) {
+      console.log(erro);
+      console.log(
+        "Houve um erro ao buscar as ultimas medidas.",
+        erro.sqlMessage
+      );
+      res.status(500).json(erro.sqlMessage);
+    });
+}
+
 function buscarUltimasMedidasSuporte(req, res) {
   const limite_linhas = 7;
 
@@ -103,10 +129,11 @@ function buscarMedidasEmTempoRealSuporte(req, res) {
 }
 
 function buscarServidores(req, res) {
+  let idEmpresa = req.params.idEmpresa;
   console.log(`Buscando servidores`);
 
   medidaModel
-    .buscarServidores()
+    .buscarServidores(idEmpresa)
     .then(function (resultado) {
       if (resultado.length > 0) {
         res.status(200).json(resultado);
@@ -169,10 +196,11 @@ function atualizarServidor(req, res) {
 }
 
 function buscarUsuarios(req, res) {
+  let fkEmpresa = req.params.idEmpresa;
   console.log(`Buscando servidores`);
-
+  console.log(fkEmpresa);
   medidaModel
-    .buscarUsuarios()
+    .buscarUsuarios(fkEmpresa)
     .then(function (resultado) {
       if (resultado.length > 0) {
         res.status(200).json(resultado);
@@ -265,4 +293,5 @@ module.exports = {
   deletarUsuario,
   atualizarUsuario,
   coletarDadosMedia,
+  buscarUltimasMedidasMedia,
 };

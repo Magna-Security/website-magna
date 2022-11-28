@@ -59,7 +59,11 @@ function cadastrarEmpresa(nomeVar, telefoneVar, cnpjVar) {
       console.log("resposta: ", resposta);
 
       if (resposta.ok) {
-        getIdEmpresa(nomeVar, telefoneVar, cnpjVar);
+        getIdEmpresa(nomeVar);
+        console.log(idEmpresa);
+        // localStorage.setItem("idEmpresa", idEmpresa);
+
+        // console.log();
         //alert("Cadastro realizado com sucesso! Redirecionando...");
 
         window.location = "cadastro-manager.html";
@@ -76,8 +80,8 @@ function cadastrarEmpresa(nomeVar, telefoneVar, cnpjVar) {
 }
 
 function cadastrarManager(nomeVar, emailVar, senhaVar) {
-  var fkEmpresa = Number(sessionStorage.ID_EMPRESA);
-
+  var fkEmpresa = localStorage.getItem("idEmpresa");
+  console.log(fkEmpresa);
   // Enviando o valor da nova input
   fetch("/usuarios/cadastrarManager", {
     method: "POST",
@@ -97,6 +101,7 @@ function cadastrarManager(nomeVar, emailVar, senhaVar) {
       console.log("resposta: ", resposta);
 
       if (resposta.ok) {
+        localStorage.clear();
         alert(
           "Cadastro realizado com sucesso! Redirecionando para a tela de login..."
         );
@@ -123,7 +128,7 @@ function cadastrarFuncionario() {
   var cargoVar = document.querySelector("#sltCargo").value;
 
   //   var fkEmpresa = Number(sessionStorage.ID_EMPRESA);
-  var fkEmpresa = 1;
+  var fkEmpresa = sessionStorage.getItem("idEmpresa");
 
   // Enviando o valor da nova input
   fetch("/usuarios/cadastrarFuncionario", {
@@ -166,6 +171,8 @@ function adicionarServidor() {
   var disco2 = document.querySelector("#disco2").value;
   var ram = document.querySelector("#ram").value;
   var nucleos = document.querySelector("#nucleos").value;
+  var idEmpresa = sessionStorage.getItem("idEmpresa");
+  console.log(idEmpresa);
 
   // Enviando o valor da nova input
   fetch("/usuarios/add-server", {
@@ -182,6 +189,7 @@ function adicionarServidor() {
       ramServer: nucleos,
       disco1Server: disco1,
       disco2Server: disco2,
+      idEmpresaServer: idEmpresa,
     }),
   })
     .then(function (resposta) {
@@ -189,6 +197,7 @@ function adicionarServidor() {
 
       if (resposta.ok) {
         alert("Cadastro realizado com sucesso!");
+        window.location.reload();
       } else {
         window.alert("Houve um erro ao tentar realizar o cadastro!");
         throw "Houve um erro ao tentar realizar o cadastro!";
@@ -355,34 +364,27 @@ function validarSenha() {
   }
 }
 
-function getIdEmpresa(nome, telefone, cnpj) {
-  fetch("/usuarios/getIdEmpresa", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      // crie um atributo que recebe o valor recuperado aqui
-      // Agora vá para o arquivo routes/usuario.js
-      nomeServer: nome,
-      telefoneServer: telefone,
-      cnpjServer: cnpj,
-    }),
-  })
+function getIdEmpresa(nome) {
+  fetch(`/usuarios/getIdEmpresa/${nome}`, { cache: "no-store" })
     .then(function (resposta) {
       console.log("resposta: ", resposta);
-
+      // return resposta[0].id_empresa;
       if (resposta.ok) {
-        resposta.json().then((json) => {
-          console.log(json);
-          console.log(JSON.stringify(json));
+        resposta.json().then((resp) => {
+          console.log(resp);
+          let valor = resp[0].id_empresa;
+          localStorage.setItem("idEmpresa", valor);
+          // return json[0].id_empresa;
+          //   console.log(json);
+          //   console.log(JSON.stringify(json));
 
-          let res = json[0];
-          console.log("mostrando res: " + res);
-          sessionStorage.ID_EMPRESA = JSON.stringify(res.idEmpresa);
-          // setTimeout(function () {
-          //     window.location = "./dashboard/cards.html";
-          // }, 1000); // apenas para exibir o loading
+          //   let res = json[0];
+          //   console.log("mostrando res: " + res);
+          //   // sessionStorage.setID_EMPRESA = JSON.stringify(res.idEmpresa);
+          //   // localStorage.setItem("id_empresa", json[0].id_empresa);
+          //   // setTimeout(function () {
+          //   //     window.location = "./dashboard/cards.html";
+          //   // }, 1000); // apenas para exibir o loading
         });
 
         // window.location = "login.html";

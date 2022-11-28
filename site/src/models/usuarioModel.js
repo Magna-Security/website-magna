@@ -13,12 +13,12 @@ function listar() {
   return database.executar(instrucao);
 }
 
-function getIdEmpresa(nome, telefone, cnpj) {
+function getIdEmpresa(nome) {
   console.log(
     "ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()"
   );
   var instrucao = `
-        select id_empresa from Empresa where nome_empresa = '${nome}' and telefone = '${telefone}' and cnpj = '${cnpj}';
+        select id_empresa from Empresa where nome_empresa = '${nome}';
     `;
   console.log("Executando a instrução SQL: \n" + instrucao);
   return database.executar(instrucao);
@@ -103,7 +103,7 @@ function cadastrarManager(nome, email, senha, fkEmpresa) {
   // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
   //  e na ordem de inserção dos dados.
   var instrucao = `
-        INSERT INTO Usuario(nome_usuario, fk_empresa, email, senha, tipo_usuario) values ('${nome}', 1, '${email}', '${senha}', 'gerente');
+        INSERT INTO Usuario(nome_usuario, fk_empresa, email, senha, tipo_usuario) values ('${nome}', ${fkEmpresa}, '${email}', '${senha}', 'gerente');
     `;
 
   console.log("Executando a instrução SQL: \n" + instrucao);
@@ -130,14 +130,22 @@ function cadastrarFuncionario(nome, email, senha, cargo, fkEmpresa) {
   return database.executar(instrucao);
 }
 
-function adicionarServidor(nome, cidade, nucleos, ram, disco1, disco2) {
+function adicionarServidor(
+  nome,
+  cidade,
+  nucleos,
+  ram,
+  disco1,
+  disco2,
+  idEmpresa
+) {
   instrucaoSql = "";
 
   if (process.env.AMBIENTE_PROCESSO == "producao") {
     instrucaoSql = `
     INSERT INTO Servidor
         (nome_servidor, cidade, qtd_memoria_ram, 	
-          qtd_nucleos_fisicos, total_armazenamento_disco_1, total_armazenamento_disco_2) values ('${nome}', '${cidade}', ${ram}, ${nucleos}, ${disco1}, ${disco2})`;
+          qtd_nucleos_fisicos, total_armazenamento_disco_1, total_armazenamento_disco_2, fk_empresa) values ('${nome}', '${cidade}', ${ram}, ${nucleos}, ${disco1}, ${disco2}, ${idEmpresa})`;
   } else {
     console.log(
       "\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n"
