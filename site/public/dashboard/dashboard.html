@@ -67,7 +67,7 @@
             <a
               href="servidores.html"
               class="nav-link py-3 rounded-0"
-              title="Cadastro usuário"
+              title="Cadastro servidor"
               data-bs-toggle="tooltip"
               data-bs-placement="right"
             >
@@ -80,7 +80,7 @@
               href="https://magna-help.freshdesk.com/a/tickets/filters/all_tickets"
               target="_blank"
               class="nav-link py-3 rounded-0"
-              title="Cadastro usuário"
+              title="Help"
               data-bs-toggle="tooltip"
               data-bs-placement="right"
             >
@@ -331,7 +331,7 @@
             <div class="col-4">
               <div class="m-0">
                 <div class="status">
-                  <p>Quantas vezes passou 80% (RAM)</p>
+                  <p>Vezes em estado crítico (RAM)</p>
                   <span id="limiteRam"></span>
                 </div>
               </div>
@@ -761,7 +761,7 @@
             var horario = registro.data + "/2022";
             // let
             labels.push(horario);
-            dadosGerente.datasets[0].data.push(registro.ram / (1 * 10 ** 9));
+            dadosGerente.datasets[0].data.push(registro.ram);
           }
         }
 

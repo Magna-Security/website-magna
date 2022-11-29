@@ -41,13 +41,13 @@ function buscarUltimasMedidasMedia(idAquario, limite_linhas) {
   instrucaoSql = "";
 
   if (process.env.AMBIENTE_PROCESSO == "producao") {
-    instrucaoSql = `SELECT TOP 7 MONTH (dt_registro) as data, AVG(ram_em_uso) as ram
+    instrucaoSql = `SELECT TOP 7 MONTH (dt_registro) as data, AVG(cpu_em_uso) as ram
     FROM RegistroServer
     WHERE fk_servidor = ${idAquario}
     GROUP BY MONTH(dt_registro)
     ORDER BY data DESC;`;
   } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
-    instrucaoSql = `SELECT TOP 7 MONTH (dt_registro), AVG(ram_em_uso)
+    instrucaoSql = `SELECT TOP 7 MONTH (dt_registro), AVG(cpu_em_uso)
     FROM RegistroServer
     WHERE fk_servidor = ${idAquario}
     GROUP BY MONTH(dt_registro);`;
